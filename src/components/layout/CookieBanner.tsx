@@ -64,8 +64,8 @@ function Toggle({
             disabled={disabled}
             onClick={() => !disabled && onChange(!enabled)}
             className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 focus:outline-none ${disabled
-                    ? "cursor-not-allowed opacity-60"
-                    : "cursor-pointer"
+                ? "cursor-not-allowed opacity-60"
+                : "cursor-pointer"
                 } ${enabled ? "bg-[#EA580C]" : "bg-gray-600"}`}
         >
             <span
@@ -93,13 +93,13 @@ function CookieCategory({
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="border-b border-white/10 last:border-0">
+        <div className="border-b border-gray-200 last:border-0">
             {/* Fila principal */}
             <div className="flex items-center justify-between py-4 px-1">
                 <button
                     type="button"
                     onClick={() => setOpen(!open)}
-                    className="flex items-center gap-2 text-left text-sm font-semibold text-white hover:text-[#EA580C] transition-colors"
+                    className="flex items-center gap-2 text-left text-sm font-semibold text-[#0F172A] hover:text-[#EA580C] transition-colors"
                 >
                     <span className={`text-xs transition-transform duration-200 ${open ? "rotate-90" : ""}`}>›</span>
                     {title}
@@ -120,7 +120,7 @@ function CookieCategory({
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                     >
-                        <p className="text-xs text-white/55 leading-relaxed pb-4 px-5">
+                        <p className="text-xs text-[#64748B] leading-relaxed pb-4 px-5">
                             {description}
                         </p>
                     </motion.div>
@@ -232,19 +232,19 @@ export default function CookieBanner() {
                                     animate={{ height: "auto", opacity: 1 }}
                                     exit={{ height: 0, opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="overflow-hidden bg-[#0F172A] border-t border-x border-white/10 max-w-7xl mx-auto rounded-t-2xl shadow-2xl"
+                                    className="overflow-hidden bg-white border-t border-x border-gray-200 max-w-7xl mx-auto rounded-t-2xl shadow-2xl"
                                 >
                                     <div className="p-6 max-h-[60vh] overflow-y-auto">
                                         {/* Encabezado del panel */}
-                                        <h3 className="text-white font-bold text-base mb-1">
+                                        <h3 className="text-[#0F172A] font-bold text-base mb-1">
                                             Personalizar las preferencias de consentimiento
                                         </h3>
-                                        <p className="text-white/50 text-xs leading-relaxed mb-1">
+                                        <p className="text-[#334155] text-xs leading-relaxed mb-1">
                                             Usamos cookies para ayudarte a navegar de manera eficiente y realizar ciertas funciones.
                                             Encontrará información detallada sobre cada una de las cookies bajo cada categoría de
                                             consentimiento a continuación.
                                         </p>
-                                        <p className="text-white/40 text-xs mb-4">
+                                        <p className="text-[#64748B] text-xs mb-4">
                                             Las cookies categorizadas como &ldquo;Necesarias&rdquo; se guardan en su navegador, ya que son esenciales
                                             para permitir las funcionalidades básicas del sitio web.{" "}
                                             <Link href="/politica-de-cookies" className="text-[#EA580C] hover:underline">
@@ -253,7 +253,7 @@ export default function CookieBanner() {
                                         </p>
 
                                         {/* Categorías */}
-                                        <div className="divide-y divide-white/10">
+                                        <div className="divide-y divide-gray-200">
                                             <CookieCategory
                                                 title="Necesaria"
                                                 description="Las cookies necesarias son cruciales para las funciones básicas del sitio web y el sitio web no funcionará de la forma prevista sin ellas. Estas cookies no almacenan ningún dato de identificación personal."
@@ -285,7 +285,7 @@ export default function CookieBanner() {
                                         <div className="flex justify-end mt-5 pb-1">
                                             <button
                                                 onClick={handleSavePreferences}
-                                                className="px-5 py-2 border border-white/20 text-white text-sm font-semibold rounded hover:bg-white/10 transition-colors"
+                                                className="px-5 py-2 border border-[#0F172A]/30 text-[#0F172A] text-sm font-semibold rounded hover:bg-gray-100 transition-colors"
                                             >
                                                 Guardar mis preferencias
                                             </button>
@@ -296,12 +296,12 @@ export default function CookieBanner() {
                         </AnimatePresence>
 
                         {/* ── Barra principal compacta ─────────────────────────────────── */}
-                        <div className="bg-[#0F172A] border-t border-white/10 shadow-[0_-4px_24px_rgba(0,0,0,0.4)]">
+                        <div className="bg-white border-t border-gray-200 shadow-[0_-4px_16px_rgba(0,0,0,0.12)]">
                             <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center gap-3">
                                 {/* Texto */}
                                 <div className="flex-1 min-w-0">
-                                    <span className="text-white text-sm font-semibold mr-2">Valoramos tu privacidad</span>
-                                    <span className="text-white/55 text-xs leading-relaxed">
+                                    <span className="text-[#0F172A] text-sm font-semibold mr-2">Valoramos tu privacidad</span>
+                                    <span className="text-[#334155] text-xs leading-relaxed">
                                         Usamos cookies para mejorar su experiencia de navegación, mostrarle anuncios o contenidos
                                         personalizados y analizar nuestro tráfico. Al hacer clic en &ldquo;Aceptar todo&rdquo; usted da su
                                         consentimiento a nuestro uso de las cookies.
