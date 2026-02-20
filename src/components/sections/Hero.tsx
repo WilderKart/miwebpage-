@@ -43,9 +43,9 @@ export default function Hero() {
             <div className="absolute inset-0 z-0 select-none">
                 <Image
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
-                    alt="TechnoUltra Urban Architecture"
+                    alt="Agencia digital TechnoUltra — arquitectura digital, marketing estratégico y desarrollo web corporativo en Colombia"
                     fill
-                    className="object-cover scale-105 animate-float opacity-60" // Subtle scale animation
+                    className="object-cover scale-105 animate-float opacity-60"
                     priority
                     quality={100}
                 />
@@ -72,10 +72,33 @@ export default function Hero() {
 
                         {/* Headline Giant with Scroll Zoom */}
                         <motion.div style={{ scale: scaleText, opacity: opacityText }} className="origin-left">
-                            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight mb-8 font-display">
-                                <motion.span className="block" variants={textVariants}>EL CRECIMIENTO</motion.span>
-                                <motion.span className="block text-gray-500" variants={textVariants}>NO ES SUERTE.</motion.span>
-                            </h1>
+                            {/*
+                             * Zoom suave en loop — simula el crecimiento lento de las letras
+                             * mientras el usuario está mirando el hero.
+                             * scale: 1 → 1.06 → 1 cada 8 segundos, ease sinusoidal.
+                             * No interfiere con scaleText (scroll) ni con textVariants (entrada).
+                             */}
+                            <motion.div
+                                /*
+                                 * Zoom de entrada inmediato:
+                                 *   initial 0.88 → crece a tamaño real (1) en los primeros 2s
+                                 *   luego hace un pulso suave continuo hasta 1.05 en loop.
+                                 * times[] distribuye los keyframes: 0% → 40% → 70% → 100%
+                                 * No toca opacity/y/blur (controlados por textVariants en los spans).
+                                 */
+                                initial={{ scale: 0.88 }}
+                                animate={{ scale: 1.08 }}
+                                transition={{
+                                    duration: 10,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className="origin-left"
+                            >
+                                <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white leading-[0.9] tracking-tight mb-8 font-display">
+                                    <motion.span className="block" variants={textVariants}>EL CRECIMIENTO</motion.span>
+                                    <motion.span className="block text-gray-500" variants={textVariants}>NO ES SUERTE.</motion.span>
+                                </h1>
+                            </motion.div>
                         </motion.div>
 
                         {/* Description */}

@@ -5,9 +5,9 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const stats = [
-    { value: 240, label: "Crecimiento Promedio", suffix: "%", sub: "En los primeros 12 meses" },
-    { value: 12, label: "ROI Estructurado", suffix: "X", sub: "Sobre inversión tecnológica" },
-    { value: 98, label: "Tasa de Retención", suffix: "%", sub: "Partnerships a largo plazo" },
+    { value: 40, label: "Crecimiento Promedio", suffix: "%", sub: "En los primeros 12 meses con nuestros clientes iniciales." },
+    { value: 2.5, label: "ROI Estructurado", suffix: "X", sub: "Retorno sobre inversión tecnológica y campañas iniciales." },
+    { value: 75, label: "Retención", suffix: "%", sub: "Clientes que confían y mantienen partnerships a largo plazo." },
 ];
 
 export default function Authority() {
