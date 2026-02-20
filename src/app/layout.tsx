@@ -1,55 +1,189 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { cn } from "@/lib/utils";
 
+/* ─── Fuente principal ─────────────────────────────────────────────────────── */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
+/* ─── Metadata SEO — Optimizada para agencia digital en Colombia ────────────
+ * Palabras clave primarias: agencia digital Colombia, SEO estratégico,
+ * marketing digital, desarrollo web corporativo, branding estratégico.
+ * Meta description ≤ 160 caracteres, orientada a beneficio del cliente.
+ * ─────────────────────────────────────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: {
-    template: "%s | TECHNOULTRA",
-    default: "TECHNOULTRA | Arquitectura Digital y Crecimiento Estratégico",
-  },
-  description: "Firma líder en arquitectura digital, growth hacking y estrategias de conversión. Transformamos negocios en activos digitales rentables.",
-  keywords: [
-    "Arquitectura Web",
-    "Growth Hacking",
-    "SEO Técnico",
-    "Marketing Digital Colombia",
-    "Desarrollo Web Premium",
-    "Estrategia Digital"
-  ],
-  authors: [{ name: "TECHNOULTRA Team", url: "https://technoultra.com" }],
-  creator: "TECHNOULTRA",
   metadataBase: new URL("https://technoultra.com"),
+
+  title: {
+    template: "%s | TechnoUltra — Agencia Digital Colombia",
+    default: "TechnoUltra | Agencia Digital en Colombia — SEO, Web y Marketing Estratégico",
+  },
+
+  description:
+    "TechnoUltra, agencia digital en Colombia. Diseñamos tu presencia web, posicionamiento SEO y estrategias de marketing que generan clientes reales y crecimiento medible.",
+
+  keywords: [
+    "agencia digital Colombia",
+    "agencia de marketing digital",
+    "SEO estratégico Colombia",
+    "desarrollo web corporativo Colombia",
+    "branding estratégico",
+    "marketing digital empresas",
+    "posicionamiento web Colombia",
+    "diseño web profesional",
+    "growth hacking",
+    "consultoría digital Colombia",
+    "performance marketing",
+    "Google Ads Colombia",
+    "Meta Ads Colombia",
+  ],
+
+  authors: [{ name: "TechnoUltra", url: "https://technoultra.com" }],
+  creator: "TechnoUltra",
+  publisher: "TechnoUltra",
+
+  /* ── Canonical y alternates ── */
+  alternates: {
+    canonical: "https://technoultra.com",
+    languages: { "es-CO": "https://technoultra.com" },
+  },
+
+  /* ── OpenGraph — Vista compartida en redes sociales ── */
   openGraph: {
     type: "website",
     locale: "es_CO",
     url: "https://technoultra.com",
-    siteName: "TECHNOULTRA - Arquitectura Digital",
-    title: "TECHNOULTRA | El Crecimiento No Es Suerte",
-    description: "Diseñamos sistemas digitales que convierten, escalan y generan ventaja competitiva real.",
+    siteName: "TechnoUltra — Agencia Digital Colombia",
+    title: "TechnoUltra | El Crecimiento No Es Suerte",
+    description:
+      "Diseñamos sistemas digitales que convierten, escalan y generan ventaja competitiva real para empresas en Colombia.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "TECHNOULTRA Hero Image",
+        alt: "TechnoUltra — Agencia Digital en Colombia, SEO y Marketing Estratégico",
       },
     ],
   },
+
+  /* ── Twitter / X Card ── */
+  twitter: {
+    card: "summary_large_image",
+    title: "TechnoUltra | Agencia Digital en Colombia",
+    description:
+      "SEO, marketing digital y desarrollo web corporativo para empresas que quieren crecer sin dejarlo al azar.",
+    images: ["/og-image.jpg"],
+    creator: "@technoultra",
+  },
+
+  /* ── Robots y rastreo ── */
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+
+  /* ── Iconos ── */
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
   },
+
+  /* ── Verificación Search Console (reemplazar con token real) ── */
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
+  },
+};
+
+/* ─── JSON-LD — Datos estructurados Organization + LocalBusiness ────────────
+ * Mejora cómo Google entiende y muestra TechnoUltra en resultados de búsqueda.
+ * Impacta en: Knowledge Panel, resultados enriquecidos, confianza de dominio.
+ * Fuente: https://schema.org/LocalBusiness
+ * ─────────────────────────────────────────────────────────────────────────── */
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://technoultra.com/#organization",
+      name: "TechnoUltra",
+      url: "https://technoultra.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://technoultra.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+      },
+      sameAs: [
+        "https://www.linkedin.com/company/technoultra",
+        "https://www.instagram.com/technoultra",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        availableLanguage: "Spanish",
+        areaServed: "CO",
+      },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://technoultra.com/#business",
+      name: "TechnoUltra — Agencia Digital",
+      image: "https://technoultra.com/og-image.jpg",
+      url: "https://technoultra.com",
+      telephone: "+57-310-000-0000",
+      priceRange: "$$",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "CO",
+        addressLocality: "Colombia",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 4.711,
+        longitude: -74.0721,
+      },
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "08:00",
+        closes: "18:00",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Servicios Digitales",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO Estratégico" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Desarrollo Web Corporativo" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing Digital y Ads" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding Estratégico" } },
+        ],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://technoultra.com/#website",
+      url: "https://technoultra.com",
+      name: "TechnoUltra",
+      description: "Agencia digital en Colombia — SEO, Desarrollo Web y Marketing Estratégico",
+      publisher: { "@id": "https://technoultra.com/#organization" },
+      inLanguage: "es-CO",
+    },
+  ],
 };
 
 import Navbar from "@/components/layout/Navbar";
@@ -62,16 +196,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={inter.variable}>
+    <html lang="es-CO" className={inter.variable}>
+      {/* ── Google Tag Manager — Carga oficial vía @next/third-parties —────────
+       *  GTM gestiona todos los scripts de tracking desde un solo panel.
+       *  Solo se inyecta si NEXT_PUBLIC_GTM_ID está definido en .env.local
+       *  Formato esperado: GTM-XXXXXXX
+       * ────────────────────────────────────────────────────────────────────── */}
+      {process.env.NEXT_PUBLIC_GTM_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+      )}
+      <head>
+        {/* ── JSON-LD Datos Estructurados — Organization + LocalBusiness + WebSite ── */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={cn("min-h-screen bg-background text-foreground antialiased font-sans overflow-x-hidden")}>
         <SmoothScroll>
           <Navbar />
-          <main className="flex-grow min-h-screen">
+          <main id="main-content" className="flex-grow min-h-screen">
             {children}
           </main>
           <WhatsAppBtn />
           <Footer />
         </SmoothScroll>
+
+        {/* ── Google Analytics 4 — strategy afterInteractive evita bloquear LCP ──
+         *  Requiere NEXT_PUBLIC_GA_ID en .env.local (formato: G-XXXXXXXXXX)
+         *  Documentación: https://nextjs.org/docs/app/building-your-application/optimizing/third-party-libraries
+         * ──────────────────────────────────────────────────────────────────── */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
+                  page_path: window.location.pathname,
+                  anonymize_ip: true,
+                  cookie_flags: 'SameSite=None;Secure'
+                });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );
