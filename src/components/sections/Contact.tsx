@@ -76,13 +76,8 @@ export default function Contact() {
              */}
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-stretch gap-6">
 
-                {/* ── Columna izquierda — Frase de impacto (con padding izq) ── */}
+                {/* ── Columna izquierda — Frase de impacto (responsiva) ── */}
                 <motion.div
-                    /*
-                     * Contenedor orquestador del stagger.
-                     * Cuando entra al viewport, dispara staggerChildren
-                     * para que cada línea aparezca de difuminada a nítida con delay escalonado.
-                     */
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, margin: "-80px" }}
@@ -90,9 +85,9 @@ export default function Contact() {
                         hidden: {},
                         visible: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
                     }}
-                    className="flex flex-col justify-center pl-40 md:pl-52 xl:pl-64 pr-8 py-12"
+                    className="flex flex-col justify-center px-6 lg:pl-40 xl:pl-64 lg:pr-8 py-12 lg:py-24"
                 >
-                    <h2 className="font-display font-black leading-[0.88] tracking-tighter text-left">
+                    <h2 className="font-display font-black leading-[0.9] tracking-tighter text-left">
                         {[
                             { text: "¿VAS A", color: "text-primary" },
                             { text: "ESPERAR A", color: "text-primary" },
@@ -103,10 +98,6 @@ export default function Contact() {
                         ].map(({ text, color }) => (
                             <motion.span
                                 key={text}
-                                /*
-                                 * Cada línea: empieza invisible y difuminada (blur 12px),
-                                 * transiciona a opacidad 1 y blur 0 → efecto "materialización".
-                                 */
                                 variants={{
                                     hidden: { opacity: 0, filter: "blur(12px)", y: 8 },
                                     visible: {
@@ -114,7 +105,7 @@ export default function Contact() {
                                         transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
                                     },
                                 }}
-                                className={`block text-6xl md:text-7xl xl:text-8xl ${color}`}
+                                className={`block text-4xl sm:text-5xl md:text-7xl xl:text-8xl ${color}`}
                             >
                                 {text}
                             </motion.span>
@@ -128,21 +119,21 @@ export default function Contact() {
                                 transition: { duration: 0.6, ease: "easeOut", delay: 0.1 }
                             },
                         }}
-                        className="mt-8 text-slate-500 text-lg font-light max-w-sm leading-relaxed"
+                        className="mt-6 text-slate-500 text-base md:text-lg font-light max-w-sm leading-relaxed"
                     >
                         Cada día sin estrategia digital es una ventaja que le regalas a tu competencia.
                     </motion.p>
                 </motion.div>
 
-                {/* ── Columna derecha — Formulario extendido al borde ── */}
+                {/* ── Columna derecha — Formulario (responsivo) ── */}
                 <motion.div
                     initial={{ opacity: 0, x: 40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, margin: "-80px" }}
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                    className="flex flex-col justify-center pl-4 pr-32 md:pr-48 xl:pr-[380px] py-12"
+                    className="flex flex-col justify-center px-4 lg:pl-4 lg:pr-32 xl:pr-[380px] py-12 lg:py-24"
                 >
-                    <div className="bg-white p-8 md:p-12 rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200/50">
+                    <div className="bg-white p-6 md:p-12 rounded-3xl border border-slate-200 shadow-2xl shadow-slate-200/50">
                         <AnimatePresence mode="wait">
                             {isSuccess ? (
                                 <motion.div
