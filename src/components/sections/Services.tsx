@@ -82,11 +82,10 @@ export default function Services() {
                             initial={{ scale: 0.9, opacity: 0, filter: "blur(10px)" }}
                             whileInView={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
                             animate={{
                                 backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                             }}
-                            // Liquid Flow Animation
+                            // Liquid Flow Animation - transition combinado (scale/opacity/filter del whileInView + backgroundPosition del animate)
                             style={{
                                 backgroundImage: "linear-gradient(90deg, #FF5930 0%, #ABFA54 25%, #0044FF 50%, #5C6B3D 75%, #FF5930 100%)",
                                 backgroundSize: "300% 300%",
@@ -101,9 +100,9 @@ export default function Services() {
                                     repeat: Infinity,
                                     ease: "linear"
                                 },
-                                scale: { duration: 0.8 },
-                                opacity: { duration: 0.8 },
-                                filter: { duration: 0.8 }
+                                scale: { duration: 0.8, ease: "easeOut" },
+                                opacity: { duration: 0.8, ease: "easeOut" },
+                                filter: { duration: 0.8, ease: "easeOut" }
                             }}
                             className="ml-3 inline-block font-black text-6xl md:text-8xl lg:text-9xl tracking-tighter"
                         >
