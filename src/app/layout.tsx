@@ -189,6 +189,8 @@ const jsonLd = {
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppBtn from "@/components/layout/WhatsAppBtn";
+// CookieBanner: gestiona el consentimiento y activa GA4 condicionalmente
+import CookieBanner from "@/components/layout/CookieBanner";
 
 export default function RootLayout({
   children,
@@ -221,31 +223,12 @@ export default function RootLayout({
           <WhatsAppBtn />
           <Footer />
         </SmoothScroll>
-
-        {/* ── Google Analytics 4 — strategy afterInteractive evita bloquear LCP ──
-         *  Requiere NEXT_PUBLIC_GA_ID en .env.local (formato: G-XXXXXXXXXX)
-         *  Documentación: https://nextjs.org/docs/app/building-your-application/optimizing/third-party-libraries
+        {/* ── CookieBanner — gestiona consentimiento (Ley 1581 de 2012) ───────────
+         *  GA4 solo se activa si el usuario acepta todas las cookies.
+         *  El banner guarda la elección en una cookie propia por 365 días.
+         *  Incluye botón flotante para que el usuario cambie su preferencia.
          * ──────────────────────────────────────────────────────────────────── */}
-        {process.env.NEXT_PUBLIC_GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_path: window.location.pathname,
-                  anonymize_ip: true,
-                  cookie_flags: 'SameSite=None;Secure'
-                });
-              `}
-            </Script>
-          </>
-        )}
+        <CookieBanner />
       </body>
     </html>
   );
