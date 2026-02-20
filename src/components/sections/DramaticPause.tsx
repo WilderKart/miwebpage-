@@ -35,13 +35,15 @@ export default function DramaticPause() {
                             variants={{ hidden: { opacity: 0, y: 20, filter: "blur(10px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.2, ease: "easeOut" } } }}
                             className="block"
                         >
-                            "El silencio es parte de la música.
+                            {/* Comilla de apertura escapada — react/no-unescaped-entities */}
+                            &ldquo;El silencio es parte de la música.
                         </motion.span>
                         <motion.span
                             variants={{ hidden: { opacity: 0, y: 20, filter: "blur(10px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.2, ease: "easeOut" } } }}
                             className="block"
                         >
-                            El espacio es parte de la arquitectura."
+                            {/* Comilla de cierre escapada — react/no-unescaped-entities */}
+                            El espacio es parte de la arquitectura.&rdquo;
                         </motion.span>
                     </h3>
                 </motion.div>

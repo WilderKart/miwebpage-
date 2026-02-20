@@ -11,7 +11,7 @@ export default function Architecture() {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
+    // opacity se calcula pero no se aplica — eliminada para evitar warning de variable no usada
 
     return (
         <section ref={containerRef} className="relative h-[120vh] overflow-hidden flex items-center justify-center bg-background">
@@ -42,8 +42,9 @@ export default function Architecture() {
                         ARQUITECTURA <br />
                         <span className="text-accent italic">EN ACCIÓN</span>
                     </h2>
+                    {/* Comillas escapadas con &ldquo; / &rdquo; para cumplir react/no-unescaped-entities */}
                     <p className="text-xl md:text-3xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">
-                        "No improvisamos. Diseñamos sistemas capaces de soportar <span className="text-white font-medium">crecimiento exponencial</span>."
+                        &ldquo;No improvisamos. Diseñamos sistemas capaces de soportar <span className="text-white font-medium">crecimiento exponencial</span>.&rdquo;
                     </p>
                 </motion.div>
             </div>

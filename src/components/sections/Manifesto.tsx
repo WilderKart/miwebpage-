@@ -19,9 +19,10 @@ export default function Manifesto() {
                     transition={{ duration: 1 }}
                 >
                     <span className="text-accent uppercase tracking-widest text-sm font-bold mb-4 block">Lo que hacemos</span>
+                    {/* Comillas escapadas — react/no-unescaped-entities */}
                     <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter max-w-6xl font-display">
-                        "NO CONSTRUIMOS SITIOS WEB. <br />
-                        DISEÑAMOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-400">ACTIVOS DIGITALES</span> QUE DOMINAN MERCADOS."
+                        &ldquo;NO CONSTRUIMOS SITIOS WEB. <br />
+                        DISEÑAMOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-400">ACTIVOS DIGITALES</span> QUE DOMINAN MERCADOS.&rdquo;
                     </h2>
                 </motion.div>
             </div>
