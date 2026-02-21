@@ -87,7 +87,7 @@ export default function Contact() {
                     }}
                     className="flex flex-col justify-center px-6 lg:pl-40 xl:pl-64 lg:pr-8 py-12 lg:py-24"
                 >
-                    <h2 className="font-display font-black leading-[0.9] tracking-tighter text-left">
+                    <h2 className="font-display font-black leading-tight tracking-tighter text-left">
                         {[
                             { text: "¿VAS A", color: "text-primary" },
                             { text: "ESPERAR A", color: "text-primary" },
@@ -105,7 +105,7 @@ export default function Contact() {
                                         transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
                                     },
                                 }}
-                                className={`block text-4xl sm:text-5xl md:text-7xl xl:text-8xl ${color}`}
+                                className={`block text-3xl sm:text-4xl md:text-7xl xl:text-8xl ${color}`}
                             >
                                 {text}
                             </motion.span>
