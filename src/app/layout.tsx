@@ -199,6 +199,8 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppBtn from "@/components/layout/WhatsAppBtn";
 // CookieBanner: gestiona el consentimiento y activa GA4 condicionalmente
 import CookieBanner from "@/components/layout/CookieBanner";
+// SpeedInsights: activa métricas de rendimiento en el panel de Vercel
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({
   children,
@@ -237,6 +239,8 @@ export default function RootLayout({
          *  Incluye botón flotante para que el usuario cambie su preferencia.
          * ──────────────────────────────────────────────────────────────────── */}
         <CookieBanner />
+        {/* SpeedInsights — recopila métricas de rendimiento reales en producción */}
+        <SpeedInsights />
       </body>
     </html>
   );
