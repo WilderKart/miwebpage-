@@ -1,168 +1,215 @@
-/**
- * Página de Política de Privacidad — /privacidad
- *
- * Requerida legalmente en Colombia por la Ley 1581 de 2012 y el Decreto 1377 de 2013
- * sobre protección de datos personales.
- *
- * También es importante para SEO: el formulario de contacto enlaza a esta página,
- * y Google valora la transparencia en el manejo de datos.
- */
-import type { Metadata } from "next";
-import Link from "next/link";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Política de Privacidad — TechnoUltra",
-    description:
-        "Conoce cómo TechnoUltra protege y trata tus datos personales conforme a la Ley 1581 de 2012 de Colombia.",
-    robots: { index: true, follow: true },
-    alternates: { canonical: "https://technoultra.com/privacidad" },
+    title: "Política de Privacidad | Technoultra",
+    description: "Política de privacidad y tratamiento de datos personales en cumplimiento con la Ley 1581 de 2012 (Colombia). Versión extendida.",
 };
 
 export default function PrivacidadPage() {
-    const fechaActualizacion = "20 de febrero de 2026";
-
     return (
-        <main id="main-content" className="min-h-screen bg-white pt-32 pb-24">
+        <div className="pt-32 pb-24 bg-white min-h-screen">
             <div className="container mx-auto px-6 max-w-4xl">
-
-                {/* ── Encabezado ── */}
-                <header className="mb-12">
-                    <span className="text-accent font-semibold uppercase tracking-widest text-sm">
-                        Información Legal
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-black text-primary mt-3 mb-4 font-display">
-                        Política de Privacidad y Tratamiento de Datos
+                <header className="mb-12 border-b border-slate-100 pb-8">
+                    <span className="text-accent uppercase tracking-widest text-sm font-bold block mb-4 font-sans">Información Legal</span>
+                    <h1 className="text-3xl md:text-4xl font-bold text-primary font-display tracking-tight leading-tight mb-4 uppercase">
+                        POLÍTICA DE PRIVACIDAD Y TRATAMIENTO DE DATOS PERSONALES
                     </h1>
-                    <p className="text-slate-500">
-                        Última actualización: <time dateTime="2026-02-20">{fechaActualizacion}</time>
-                    </p>
+                    <div className="flex flex-col gap-1">
+                        <span className="text-slate-900 font-bold text-lg">TECHNOULTRA</span>
+                        <p className="text-slate-500 text-sm italic">Última actualización: 20 de febrero de 2026</p>
+                    </div>
                 </header>
 
-                {/* ── Contenido ── */}
-                <article className="prose prose-slate max-w-none space-y-10">
+                <article className="prose prose-slate prose-lg max-w-none space-y-12 text-slate-700 leading-relaxed font-sans">
 
-                    <section aria-labelledby="responsable">
-                        <h2 id="responsable" className="text-2xl font-bold text-primary mb-3">
-                            1. Responsable del Tratamiento
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            <strong>TechnoUltra</strong> es el responsable del tratamiento de los datos personales
-                            recopilados a través del sitio web <a href="https://technoultra.com" className="text-accent hover:underline">technoultra.com</a> y de cualquier
-                            formulario de contacto disponible en la plataforma.
+                    {/* A. IDENTIFICACIÓN */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">A. IDENTIFICACIÓN DEL RESPONSABLE DEL TRATAMIENTO</h2>
+                        <p className="mb-6">
+                            En cumplimiento de lo dispuesto en el artículo 15 de la Constitución Política de Colombia, la Ley 1581 de 2012 y el Decreto 1377 de 2013, se informa que el responsable del tratamiento de los datos personales es:
                         </p>
-                        <ul className="text-slate-600 space-y-1 mt-3">
-                            <li><strong>Razón social:</strong> TechnoUltra</li>
-                            <li><strong>Correo electrónico:</strong> hola@technoultra.com</li>
-                            <li><strong>País:</strong> Colombia</li>
+                        <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm">
+                            <ul className="space-y-2 list-none p-0 m-0">
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Nombre:</span> Wilder Caicedo</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Nombre comercial:</span> Technoultra</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Tipo:</span> Persona Natural</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">NIT:</span> 1130640245-6</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Domicilio:</span> Colombia</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Correo:</span> studio@technoultra.com</li>
+                                <li><span className="font-bold text-slate-900 w-40 inline-block uppercase text-sm">Sitio web:</span> technoultra.com</li>
+                            </ul>
+                        </div>
+                        <p className="mt-6 italic text-sm">
+                            Technoultra actuará como Responsable del Tratamiento de los datos personales que recolecte directamente a través de su sitio web y canales digitales.
+                        </p>
+                    </section>
+
+                    {/* B. DEFINICIONES */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">B. DEFINICIONES</h2>
+                        <p className="mb-6 text-sm">Para efectos de la presente política, se aplican las definiciones establecidas en el artículo 3 de la Ley 1581 de 2012:</p>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {[
+                                { term: "Autorización", desc: "Consentimiento previo, expreso e informado del Titular para llevar a cabo el tratamiento de datos personales." },
+                                { term: "Dato Personal", desc: "Información vinculada o que pueda asociarse a una persona natural determinada o determinable." },
+                                { term: "Dato Sensible", desc: "Información que afecta la intimidad del Titular o cuyo uso indebido puede generar discriminación." },
+                                { term: "Responsable del Tratamiento", desc: "Persona que decide sobre la base de datos y/o el tratamiento." },
+                                { term: "Encargado del Tratamiento", desc: "Persona que realiza el tratamiento por cuenta del Responsable." },
+                                { term: "Titular", desc: "Persona natural cuyos datos son objeto de tratamiento." },
+                                { term: "Tratamiento", desc: "Cualquier operación sobre datos personales como recolección, almacenamiento, uso o supresión." },
+                                { term: "Transferencia", desc: "Envío de datos a un tercero que actúa como Responsable." },
+                                { term: "Transmisión", desc: "Comunicación de datos a un Encargado para tratamiento por cuenta del Responsable." }
+                            ].map((item, idx) => (
+                                <div key={idx} className="border-b border-slate-100 pb-4">
+                                    <h3 className="font-bold text-sm text-slate-900 mb-1">{item.term}:</h3>
+                                    <p className="text-xs text-slate-500 leading-normal m-0">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* C. ALCANCE */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">C. ALCANCE</h2>
+                        <p>La presente política aplica a todas las bases de datos que contengan información personal recolectada por Technoultra a través de:</p>
+                        <ul className="list-disc pl-6 space-y-1 font-medium italic">
+                            <li>Formularios web</li>
+                            <li>Correo electrónico</li>
+                            <li>Plataformas digitales</li>
+                            <li>Canales de contacto profesionales</li>
                         </ul>
                     </section>
 
-                    <section aria-labelledby="datos-recopilados">
-                        <h2 id="datos-recopilados" className="text-2xl font-bold text-primary mb-3">
-                            2. Datos Personales que Recopilamos
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Al diligenciar nuestro formulario de contacto, recopilamos la siguiente información:
-                        </p>
-                        <ul className="text-slate-600 space-y-1 list-disc list-inside mt-3">
+                    {/* D. DATOS QUE SE RECOLECTAN */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">D. DATOS QUE SE RECOLECTAN</h2>
+                        <p>Technoultra podrá recolectar:</p>
+                        <ul className="list-disc pl-6 space-y-2 mb-6">
                             <li>Nombre completo</li>
-                            <li>Correo electrónico corporativo</li>
+                            <li>Correo electrónico</li>
                             <li>Nombre de empresa</li>
-                            <li>Descripción del desafío o proyecto</li>
+                            <li>Teléfono (si es suministrado voluntariamente)</li>
+                            <li>Información relacionada con proyectos o necesidades empresariales</li>
+                        </ul>
+                        <div className="bg-amber-50 p-4 rounded-xl border border-amber-100 text-sm italic">
+                            Technoultra no solicita datos sensibles ni información financiera a través de su sitio web.
+                        </div>
+                    </section>
+
+                    {/* E. FINALIDADES */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">E. FINALIDADES DEL TRATAMIENTO</h2>
+                        <p>Los datos serán utilizados para:</p>
+                        <ul className="list-disc pl-6 space-y-2">
+                            <li>Responder solicitudes comerciales o de asesoría.</li>
+                            <li>Elaborar propuestas, cotizaciones o diagnósticos estratégicos.</li>
+                            <li>Gestionar relaciones contractuales.</li>
+                            <li>Enviar información relacionada con servicios digitales, cuando exista autorización.</li>
+                            <li>Cumplir obligaciones legales o contractuales.</li>
+                            <li>Realizar análisis estadísticos internos y mejoras del servicio.</li>
+                        </ul>
+                        <p className="mt-6 font-bold text-primary text-center bg-slate-50 p-4 rounded-lg border border-slate-200">En ningún caso Technoultra venderá o comercializará bases de datos.</p>
+                    </section>
+
+                    {/* F. AUTORIZACIÓN */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">F. AUTORIZACIÓN</h2>
+                        <p>La autorización se entiende otorgada cuando el Titular:</p>
+                        <ol className="list-decimal pl-6 space-y-2">
+                            <li>Marca la casilla de aceptación en el formulario web.</li>
+                            <li>Envía voluntariamente su información por correo electrónico.</li>
+                        </ol>
+                        <p className="mt-4 font-semibold text-accent uppercase tracking-tighter text-sm">El silencio no constituye autorización.</p>
+                    </section>
+
+                    {/* G. TRANSFERENCIA INTERNACIONAL */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">G. TRANSFERENCIA Y TRANSMISIÓN INTERNACIONAL</h2>
+                        <p>Technoultra puede utilizar herramientas tecnológicas de terceros para hosting, analítica web, gestión de correos electrónicos y automatización.</p>
+                        <p>El sitio puede utilizar herramientas como <span className="font-semibold">Google Analytics 4</span> proporcionado por Google.</p>
+                        <p className="font-medium text-slate-600 bg-slate-50 p-4 rounded-xl border-l-4 border-slate-200">En consecuencia, los datos pueden almacenarse en servidores ubicados fuera de Colombia bajo estándares internacionales de seguridad.</p>
+                    </section>
+
+                    {/* H. SEGURIDAD */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">H. SEGURIDAD DE LA INFORMACIÓN</h2>
+                        <p>Technoultra implementa medidas técnicas y organizativas razonables para proteger los datos contra acceso no autorizado, alteración, pérdida o uso indebido.</p>
+                        <p className="text-sm text-slate-500 italic mt-4">
+                            No obstante, el Titular reconoce que ningún sistema es completamente invulnerable. Technoultra no será responsable por accesos indebidos derivados de causas no imputables directamente al Responsable.
+                        </p>
+                    </section>
+
+                    {/* I. VERACIDAD */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">I. VERACIDAD DE LA INFORMACIÓN</h2>
+                        <p>El Titular declara que la información suministrada es veraz, completa y actualizada. Technoultra no será responsable por información falsa, inexacta o incompleta proporcionada por el Titular.</p>
+                    </section>
+
+                    {/* J. DERECHOS */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">J. DERECHOS DE LOS TITULARES</h2>
+                        <p>El Titular tiene derecho a:</p>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-2 gap-x-8 text-sm list-none p-0">
+                            <li className="flex gap-2">✔ <span>Conocer, actualizar y rectificar sus datos.</span></li>
+                            <li className="flex gap-2">✔ <span>Solicitar prueba de la autorización otorgada.</span></li>
+                            <li className="flex gap-2">✔ <span>Ser informado sobre el uso dado a sus datos.</span></li>
+                            <li className="flex gap-2">✔ <span>Revocar la autorización.</span></li>
+                            <li className="flex gap-2">✔ <span>Solicitar la supresión de los datos cuando sea procedente.</span></li>
+                            <li className="flex gap-2">✔ <span>Presentar quejas ante la SIC.</span></li>
                         </ul>
                     </section>
 
-                    <section aria-labelledby="finalidad">
-                        <h2 id="finalidad" className="text-2xl font-bold text-primary mb-3">
-                            3. Finalidad del Tratamiento
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Los datos recopilados se utilizan exclusivamente para:
-                        </p>
-                        <ul className="text-slate-600 space-y-1 list-disc list-inside mt-3">
-                            <li>Responder a tu solicitud de contacto o asesoría comercial.</li>
-                            <li>Enviarte información relevante sobre nuestros servicios digitales (únicamente si lo autorizaste).</li>
-                            <li>Mejorar nuestra propuesta de valor y entender las necesidades de nuestros clientes potenciales.</li>
+                    {/* K. PROCEDIMIENTO */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">K. PROCEDIMIENTO PARA CONSULTAS Y RECLAMOS</h2>
+                        <p className="mb-6">Las solicitudes deberán enviarse a: <span className="font-bold text-slate-900 border-b-2 border-accent">studio@technoultra.com</span></p>
+                        <div className="space-y-8">
+                            <div className="bg-slate-50 p-5 rounded-2xl">
+                                <h3 className="font-bold text-primary mb-2">1. Consultas</h3>
+                                <p className="text-sm">Serán resueltas en máximo diez (10) días hábiles contados desde su recepción. Si no es posible responder en ese término, se informará al interesado antes del vencimiento, indicando la nueva fecha de respuesta, que no podrá superar cinco (5) días hábiles adicionales.</p>
+                            </div>
+                            <div className="bg-slate-50 p-5 rounded-2xl">
+                                <h3 className="font-bold text-primary mb-2">2. Reclamos</h3>
+                                <p className="text-sm mb-4">Deberán contener: Nombre e identificación, descripción clara de los hechos, dirección de contacto y documentos soporte.</p>
+                                <ul className="list-disc pl-6 text-xs text-slate-500 space-y-2">
+                                    <li>Si el reclamo está incompleto, se requerirá al Titular dentro de cinco (5) días hábiles para subsanar.</li>
+                                    <li>Si no se recibe respuesta en dos (2) meses, se entenderá desistido.</li>
+                                    <li>El reclamo será resuelto en un máximo de quince (15) días hábiles.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* L & M */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <section>
+                            <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">L. DATOS SENSIBLES</h2>
+                            <p className="text-sm">Technoultra no recolecta datos sensibles. En caso excepcional de requerirlos, se solicitará autorización expresa conforme al artículo 6 de la Ley 1581 de 2012.</p>
+                        </section>
+                        <section>
+                            <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">M. DATOS DE MENORES</h2>
+                            <p className="text-sm">El sitio web y los servicios de Technoultra no están dirigidos a menores de edad. En caso de que se recolecten datos de menores, se requerirá autorización del representante legal.</p>
+                        </section>
+                    </div>
+
+                    {/* N & O */}
+                    <section>
+                        <h2 className="text-xl font-bold text-primary mb-4 uppercase border-l-4 border-accent pl-4">N. VIGENCIA Y ACTUALIZACIONES</h2>
+                        <p className="text-sm italic">La presente política rige desde su publicación y permanecerá vigente mientras exista tratamiento de datos personales. Technoultra podrá modificarla en cualquier momento, publicando la versión actualizada en su sitio web.</p>
+                    </section>
+
+                    <section className="bg-primary text-white p-8 rounded-3xl">
+                        <h2 className="text-xl font-bold mb-4 uppercase">O. NORMATIVIDAD APLICABLE</h2>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs list-none p-0 opacity-80">
+                            <li>• Artículo 15 de la Constitución Política de Colombia</li>
+                            <li>• Ley 1581 de 2012</li>
+                            <li>• Ley 1266 de 2008</li>
+                            <li>• Decreto 1377 de 2013</li>
+                            <li>• Demás normas relativas</li>
                         </ul>
-                        <p className="text-slate-600 leading-relaxed mt-3">
-                            <strong>No vendemos, alquilamos ni compartimos</strong> tus datos personales con terceros sin tu consentimiento expreso, salvo obligación legal.
-                        </p>
-                    </section>
-
-                    <section aria-labelledby="base-legal">
-                        <h2 id="base-legal" className="text-2xl font-bold text-primary mb-3">
-                            4. Base Legal — Ley 1581 de 2012 (Colombia)
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            El tratamiento de tus datos se realiza con fundamento en el <strong>consentimiento informado</strong> que otorgas
-                            al marcar la casilla de aceptación en nuestro formulario de contacto, conforme a lo dispuesto en la
-                            Ley Estatutaria 1581 de 2012 y el Decreto 1377 de 2013.
-                        </p>
-                    </section>
-
-                    <section aria-labelledby="derechos">
-                        <h2 id="derechos" className="text-2xl font-bold text-primary mb-3">
-                            5. Tus Derechos
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Como titular de los datos, tienes derecho a:
-                        </p>
-                        <ul className="text-slate-600 space-y-1 list-disc list-inside mt-3">
-                            <li><strong>Conocer</strong> los datos que tenemos sobre ti.</li>
-                            <li><strong>Actualizar</strong> o corregir información inexacta.</li>
-                            <li><strong>Suprimir</strong> tus datos de nuestros registros.</li>
-                            <li><strong>Revocar</strong> el consentimiento en cualquier momento.</li>
-                        </ul>
-                        <p className="text-slate-600 leading-relaxed mt-3">
-                            Para ejercer estos derechos, escríbenos a: <a href="mailto:hola@technoultra.com" className="text-accent hover:underline">hola@technoultra.com</a>
-                        </p>
-                    </section>
-
-                    <section aria-labelledby="seguridad">
-                        <h2 id="seguridad" className="text-2xl font-bold text-primary mb-3">
-                            6. Seguridad de los Datos
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Implementamos medidas técnicas y organizativas razonables para proteger tus datos contra
-                            accesos no autorizados, pérdida accidental o alteración. Nuestro sitio funciona bajo
-                            protocolo HTTPS con certificado SSL activo.
-                        </p>
-                    </section>
-
-                    <section aria-labelledby="cookies">
-                        <h2 id="cookies" className="text-2xl font-bold text-primary mb-3">
-                            7. Cookies y Analítica
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Utilizamos Google Analytics 4 para medir el comportamiento de los usuarios de forma anónima.
-                            Esta herramienta puede recopilar información sobre tus visitas (páginas vistas, tiempo en el sitio,
-                            dispositivo) sin identificarte personalmente. Puedes desactivar el rastreo desde tu navegador o
-                            usando extensiones como <strong>Google Analytics Opt-out</strong>.
-                        </p>
-                    </section>
-
-                    <section aria-labelledby="cambios">
-                        <h2 id="cambios" className="text-2xl font-bold text-primary mb-3">
-                            8. Cambios a esta Política
-                        </h2>
-                        <p className="text-slate-600 leading-relaxed">
-                            Nos reservamos el derecho de actualizar esta política en cualquier momento.
-                            Cualquier cambio material será notificado a través de nuestro sitio web.
-                            Te recomendamos revisarla periódicamente.
-                        </p>
                     </section>
                 </article>
-
-                {/* ── Volver al inicio ── */}
-                <div className="mt-16 pt-8 border-t border-slate-200">
-                    <Link
-                        href="/"
-                        className="inline-flex items-center gap-2 text-accent font-semibold hover:underline underline-offset-4 transition-colors"
-                    >
-                        ← Volver al inicio
-                    </Link>
-                </div>
             </div>
-        </main>
+        </div>
     );
 }

@@ -20,36 +20,36 @@ export default function Footer() {
 
                     {/* ── Marca y descripción ── */}
                     <div className="col-span-1 md:col-span-1">
-                        <h3 className="text-2xl font-bold tracking-tighter mb-4">
+                        <h3 className="text-2xl font-bold tracking-tighter mb-4 uppercase">
                             TECHNO<span className="text-accent">ULTRA</span>
                         </h3>
                         <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                            Agencia digital en Colombia. Diseñamos estrategias de marketing, SEO y desarrollo web que generan clientes reales y crecimiento medible.
+                            Agencia digital en Colombia con sede en Cali. Diseñamos estrategias de marketing, SEO y desarrollo web que generan clientes reales y crecimiento medible.
                         </p>
 
-                        {/* ── Datos de contacto — NAP (Name Address Phone) crítico para SEO local ── */}
+                        {/* ── Datos de contacto ── */}
                         <address className="not-italic space-y-3 text-sm text-gray-400">
                             <a
-                                href="https://wa.me/573100000000"
+                                href="https://wa.me/573007296067"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Contactar por WhatsApp"
-                                className="flex items-center gap-2 hover:text-accent transition-colors"
+                                className="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer"
                             >
                                 <FaWhatsapp className="text-accent shrink-0" />
-                                +57 310 000 0000
+                                +57 300 729 6067
                             </a>
                             <a
-                                href="mailto:hola@technoultra.com"
-                                aria-label="Enviar email a TechnoUltra"
-                                className="flex items-center gap-2 hover:text-accent transition-colors"
+                                href="mailto:studio@technoultra.com"
+                                aria-label="Enviar email a Technoultra"
+                                className="flex items-center gap-2 hover:text-accent transition-colors cursor-pointer"
                             >
                                 <FaEnvelope className="text-accent shrink-0" />
-                                hola@technoultra.com
+                                studio@technoultra.com
                             </a>
                             <span className="flex items-start gap-2">
                                 <FaMapMarkerAlt className="text-accent shrink-0 mt-0.5" />
-                                Colombia
+                                Cali, Colombia
                             </span>
                         </address>
                     </div>
@@ -97,7 +97,7 @@ export default function Footer() {
                             </li>
                             <li>
                                 <Link href="/#manifiesto" className="hover:text-accent transition-colors">
-                                    Manifiesto
+                                    Cómo lo hacemos
                                 </Link>
                             </li>
                             <li>
@@ -108,6 +108,11 @@ export default function Footer() {
                             <li>
                                 <Link href="/privacidad" className="hover:text-accent transition-colors">
                                     Política de Privacidad
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/terminos" className="hover:text-accent transition-colors">
+                                    Términos de Servicio
                                 </Link>
                             </li>
                         </ul>
@@ -148,8 +153,8 @@ export default function Footer() {
 
                         {/* CTA secundario en footer — Link en lugar de <a> para cumplir regla ESLint Next.js */}
                         <Link
-                            href="/#contacto"
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-accent border border-accent/30 rounded-xl px-4 py-2 hover:bg-accent hover:text-white transition-all"
+                            href="tel:+573007296067"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-accent border border-accent/30 rounded-xl px-4 py-2 hover:bg-accent hover:text-white transition-all cursor-pointer"
                         >
                             <FaPhone className="text-xs" />
                             Agendar diagnóstico gratis
@@ -159,12 +164,12 @@ export default function Footer() {
 
                 {/* ── Barra inferior ── */}
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                    <p>© {new Date().getFullYear()} TechnoUltra — Agencia Digital Colombia. Todos los derechos reservados.</p>
+                    <p>© {new Date().getFullYear()} Technoultra — Agencia Digital Colombia. Todos los derechos reservados.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
                         <Link href="/privacidad" className="hover:text-white transition-colors">
                             Política de Privacidad
                         </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
+                        <Link href="/terminos" className="hover:text-white transition-colors">
                             Términos de Servicio
                         </Link>
                     </div>

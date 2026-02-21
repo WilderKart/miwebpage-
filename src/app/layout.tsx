@@ -22,12 +22,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://technoultra.com"),
 
   title: {
-    template: "%s | TechnoUltra — Agencia Digital Colombia",
-    default: "TechnoUltra | Agencia Digital en Colombia — SEO, Web y Marketing Estratégico",
+    template: "%s | Technoultra — Agencia Digital Colombia",
+    default: "TECHNOULTRA | Agencia de Desarrollo Web, SEO y Marketing Digital en Colombia",
   },
 
   description:
-    "TechnoUltra, agencia digital en Colombia. Diseñamos tu presencia web, posicionamiento SEO y estrategias de marketing que generan clientes reales y crecimiento medible.",
+    "Agencia digital estratégica especializada en desarrollo web, SEO avanzado, performance marketing, branding y sistemas de crecimiento para empresas que buscan clientes y visibilidad online.",
 
   keywords: [
     "agencia digital Colombia",
@@ -60,8 +60,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_CO",
     url: "https://technoultra.com",
-    siteName: "TechnoUltra — Agencia Digital Colombia",
-    title: "TechnoUltra | El Crecimiento No Es Suerte",
+    siteName: "Technoultra — Agencia Digital Colombia",
+    title: "Technoultra | El Crecimiento No Es Suerte",
     description:
       "Diseñamos sistemas digitales que convierten, escalan y generan ventaja competitiva real para empresas en Colombia.",
     images: [
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "TechnoUltra — Agencia Digital en Colombia, SEO y Marketing Estratégico",
+        alt: "Technoultra — Agencia Digital en Colombia, SEO y Marketing Estratégico",
       },
     ],
   },
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   /* ── Twitter / X Card ── */
   twitter: {
     card: "summary_large_image",
-    title: "TechnoUltra | Agencia Digital en Colombia",
+    title: "Technoultra | Agencia Digital en Colombia",
     description:
       "SEO, marketing digital y desarrollo web corporativo para empresas que quieren crecer sin dejarlo al azar.",
     images: ["/og-image.jpg"],
@@ -99,8 +99,15 @@ export const metadata: Metadata = {
 
   /* ── Iconos ── */
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: [
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon/favicon.ico" },
+    ],
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/favicon/favicon.ico",
   },
 
   /* ── Verificación Search Console (reemplazar con token real) ── */
@@ -120,7 +127,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": "https://technoultra.com/#organization",
-      name: "TechnoUltra",
+      name: "Technoultra",
       url: "https://technoultra.com",
       logo: {
         "@type": "ImageObject",
@@ -142,15 +149,16 @@ const jsonLd = {
     {
       "@type": "ProfessionalService",
       "@id": "https://technoultra.com/#business",
-      name: "TechnoUltra — Agencia Digital",
+      name: "Technoultra — Agencia Digital",
       image: "https://technoultra.com/og-image.jpg",
       url: "https://technoultra.com",
-      telephone: "+57-310-000-0000",
+      telephone: "+57-300-729-6067",
       priceRange: "$$",
       address: {
         "@type": "PostalAddress",
         addressCountry: "CO",
-        addressLocality: "Colombia",
+        addressLocality: "Cali",
+        addressRegion: "Valle del Cauca",
       },
       geo: {
         "@type": "GeoCoordinates",
@@ -178,7 +186,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://technoultra.com/#website",
       url: "https://technoultra.com",
-      name: "TechnoUltra",
+      name: "Technoultra",
       description: "Agencia digital en Colombia — SEO, Desarrollo Web y Marketing Estratégico",
       publisher: { "@id": "https://technoultra.com/#organization" },
       inLanguage: "es-CO",

@@ -1,47 +1,110 @@
 "use client";
 
-import CountUp from "react-countup";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+/**
+ * Authority — Sección de Propuesta de Valor
+ *
+ * Fondo blanco, títulos en azul oscuro (#0F172A / `text-primary`),
+ * taglines en naranja accent, sin iconos.
+ * Frase legal sutil al pie en gris claro.
+ * Animación: stagger fade + slide-up por columna.
+ */
 
-const stats = [
-    { value: 40, label: "Crecimiento Promedio", suffix: "%", sub: "En los primeros 12 meses con nuestros clientes iniciales." },
-    { value: 2.5, label: "ROI Estructurado", suffix: "X", sub: "Retorno sobre inversión tecnológica y campañas iniciales." },
-    { value: 75, label: "Retención", suffix: "%", sub: "Clientes que confían y mantienen partnerships a largo plazo." },
+import { motion } from "framer-motion";
+
+// Columnas de propuesta de valor
+const pillars = [
+    {
+        title: "Crecimiento Estratégico",
+        tagline: "Sistemas digitales diseñados para escalar.",
+        body: "Desarrollo web, SEO y marketing digital orientados a conversión.",
+    },
+    {
+        title: "ROI Optimizado",
+        tagline: "Estrategias basadas en datos reales.",
+        body: "Performance marketing y automatización enfocada en eficiencia.",
+    },
+    {
+        title: "Relaciones Sólidas",
+        tagline: "Partnerships digitales sostenibles.",
+        body: "Infraestructura adaptable según industria y presupuesto.",
+    },
 ];
 
+const containerVariants = {
+    hidden: {},
+    visible: {
+        transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 36, filter: "blur(8px)" },
+    visible: {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+    },
+};
+
+const disclaimerVariants = {
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.7 } },
+};
+
 export default function Authority() {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: false, margin: "-100px" });
-
     return (
-        <section className="bg-background py-32 border-t border-white/5 relative overflow-hidden" ref={ref}>
-            {/* Glow effect ambient */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
-
+        <section className="bg-white py-32 border-t border-slate-100 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-                    {stats.map((stat, index) => (
-                        <div key={index} className="pt-12 md:pt-0 px-6 group transition-all duration-500 hover:transform hover:-translate-y-2">
-                            <div className="text-6xl md:text-8xl font-bold text-white mb-4 flex justify-center items-baseline font-display tracking-tighter group-hover:text-accent transition-colors duration-300">
-                                {isInView ? (
-                                    <CountUp
-                                        end={stat.value}
-                                        duration={2.5}
-                                        separator=","
-                                        enableScrollSpy={true}
-                                        scrollSpyOnce={false}
-                                    />
-                                ) : (
-                                    <span>0</span>
-                                )}
-                                <span className="text-accent ml-1">{stat.suffix}</span>
-                            </div>
-                            <p className="text-xl text-gray-300 font-medium mb-2">{stat.label}</p>
-                            <p className="text-sm text-gray-500 font-light">{stat.sub}</p>
-                        </div>
+
+                {/* Grid de columnas */}
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-slate-200"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, margin: "-100px" }}
+                >
+                    {pillars.map(({ title, tagline, body }, index) => (
+                        <motion.div
+                            key={index}
+                            variants={itemVariants}
+                            className="pt-10 md:pt-0 px-6 md:px-12"
+                        >
+                            {/* Título grande en azul oscuro */}
+                            <h3 className="text-primary text-4xl md:text-5xl font-bold font-display tracking-tight mb-4 leading-tight">
+                                {title}
+                            </h3>
+
+                            {/* Tagline en naranja accent */}
+                            <motion.p
+                                variants={itemVariants}
+                                className="text-accent text-base italic font-semibold mb-4 leading-snug"
+                            >
+                                {tagline}
+                            </motion.p>
+
+                            {/* Descripción en gris medio */}
+                            <motion.p
+                                variants={itemVariants}
+                                className="text-slate-500 text-sm font-light leading-relaxed"
+                            >
+                                {body}
+                            </motion.p>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
+
+                {/* Frase legal sutil al pie */}
+                <motion.p
+                    className="text-center text-slate-300 text-xs mt-20 font-light max-w-2xl mx-auto leading-relaxed"
+                    variants={disclaimerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, margin: "-80px" }}
+                >
+                    Cada proyecto es estructurado de forma personalizada. Los resultados pueden variar según mercado, competencia y condiciones externas.
+                </motion.p>
             </div>
         </section>
     );

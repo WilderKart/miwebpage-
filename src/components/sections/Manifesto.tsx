@@ -18,7 +18,7 @@ export default function Manifesto() {
                     viewport={{ once: false, margin: "-100px" }}
                     transition={{ duration: 1 }}
                 >
-                    <span className="text-accent uppercase tracking-widest text-sm font-bold mb-4 block">Lo que hacemos</span>
+                    <span className="text-accent uppercase tracking-widest text-sm font-bold mb-4 block">Cómo lo hacemos</span>
                     {/* Comillas escapadas — react/no-unescaped-entities */}
                     <h2 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tighter max-w-6xl font-display">
                         &ldquo;NO CONSTRUIMOS SITIOS WEB. <br />
@@ -37,7 +37,7 @@ export default function Manifesto() {
                         <span className="text-accent/20">Control</span>
                         <span>Dominio</span>
                         <span>Resultados</span>
-                        <span className="text-accent/20">TechnoUltra</span>
+                        <span className="text-accent/20">Technoultra</span>
                         <span>Estrategia</span>
                         <span className="text-accent/20">Sistema</span>
                     </motion.div>

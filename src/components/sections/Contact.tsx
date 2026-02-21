@@ -25,6 +25,7 @@ const contactSchema = z.object({
     name: z.string().min(2, "El nombre es requerido"),
     email: z.string().email("Email inválido"),
     company: z.string().optional(),
+    phone: z.string().optional(),
     message: z.string().min(10, "Mensaje muy corto"),
     // Autorización obligatoria de política de privacidad y tratamiento de datos
     // Nota: Zod v4 usa `error` en lugar de `errorMap` en el segundo argumento de z.literal
@@ -48,12 +49,26 @@ export default function Contact() {
     });
 
     const onSubmit = async (data: ContactForm) => {
-        // Simulación de envío — reemplazar por llamada real al backend
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log(data);
-        setIsSuccess(true);
-        reset();
-        setTimeout(() => setIsSuccess(false), 5000);
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error("Error al enviar el formulario");
+            }
+
+            setIsSuccess(true);
+            reset();
+            setTimeout(() => setIsSuccess(false), 5000);
+        } catch (error) {
+            console.error(error);
+            alert("Hubo un error al enviar tu mensaje. Por favor intenta de nuevo o contáctanos por WhatsApp.");
+        }
     };
 
     return (
@@ -186,6 +201,15 @@ export default function Contact() {
                                     </div>
 
                                     <div className="space-y-2">
+                                        <label className="text-sm uppercase tracking-wider text-secondary font-semibold ml-1">Celular o WhatsApp (Opcional)</label>
+                                        <input
+                                            {...register("phone")}
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-4 text-primary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder:text-slate-400"
+                                            placeholder="+57 300 000 0000"
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2">
                                         <label className="text-sm uppercase tracking-wider text-secondary font-semibold ml-1">Desafío Principal</label>
                                         <textarea
                                             {...register("message")}
@@ -209,7 +233,7 @@ export default function Contact() {
                                             <a href="/privacidad" className="text-accent underline underline-offset-2 hover:text-accent/80 transition-colors">
                                                 Política de Privacidad
                                             </a>{" "}
-                                            y acepto ser contactado por el equipo de TechnoUltra.
+                                            y acepto ser contactado por el equipo de Technoultra.
                                         </label>
                                     </div>
                                     {errors.acceptPolicy && (
@@ -224,6 +248,10 @@ export default function Contact() {
                                     >
                                         {isSubmitting ? "ENVIANDO..." : "Recibir asesoría personalizada"}
                                     </Button>
+                                    {/* Nota legal simplificada */}
+                                    <p className="text-[10px] text-slate-400 text-center mt-4">
+                                        Al enviar autorizas el tratamiento de datos por Technoultra conforme a la ley.
+                                    </p>
                                 </motion.form>
                             )}
                         </AnimatePresence>

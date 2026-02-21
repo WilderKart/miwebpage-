@@ -3,17 +3,21 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-    { name: "Servicios", href: "#servicios" },
-    { name: "Lo que hacemos", href: "#manifiesto" },
-    { name: "Contacto", href: "#contacto" },
+    { name: "Servicios", href: "/#servicios" },
+    { name: "Cómo lo hacemos", href: "/#manifiesto" },
+    { name: "Contacto", href: "/#contacto" },
 ];
 
 export default function Navbar() {
+    const pathname = usePathname();
+    const isLegalPage = pathname === "/privacidad" || pathname === "/terminos";
+
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -25,17 +29,20 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // En páginas legales, forzamos el estado visual de "scrolled" (fondo oscuro)
+    const activeScrolled = scrolled || isLegalPage;
+
     return (
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-                scrolled ? "py-4 bg-background/80 backdrop-blur-xl border-b border-white/5 shadow-lg" : "py-8 bg-transparent"
+                activeScrolled ? "py-4 bg-background/80 backdrop-blur-xl border-b border-white/5 shadow-lg" : "py-8 bg-transparent"
             )}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="relative z-50 group">
-                    <span className="text-2xl font-bold font-display tracking-tight text-white">
+                    <span className="text-2xl font-bold font-display tracking-tight text-white uppercase">
                         TECHNO<span className="text-accent">ULTRA</span>
                     </span>
                     <div className="h-0.5 w-0 bg-accent group-hover:w-full transition-all duration-300" />

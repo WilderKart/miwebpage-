@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="absolute inset-0 z-0 select-none">
                 <Image
                     src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
-                    alt="Agencia digital TechnoUltra — arquitectura digital, marketing estratégico y desarrollo web corporativo en Colombia"
+                    alt="Agencia digital Technoultra — arquitectura digital, marketing estratégico y desarrollo web corporativo en Colombia"
                     fill
                     className="object-cover scale-105 animate-float opacity-60"
                     priority

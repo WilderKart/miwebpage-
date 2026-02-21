@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Política de Cookies | TechnoUltra",
-    description: "Conoce qué cookies usamos en TechnoUltra, para qué sirven y cómo puedes gestionarlas. Cumplimiento Ley 1581 de 2012.",
+    title: "Política de Cookies | Technoultra",
+    description: "Conoce qué cookies usamos en Technoultra, para qué sirven y cómo puedes gestionarlas. Cumplimiento Ley 1581 de 2012.",
     robots: { index: true, follow: true },
 };
 
 /**
- * Página de Política de Cookies — TechnoUltra
+ * Página de Política de Cookies — Technoultra
  *
  * Cumple con la Ley 1581 de 2012 de Colombia.
  * Informa al usuario sobre los tipos de cookies utilizados,
@@ -36,7 +36,7 @@ export default function PoliticaDeCookiesPage() {
                         Política de Cookies
                     </h1>
                     <p className="text-slate-500 text-lg leading-relaxed">
-                        En TechnoUltra usamos cookies para garantizar el correcto funcionamiento de nuestro sitio
+                        En Technoultra usamos cookies para garantizar el correcto funcionamiento de nuestro sitio
                         y mejorar tu experiencia. A continuación te explicamos qué son, cuáles usamos y cómo puedes gestionarlas.
                     </p>
                 </div>
@@ -101,8 +101,8 @@ export default function PoliticaDeCookiesPage() {
                 <Section title="5. Contacto">
                     <p>
                         Si tienes preguntas sobre nuestra política de cookies, puedes contactarnos en:{" "}
-                        <a href="mailto:privacidad@technoultra.com" className="text-orange-500 hover:underline">
-                            privacidad@technoultra.com
+                        <a href="mailto:studio@technoultra.com" className="text-orange-500 hover:underline">
+                            studio@technoultra.com
                         </a>
                     </p>
                     <p className="mt-3">
