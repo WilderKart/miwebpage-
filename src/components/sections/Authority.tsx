@@ -9,7 +9,7 @@
  * Animación: stagger fade + slide-up por columna.
  */
 
-import { motion } from "framer-motion";
+import { motion, Variants, cubicBezier } from "framer-motion";
 
 // Columnas de propuesta de valor
 const pillars = [
@@ -30,24 +30,27 @@ const pillars = [
     },
 ];
 
-const containerVariants = {
+// Easing personalizado — forma correcta en versiones nuevas de Framer Motion
+const smoothEase = cubicBezier(0.22, 1, 0.36, 1);
+
+const containerVariants: Variants = {
     hidden: {},
     visible: {
         transition: { staggerChildren: 0.2, delayChildren: 0.1 },
     },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
     hidden: { opacity: 0, y: 36, filter: "blur(8px)" },
     visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
-        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
+        transition: { duration: 0.75, ease: smoothEase },
     },
 };
 
-const disclaimerVariants = {
+const disclaimerVariants: Variants = {
     hidden: { opacity: 0, y: 12 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: 0.7 } },
 };
