@@ -2,11 +2,9 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
 
-// Inicialización del cliente de Resend con la variable de entorno
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 /**
  * Esquema de validación para el formulario de contacto (Backend - Zero Trust)
+ * El esquema se define a nivel de módulo porque no instancia nada — es seguro.
  */
 const contactSchema = z.object({
     name: z.string().min(2, "Nombre requerido"),
@@ -18,10 +16,29 @@ const contactSchema = z.object({
 
 /**
  * POST /api/contact
- * Envía el formulario de contacto usando Resend a studio@technoultra.com
+ *
+ * Envía el formulario de contacto usando Resend a studio@technoultra.com.
+ *
+ * IMPORTANTE: La instancia de Resend se crea DENTRO del handler (no en el nivel
+ * de módulo) para evitar que el build de Vercel/Next.js falle cuando
+ * RESEND_API_KEY no está disponible en tiempo de compilación.
+ *
+ * Flujo: Validación Zod → Guard API key → Envío principal → Fallback → Respuesta
  */
 export async function POST(req: Request) {
     try {
+        // Guard: verificar que la API key existe antes de continuar
+        if (!process.env.RESEND_API_KEY) {
+            console.error("RESEND_API_KEY no configurada en las variables de entorno.");
+            return NextResponse.json(
+                { error: "Servicio de correo no configurado" },
+                { status: 500 }
+            );
+        }
+
+        // Instancia dentro del handler — solo se ejecuta en runtime, no en build
+        const resend = new Resend(process.env.RESEND_API_KEY);
+
         const body = await req.json();
 
         // 1. Validación estricta con Zod
@@ -36,8 +53,7 @@ export async function POST(req: Request) {
 
         const { name, email, company, phone, message } = result.data;
 
-        // 2. Envío de correo real con Resend
-        // Simplificado para máxima compatibilidad con dominios recién verificados
+        // 2. Envío de correo real
         console.log("Intentando enviar correo a través de Resend...");
 
         const { data, error } = await resend.emails.send({
@@ -65,7 +81,7 @@ export async function POST(req: Request) {
         if (error) {
             console.error("Fallo detectado en Resend:", JSON.stringify(error, null, 2));
 
-            // Fallback agresivo si el dominio falla: Usar el dominio por defecto de Resend
+            // Fallback: enviar desde dominio por defecto de Resend
             const fallbackResult = await resend.emails.send({
                 from: "Technoultra <onboarding@resend.dev>",
                 to: ["studio@technoultra.com"],
