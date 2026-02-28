@@ -20,6 +20,7 @@ El objetivo es convertir visitantes en leads cualificados mediante una experienc
 - **No-Trust Client**: El cliente solo visualiza; la lógica crítica reside en el servidor.
 - **Documentación**: Todo cambio se documenta en español.
 - **Accesibilidad**: Etiquetas ARIA y navegación semántica.
+- **SEO & Indexación**: Arquitectura sin canonicals globales fijos para prevenir falsos duplicados en Google Search Console; Sitemap XML limpio solo para páginas estáticas.
 
 ## 4. Sistema de Diseño (Tokenización)
 - **Colores**:

@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Política de Privacidad | Technoultra",
     description: "Política de privacidad y tratamiento de datos personales en cumplimiento con la Ley 1581 de 2012 (Colombia). Versión extendida.",
+    alternates: {
+        canonical: "/privacidad",
+    }
 };
 
 export default function PrivacidadPage() {

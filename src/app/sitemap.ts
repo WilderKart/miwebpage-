@@ -22,32 +22,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1.0,
         },
         {
-            /* Sección de servicios — alta prioridad comercial */
-            url: `${baseUrl}/#servicios`,
-            lastModified,
-            changeFrequency: "monthly",
-            priority: 0.9,
-        },
-        {
-            /* Sección de metodología — autoridad y credibilidad */
-            url: `${baseUrl}/#metodologia`,
-            lastModified,
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            /* Sección de contacto — conversión directa */
-            url: `${baseUrl}/#contacto`,
-            lastModified,
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            /* Política de privacidad — requerida legalmente (Ley 1581 de 2012, Colombia) */
+            /* Política de privacidad */
             url: `${baseUrl}/privacidad`,
             lastModified,
             changeFrequency: "yearly",
-            priority: 0.3,
+            priority: 0.5,
+        },
+        {
+            /* Términos de servicio */
+            url: `${baseUrl}/terminos`,
+            lastModified,
+            changeFrequency: "yearly",
+            priority: 0.5,
+        },
+        {
+            /* Política de cookies */
+            url: `${baseUrl}/politica-de-cookies`,
+            lastModified,
+            changeFrequency: "yearly",
+            priority: 0.5,
         },
     ];
 }

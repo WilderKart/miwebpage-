@@ -3,6 +3,9 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Términos de Servicio | Technoultra",
     description: "Términos y condiciones de uso de los servicios de Technoultra. Versión extendida de 16 puntos.",
+    alternates: {
+        canonical: "/terminos",
+    }
 };
 
 export default function TerminosPage() {

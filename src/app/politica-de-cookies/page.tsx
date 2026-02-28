@@ -5,6 +5,9 @@ export const metadata: Metadata = {
     title: "Política de Cookies | Technoultra",
     description: "Conoce qué cookies usamos en Technoultra, para qué sirven y cómo puedes gestionarlas. Cumplimiento Ley 1581 de 2012.",
     robots: { index: true, follow: true },
+    alternates: {
+        canonical: "/politica-de-cookies",
+    }
 };
 
 /**
