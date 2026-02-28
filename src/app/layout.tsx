@@ -62,10 +62,10 @@ export const metadata: Metadata = {
       "Diseñamos sistemas digitales que convierten, escalan y generan ventaja competitiva real para empresas en Colombia.",
     images: [
       {
-        url: "/favicon/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
-        alt: "Logo Technoultra — Agencia Digital",
+        url: "/favicon/logo.png",
+        width: 400,
+        height: 400,
+        alt: "Logo Technoultra",
       },
     ],
   },
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: "Technoultra | Agencia Digital en Colombia",
     description:
       "SEO, marketing digital y desarrollo web corporativo para empresas que quieren crecer sin dejarlo al azar.",
-    images: ["/favicon/android-chrome-512x512.png"],
+    images: ["/favicon/logo.png"],
     creator: "@technoultra",
   },
 
@@ -127,9 +127,9 @@ const jsonLd = {
       url: "https://technoultra.com",
       logo: {
         "@type": "ImageObject",
-        url: "https://technoultra.com/favicon/android-chrome-512x512.png",
-        width: 512,
-        height: 512,
+        url: "https://technoultra.com/favicon/logo.png",
+        width: 400,
+        height: 400,
       },
       sameAs: [
         "https://www.linkedin.com/company/technoultra",
@@ -146,7 +146,7 @@ const jsonLd = {
       "@type": "ProfessionalService",
       "@id": "https://technoultra.com/#business",
       name: "Technoultra — Agencia Digital",
-      image: "https://technoultra.com/favicon/android-chrome-512x512.png",
+      image: "https://technoultra.com/favicon/logo.png",
       url: "https://technoultra.com",
       telephone: "+57-300-729-6067",
       priceRange: "$$",
