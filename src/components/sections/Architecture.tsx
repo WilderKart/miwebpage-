@@ -23,7 +23,7 @@ export default function Architecture() {
                 <div
                     className="w-full h-[140%] -top-[20%] absolute bg-cover bg-center"
                     style={{
-                        backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop')",
+                        backgroundImage: "url('/img_site/oficina.webp')",
                         filter: "brightness(0.4) saturate(0)"
                     }}
                 />

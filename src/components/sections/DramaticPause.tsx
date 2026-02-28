@@ -9,7 +9,7 @@ export default function DramaticPause() {
             <div
                 className="absolute inset-0 opacity-20 "
                 style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2668&auto=format&fit=crop')",
+                    backgroundImage: "url('/img_site/paisaje.webp')",
                     backgroundAttachment: "fixed",
                     backgroundPosition: "center",
                     backgroundSize: "cover",

@@ -52,7 +52,7 @@ const services: ServiceCategory[] = [
         icon: FaLaptopCode,
         title: "Arquitectura Digital",
         subtitle: "Infraestructura pensada para escalar.",
-        img: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=2670&auto=format&fit=crop",
+        img: "/img_site/codigo.webp",
         items: [
             {
                 title: "Desarrollo estratégico",
@@ -80,7 +80,7 @@ const services: ServiceCategory[] = [
         icon: FaChartLine,
         title: "Performance & Ads",
         subtitle: "Adquisición con retorno medible.",
-        img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2670&auto=format&fit=crop",
+        img: "/img_site/analisis.webp",
         items: [
             {
                 title: "Google Ads",
@@ -108,7 +108,7 @@ const services: ServiceCategory[] = [
         icon: FaSearchDollar,
         title: "SEO Estratégico",
         subtitle: "Posicionamiento de autoridad.",
-        img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=2676&auto=format&fit=crop",
+        img: "/img_site/lupa.webp",
         items: [
             {
                 title: "Auditoría técnica",
@@ -136,7 +136,7 @@ const services: ServiceCategory[] = [
         icon: FaRocket,
         title: "Growth Systems",
         subtitle: "Automatización y ventas.",
-        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+        img: "/img_site/abstrato.webp",
         items: [
             {
                 title: "Funnels de venta",
@@ -164,7 +164,7 @@ const services: ServiceCategory[] = [
         icon: FaFingerprint,
         title: "Brand Strategy",
         subtitle: "Identidad que domina mercados.",
-        img: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop",
+        img: "/img_site/abstrabto_identidad.webp",
         items: [
             {
                 title: "Naming & Identidad",
@@ -192,7 +192,7 @@ const services: ServiceCategory[] = [
         icon: FaPenNib,
         title: "Content Marketing",
         subtitle: "Narrativa que convence.",
-        img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=2573&auto=format&fit=crop",
+        img: "/img_site/escritorio.webp",
         items: [
             {
                 title: "Estrategia editorial",
