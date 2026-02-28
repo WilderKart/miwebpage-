@@ -75,9 +75,9 @@ export default function Authority() {
                             className="pt-10 md:pt-0 px-6 md:px-12"
                         >
                             {/* Título grande en azul oscuro */}
-                            <h3 className="text-primary text-4xl md:text-5xl font-bold font-display tracking-tight mb-4 leading-tight">
+                            <h2 className="text-primary text-4xl md:text-5xl font-bold font-display tracking-tight mb-4 leading-tight">
                                 {title}
-                            </h3>
+                            </h2>
 
                             {/* Tagline en naranja accent */}
                             <motion.p

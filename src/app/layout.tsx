@@ -211,7 +211,7 @@ export default function RootLayout({
        *  Formato esperado: GTM-XXXXXXX
        * ────────────────────────────────────────────────────────────────────── */}
       {process.env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
       )}
       <head>
         {/* ── JSON-LD Datos Estructurados — Organization + LocalBusiness + WebSite ── */}

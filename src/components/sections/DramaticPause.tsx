@@ -30,7 +30,7 @@ export default function DramaticPause() {
                         }
                     }}
                 >
-                    <h3 className="text-4xl md:text-6xl text-white font-serif italic font-light leading-relaxed max-w-4xl mx-auto">
+                    <h2 className="text-4xl md:text-6xl text-white font-serif italic font-light leading-relaxed max-w-4xl mx-auto">
                         <motion.span
                             variants={{ hidden: { opacity: 0, y: 20, filter: "blur(10px)" }, visible: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 1.2, ease: "easeOut" } } }}
                             className="block"
@@ -45,7 +45,7 @@ export default function DramaticPause() {
                             {/* Comilla de cierre escapada — react/no-unescaped-entities */}
                             El espacio es parte de la arquitectura.&rdquo;
                         </motion.span>
-                    </h3>
+                    </h2>
                 </motion.div>
             </div>
         </section>

@@ -72,6 +72,7 @@ export default function Navbar() {
                 <button
                     className="md:hidden text-white z-50"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
                 >
                     {mobileMenuOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}
                 </button>

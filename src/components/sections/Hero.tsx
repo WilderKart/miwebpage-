@@ -42,12 +42,12 @@ export default function Hero() {
             {/* Background Layer - Cinematic */}
             <div className="absolute inset-0 z-0 select-none">
                 <Image
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2670&auto=format&fit=crop"
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop"
                     alt="Agencia digital Technoultra — arquitectura digital, marketing estratégico y desarrollo web corporativo en Colombia"
                     fill
                     className="object-cover scale-105 animate-float opacity-60"
                     priority
-                    quality={100}
+                    quality={75}
                 />
                 {/* Cinematic Gradient Overlays */}
                 <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />

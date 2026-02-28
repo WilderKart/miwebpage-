@@ -23,12 +23,12 @@ export default function Footer() {
                         <h3 className="text-2xl font-bold tracking-tighter mb-4 uppercase">
                             TECHNO<span className="text-accent">ULTRA</span>
                         </h3>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                        <p className="text-gray-300 text-sm leading-relaxed mb-6">
                             Agencia digital en Colombia con sede en Cali. Diseñamos estrategias de marketing, SEO y desarrollo web que generan clientes reales y crecimiento medible.
                         </p>
 
                         {/* ── Datos de contacto ── */}
-                        <address className="not-italic space-y-3 text-sm text-gray-400">
+                        <address className="not-italic space-y-3 text-sm text-gray-300">
                             <a
                                 href="https://wa.me/573007296067"
                                 target="_blank"
@@ -57,7 +57,7 @@ export default function Footer() {
                     {/* ── Servicios — enlaces internos optimizados ── */}
                     <nav aria-label="Servicios de TechnoUltra">
                         <h4 className="font-bold text-lg mb-4 text-gray-200">Servicios</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
+                        <ul className="space-y-2 text-sm text-gray-300">
                             <li>
                                 <Link href="/#servicios" className="hover:text-accent transition-colors">
                                     Arquitectura Web Corporativa
@@ -89,7 +89,7 @@ export default function Footer() {
                     {/* ── Compañía — navegación interna ── */}
                     <nav aria-label="Páginas de TechnoUltra">
                         <h4 className="font-bold text-lg mb-4 text-gray-200">Compañía</h4>
-                        <ul className="space-y-2 text-sm text-gray-400">
+                        <ul className="space-y-2 text-sm text-gray-300">
                             <li>
                                 <Link href="/#metodologia" className="hover:text-accent transition-colors">
                                     Nuestra Metodología
@@ -163,7 +163,7 @@ export default function Footer() {
                 </div>
 
                 {/* ── Barra inferior ── */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
                     <p>© {new Date().getFullYear()} Technoultra — Agencia Digital Colombia. Todos los derechos reservados.</p>
                     <div className="flex gap-6 mt-4 md:mt-0">
                         <Link href="/privacidad" className="hover:text-white transition-colors">
