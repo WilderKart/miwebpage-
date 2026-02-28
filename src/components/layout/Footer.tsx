@@ -174,21 +174,7 @@ export default function Footer() {
                         </Link>
                     </div>
                 </div>
-                {/* ── Atribuciones Legales de Imágenes (Ocultas visualmente para los usuarios) ── */}
-                <div className="hidden" aria-hidden="true" data-nosnippet="true">
-                    <p>Atribuciones fotográficas proporcionadas bajo licencia de Unsplash:</p>
-                    <ul>
-                        <li><a href="https://unsplash.com/photos/1486406146926-c627a92ad1ab">Foto de CHUTTERSNAP en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1506784983877-45594efa4cbe">Foto de Matthew Brodeur en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1497366216548-37526070297c">Foto de Nastuh Abootalebi en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1487058792275-0ad4aaf24ca7">Foto de Luca Bravo en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1551288049-bebda4e38f71">Foto de Carlos Muza en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1504868584819-f8e8b4b6d7e3">Foto de Stephen Dawson en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1618005182384-a83a8bd57fbe">Foto de Milad Fakurian en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1550684848-fac1c5b4e853">Foto de Joel Filipe en Unsplash</a></li>
-                        <li><a href="https://unsplash.com/photos/1455390582262-044cdead277a">Foto de Clark Tibbs en Unsplash</a></li>
-                    </ul>
-                </div>
+
             </div>
         </footer>
     );
