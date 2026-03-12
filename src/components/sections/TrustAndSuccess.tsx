@@ -236,9 +236,8 @@ export default function TrustAndSuccess() {
                                 </p>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-800 border-2 border-accent">
-                                    {/* Un avatar de muestra usando una imagen site/abstrato o color solido */}
-                                    <Image src="/img_site/escritorio.webp" alt="Avatar" width={48} height={48} className="object-cover h-full w-full" />
+                                <div className="w-14 h-14 shrink-0 rounded-full overflow-hidden bg-slate-800 border-2 border-accent">
+                                    <Image src="/img_site/avatar-cesar.jpg" alt="Avatar Cesar Augusto" width={112} height={112} quality={100} unoptimized className="object-cover object-top h-full w-full" />
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm">Cesar Augusto Garcia</p>
@@ -259,8 +258,8 @@ export default function TrustAndSuccess() {
                                 </p>
                             </div>
                             <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-full overflow-hidden bg-slate-800 border-2 border-accent">
-                                    <Image src="/img_site/lupa.webp" alt="Avatar" width={48} height={48} className="object-cover h-full w-full" />
+                                <div className="w-14 h-14 shrink-0 rounded-full overflow-hidden bg-slate-800 border-2 border-accent">
+                                    <Image src="/img_site/avatar-yuli.jpg" alt="Avatar Yuli Tulande" width={112} height={112} quality={100} unoptimized className="object-cover object-top h-full w-full" />
                                 </div>
                                 <div>
                                     <p className="text-white font-bold text-sm">Yuli Tulande</p>
