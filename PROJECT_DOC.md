@@ -50,3 +50,4 @@ El objetivo es convertir visitantes en leads cualificados mediante una experienc
 - **Metodología**: Sistema Ultra de 5 pasos visualizado.
 - **WhatsApp**: Botón flotante persistente y animado.
 - **Scroll**: Scroll suave gestionado por Lenis.
+- **TrustAndSuccess (Casos de Éxito)**: Sección oscura premium con Logos de clientes, tarjetas con Glassmorphism (Hover effects) mostrando métricas de éxito (Electriobras, Restaurante El Viajero, Level23, Stylernow), y área de Testimonios integrados.

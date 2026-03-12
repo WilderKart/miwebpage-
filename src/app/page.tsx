@@ -6,6 +6,7 @@ import Manifesto from "@/components/sections/Manifesto";
 import Contact from "@/components/sections/Contact";
 import Architecture from "@/components/sections/Architecture";
 import DramaticPause from "@/components/sections/DramaticPause";
+import TrustAndSuccess from "@/components/sections/TrustAndSuccess";
 import React from "react";
 import { Metadata } from "next";
 
@@ -28,6 +29,7 @@ export default function Home() {
       <Services />
       <Manifesto />
       <Methodology />
+      <TrustAndSuccess />
       <Contact />
     </>
   );
