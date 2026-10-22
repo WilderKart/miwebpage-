@@ -1,242 +1,111 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Script from "next/script";
-import { GoogleTagManager } from "@next/third-parties/google";
+import type { Metadata, Viewport } from "next";
+import { Geist, Inter, Inter_Tight } from "next/font/google";
+import { site, absoluteUrl } from "@/data/site";
+import SmoothScroll from "@/components/SmoothScroll";
+import Lines from "@/components/Lines";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
+import Transition from "@/components/Transition";
+import Motion from "@/components/Motion";
 import "./globals.css";
-import SmoothScroll from "@/components/providers/SmoothScroll";
-import { cn } from "@/lib/utils";
+import "./home.css";
 
-/* ─── Fuente principal ─────────────────────────────────────────────────────── */
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
+const head = Inter_Tight({ variable: "--font-head", subsets: ["latin"], weight: ["500", "600", "700"] });
+const body = Inter({ variable: "--font-body", subsets: ["latin"] });
+const ghostFont = Geist({ variable: "--font-ghost", subsets: ["latin"], weight: ["700"] });
 
-/* ─── Metadata SEO — Optimizada para agencia digital en Colombia ────────────
- * Palabras clave primarias: agencia digital Colombia, SEO estratégico,
- * marketing digital, desarrollo web corporativo, branding estratégico.
- * Meta description ≤ 160 caracteres, orientada a beneficio del cliente.
- * ─────────────────────────────────────────────────────────────────────────── */
+export const viewport: Viewport = {
+  themeColor: "#0e0e0e",
+};
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://technoultra.com"),
-
+  metadataBase: new URL(site.url),
   title: {
-    template: "%s | Technoultra — Agencia Digital Colombia",
-    default: "TECHNOULTRA | Agencia de Desarrollo Web, SEO y Marketing Digital en Colombia",
+    default: "TechnoUltra | Desarrollo web, apps, branding y servicio técnico en Cali",
+    template: "%s | TechnoUltra",
   },
-
   description:
-    "Agencia digital estratégica especializada en desarrollo web, SEO avanzado, performance marketing, branding y sistemas de crecimiento para empresas que buscan clientes y visibilidad online.",
-
-  keywords: [
-    "agencia digital Colombia",
-    "agencia de marketing digital",
-    "SEO estratégico Colombia",
-    "desarrollo web corporativo Colombia",
-    "branding estratégico",
-    "marketing digital empresas",
-    "posicionamiento web Colombia",
-    "diseño web profesional",
-    "growth hacking",
-    "consultoría digital Colombia",
-    "performance marketing",
-    "Google Ads Colombia",
-    "Meta Ads Colombia",
-  ],
-
-  authors: [{ name: "TechnoUltra", url: "https://technoultra.com" }],
-  creator: "TechnoUltra",
-  publisher: "TechnoUltra",
-
-  /* ── Alternates se define en page.tsx individualmente para evitar duplicidad de canonical ── */
-
-  /* ── OpenGraph — Vista compartida en redes sociales ── */
+    "Agencia digital en Cali, Colombia: desarrollo web y aplicaciones a medida, branding, manejo de redes sociales, SEO y reparación de computadores, portátiles e impresoras.",
+  applicationName: site.name,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "es_CO",
-    url: "https://technoultra.com",
-    siteName: "Technoultra — Agencia Digital Colombia",
-    title: "Technoultra | El Crecimiento No Es Suerte",
+    siteName: site.name,
+    url: site.url,
+    title: "TechnoUltra | Desarrollo web, apps, branding y servicio técnico en Cali",
     description:
-      "Diseñamos sistemas digitales que convierten, escalan y generan ventaja competitiva real para empresas en Colombia.",
-    images: [
-      {
-        url: "/favicon/logo.png",
-        width: 256,
-        height: 256,
-        alt: "Logo Technoultra",
-      },
-    ],
+      "Páginas web, aplicaciones a medida, branding, redes sociales, SEO y servicio técnico de computadores e impresoras en Cali y toda Colombia.",
   },
-
-  /* ── Twitter / X Card ── */
-  twitter: {
-    card: "summary",
-    title: "Technoultra | Agencia Digital en Colombia",
-    description:
-      "SEO, marketing digital y desarrollo web corporativo para empresas que quieren crecer sin dejarlo al azar.",
-    images: ["/favicon/logo.png"],
-    creator: "@technoultra",
-  },
-
-  /* ── Robots y rastreo ── */
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "standard",
-      "max-snippet": -1,
-    },
-  },
-
-  /* ── Iconos ── */
-  icons: {
-    icon: [
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon/favicon.ico" },
-    ],
-    apple: [
-      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
-    shortcut: "/favicon/favicon.ico",
-  },
-
-  /* ── Verificación Search Console (reemplazar con token real) ── */
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
-  },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true },
 };
 
-/* ─── JSON-LD — Datos estructurados Organization + LocalBusiness ────────────
- * Mejora cómo Google entiende y muestra TechnoUltra en resultados de búsqueda.
- * Impacta en: Knowledge Panel, resultados enriquecidos, confianza de dominio.
- * Fuente: https://schema.org/LocalBusiness
- * ─────────────────────────────────────────────────────────────────────────── */
-const jsonLd = {
+const orgLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Organization",
-      "@id": "https://technoultra.com/#organization",
-      name: "Technoultra",
-      url: "https://technoultra.com",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://technoultra.com/favicon/logo.png",
-        width: 400,
-        height: 400,
-      },
-      sameAs: [
-        "https://www.linkedin.com/company/technoultra",
-        "https://www.instagram.com/technoultra",
-      ],
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "customer service",
-        availableLanguage: "Spanish",
-        areaServed: "CO",
-      },
-    },
-    {
-      "@type": "ProfessionalService",
-      "@id": "https://technoultra.com/#business",
-      name: "Technoultra — Agencia Digital",
-      image: "https://technoultra.com/favicon/logo.png",
-      url: "https://technoultra.com",
-      telephone: "+57-300-729-6067",
-      priceRange: "$$",
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": absoluteUrl("/#organization"),
+      name: site.name,
+      url: site.url,
+      logo: absoluteUrl("/brand/icon.png"),
+      image: absoluteUrl("/brand/icon.png"),
+      description: site.description,
+      telephone: site.phone,
+      email: site.email,
       address: {
         "@type": "PostalAddress",
-        addressCountry: "CO",
         addressLocality: "Cali",
         addressRegion: "Valle del Cauca",
+        addressCountry: "CO",
       },
-      geo: {
-        "@type": "GeoCoordinates",
-        latitude: 4.711,
-        longitude: -74.0721,
-      },
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "18:00",
-      },
-      hasOfferCatalog: {
-        "@type": "OfferCatalog",
-        name: "Servicios Digitales",
-        itemListElement: [
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "SEO Estratégico" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Desarrollo Web Corporativo" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Marketing Digital y Ads" } },
-          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Branding Estratégico" } },
-        ],
-      },
+      areaServed: ["Cali", "Palmira", "Jamundí", "Yumbo", "Colombia"],
+      sameAs: [site.instagram, site.facebook, site.linkedin],
+      knowsAbout: [
+        "Desarrollo web",
+        "Diseño UI/UX",
+        "Branding",
+        "SEO",
+        "Redes sociales",
+        "Reparación de computadores",
+        "Reparación de impresoras",
+      ],
     },
     {
       "@type": "WebSite",
-      "@id": "https://technoultra.com/#website",
-      url: "https://technoultra.com",
-      name: "Technoultra",
-      description: "Agencia digital en Colombia — SEO, Desarrollo Web y Marketing Estratégico",
-      publisher: { "@id": "https://technoultra.com/#organization" },
+      "@id": absoluteUrl("/#website"),
+      url: site.url,
+      name: site.name,
       inLanguage: "es-CO",
+      publisher: { "@id": absoluteUrl("/#organization") },
     },
   ],
 };
 
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import WhatsAppBtn from "@/components/layout/WhatsAppBtn";
-// CookieBanner: gestiona el consentimiento y activa GA4 condicionalmente
-import CookieBanner from "@/components/layout/CookieBanner";
-// SpeedInsights: activa métricas de rendimiento en el panel de Vercel
-import { SpeedInsights } from "@vercel/speed-insights/next";
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es-CO" className={inter.variable}>
-      {/* ── Google Tag Manager — Carga oficial vía @next/third-parties —────────
-       *  GTM gestiona todos los scripts de tracking desde un solo panel.
-       *  Solo se inyecta si NEXT_PUBLIC_GTM_ID está definido en .env.local
-       *  Formato esperado: GTM-XXXXXXX
-       * ────────────────────────────────────────────────────────────────────── */}
-      {process.env.NEXT_PUBLIC_GTM_ID && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-      )}
+    <html lang="es-CO" className={`${head.variable} ${body.variable} ${ghostFont.variable}`} suppressHydrationWarning>
       <head>
-        {/* ── JSON-LD Datos Estructurados — Organization + LocalBusiness + WebSite ── */}
         <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: "try{var k=sessionStorage.getItem('tu-intro');document.documentElement.dataset.loader=k?'skip':'play';if(!k)sessionStorage.setItem('tu-intro','1')}catch(e){document.documentElement.dataset.loader='skip'}",
+          }}
         />
       </head>
-      <body className={cn("min-h-screen bg-background text-foreground antialiased font-sans overflow-x-hidden")}>
-        <SmoothScroll>
-          <Navbar />
-          <main id="main-content" className="flex-grow min-h-screen">
-            {children}
-          </main>
-          <WhatsAppBtn />
-          <Footer />
-        </SmoothScroll>
-        {/* ── CookieBanner — gestiona consentimiento (Ley 1581 de 2012) ───────────
-         *  GA4 solo se activa si el usuario acepta todas las cookies.
-         *  El banner guarda la elección en una cookie propia por 365 días.
-         *  Incluye botón flotante para que el usuario cambie su preferencia.
-         * ──────────────────────────────────────────────────────────────────── */}
-        <CookieBanner />
-        {/* SpeedInsights — recopila métricas de rendimiento reales en producción */}
-        <SpeedInsights />
+      <body>
+        <a href="#contenido" className="skip">
+          Saltar al contenido
+        </a>
+        <SmoothScroll />
+        <Transition />
+        <Motion />
+        <Lines />
+        <Header />
+        <main id="contenido">{children}</main>
+        <Footer />
+        <JsonLd data={orgLd} />
       </body>
     </html>
   );
