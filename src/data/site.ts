@@ -39,6 +39,8 @@ export type Service = {
   categories: string[];
   deliverables: { title: string; text: string }[];
   tone: "a" | "b" | "c" | "d" | "e";
+  images: [string, string]; // [cuadrada, grande]
+  focus: [number, number]; // punto focal horizontal (%) de cada imagen
   seoTitle: string;
   seoDescription: string;
 };
@@ -60,6 +62,8 @@ export const services: Service[] = [
       { title: "Diseño visual y sistema", text: "Paleta, tipografía y componentes reutilizables que mantienen tu marca consistente en web, móvil y redes." },
     ],
     tone: "a",
+    images: ["/services/diseno-ui-ux-2.webp", "/services/diseno-ui-ux-1.webp"],
+    focus: [60, 50],
     seoTitle: "Diseño UI/UX en Cali | Interfaces web y apps | TechnoUltra",
     seoDescription:
       "Diseño UI/UX en Cali: investigación, wireframes, prototipos en Figma y diseño visual para páginas web y aplicaciones que convierten visitas en clientes.",
@@ -80,6 +84,8 @@ export const services: Service[] = [
       { title: "Piezas para redes sociales", text: "Plantillas editables para publicaciones, historias y portadas alineadas con tu identidad." },
     ],
     tone: "b",
+    images: ["/services/identidad-de-marca-2.webp", "/services/identidad-de-marca-1.webp"],
+    focus: [50, 62],
     seoTitle: "Diseño de logo e identidad de marca en Cali | TechnoUltra",
     seoDescription:
       "Branding en Cali: diseño de logo, naming, manual de marca, rebranding y piezas para redes sociales. Identidad visual profesional para pymes y empresas.",
@@ -100,6 +106,8 @@ export const services: Service[] = [
       { title: "Aplicaciones y paneles", text: "Plataformas con acceso de clientes y personal, gestión de pedidos, servicios y garantías." },
     ],
     tone: "c",
+    images: ["/services/desarrollo-web-2.webp", "/services/desarrollo-web-1.webp"],
+    focus: [52, 38],
     seoTitle: "Desarrollo web en Cali | Páginas web y aplicaciones a medida | TechnoUltra",
     seoDescription:
       "Desarrollo web en Cali con Next.js: páginas corporativas, tiendas online y aplicaciones a medida, rápidas, seguras y optimizadas para SEO.",
@@ -120,6 +128,8 @@ export const services: Service[] = [
       { title: "Publicidad y analítica", text: "Campañas en Google Ads y Meta Ads con métricas claras de consultas, ventas y costo por cliente." },
     ],
     tone: "d",
+    images: ["/services/estrategia-digital-1.webp", "/services/estrategia-digital-2.webp"],
+    focus: [50, 76],
     seoTitle: "Estrategia digital, SEO y manejo de redes sociales en Cali | TechnoUltra",
     seoDescription:
       "Agencia de marketing digital en Cali: SEO local, manejo de redes sociales, Google Ads y Meta Ads con resultados medibles para tu empresa.",
@@ -140,6 +150,8 @@ export const services: Service[] = [
       { title: "Servicio a domicilio y soporte remoto", text: "Visita técnica en tu casa u oficina y soporte remoto para fallas de software en toda Colombia." },
     ],
     tone: "e",
+    images: ["/services/servicio-tecnico-2.webp", "/services/servicio-tecnico-1.webp"],
+    focus: [50, 38],
     seoTitle: "Reparación de computadores, portátiles e impresoras en Cali | TechnoUltra",
     seoDescription:
       "Servicio técnico en Cali: reparación y mantenimiento de computadores de escritorio, portátiles e impresoras con recogida, laboratorio y visita a domicilio. Cali, Palmira, Jamundí y Yumbo.",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { Quote, Rocket, Snowflake, Star } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -115,7 +116,7 @@ export default function Approach() {
                   ))}
                 </div>
                 <p className="ap-q">
-                  “TechnoUltra entendió nuestra visión y la convirtió…”
+                  “TechnoUltra desarrolló nuestro sitio web desde cero para maximizar las conversiones.”
                 </p>
               </div>
               <div className="ap-by">
@@ -178,33 +179,14 @@ export default function Approach() {
                   digitales
                 </h3>
               </div>
-              <div className="ph" aria-hidden="true">
-                <div className="ph-bars">
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                  <i />
-                </div>
-                <small>campaña web</small>
-                <h5>2025</h5>
-                <div className="ph-g">
-                  <div>
-                    <b>+45%</b>Leads
-                  </div>
-                  <div>
-                    <b>+70%</b>Velocidad
-                  </div>
-                  <div className="or">
-                    <b>Tu sitio activo 24/7</b>
-                    Diseño · Desarrollo · SEO
-                  </div>
-                </div>
-                <div className="ph-pill">
-                  <span>Agendar llamada</span>
-                  <span>→</span>
-                </div>
-              </div>
+              <Image
+                className="ap-c3-img"
+                src="/brand/phone-hand-v3.webp"
+                alt="Mano sosteniendo un móvil con una app de TechnoUltra"
+                width={1254}
+                height={1254}
+                sizes="450px"
+              />
             </article>
           </div>
         </div>

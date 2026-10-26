@@ -90,7 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: "try{var k=sessionStorage.getItem('tu-intro');document.documentElement.dataset.loader=k?'skip':'play';if(!k)sessionStorage.setItem('tu-intro','1')}catch(e){document.documentElement.dataset.loader='skip'}",
+            __html: "document.documentElement.dataset.loader=matchMedia('(prefers-reduced-motion: reduce)').matches?'skip':'play'",
           }}
         />
       </head>

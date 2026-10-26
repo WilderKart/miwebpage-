@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/meta";
 import { services } from "@/data/site";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
-import Art from "@/components/Art";
+import Image from "next/image";
 import { CtaBand, FaqSection } from "@/components/Sections";
 
 export const metadata = pageMeta({
@@ -24,7 +24,7 @@ export default function Servicios() {
       />
       <section className="section light inner-pad" style={{ paddingTop: 100 }}>
         <div className="wrap">
-          {services.map((s, i) => (
+          {services.map((s) => (
             <Reveal key={s.slug}>
               <article className="svc-row">
                 <span className="n">({s.n})</span>
@@ -34,7 +34,9 @@ export default function Servicios() {
                 <Link href={`/servicios/${s.slug}`} className="circle-btn go" aria-label={`Ver servicio de ${s.title}`}>
                   <ArrowUpRight size={22} aria-hidden="true" />
                 </Link>
-                <Art tone={s.tone} variant={i} />
+                <div className="tile">
+                  <Image src={s.images[0]} alt={`${s.title}: imagen del servicio`} fill sizes="(min-width: 992px) 640px, 100vw" />
+                </div>
                 <div className="txt">
                   <p>{s.short}</p>
                   <div className="chips">

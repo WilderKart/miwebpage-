@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import {
   ArrowRight,
   BookOpen,
@@ -8,12 +9,7 @@ import {
   CornerDownRight,
   Globe,
   AudioLines,
-  Mic,
   Paperclip,
-  PenLine,
-  Plus,
-  SlidersHorizontal,
-  Square,
   X,
 } from "lucide-react";
 import gsap from "gsap";
@@ -31,43 +27,6 @@ const list = [
 ];
 
 const bars = [69, 50, 75, 35, 69, 80, 50];
-
-// Foto de relleno en escala de grises (equipo en una mesa) hasta tener la imagen real.
-function TeamPhoto() {
-  return (
-    <svg className="wy-photo-art" viewBox="0 0 659 443" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="wyBg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#8a8a8a" />
-          <stop offset="0.62" stopColor="#6e6e6e" />
-          <stop offset="1" stopColor="#8d8d8d" />
-        </linearGradient>
-        <linearGradient id="wyFloor" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#9a9a9a" />
-          <stop offset="1" stopColor="#c9c9c9" />
-        </linearGradient>
-      </defs>
-      <rect width="659" height="443" fill="url(#wyBg)" />
-      <rect y="330" width="659" height="113" fill="url(#wyFloor)" />
-      <rect x="470" y="190" width="170" height="170" rx="4" fill="#d6d6d6" />
-      <rect x="110" y="300" width="270" height="12" rx="4" fill="#b9b9b9" />
-      <rect x="130" y="312" width="10" height="70" fill="#a8a8a8" />
-      <rect x="350" y="312" width="10" height="70" fill="#a8a8a8" />
-      <g fill="#4a4a4a">
-        <circle cx="205" cy="150" r="24" />
-        <path d="M165 330c-4-70 6-130 40-130s48 58 44 130z" />
-      </g>
-      <g fill="#5e5e5e">
-        <circle cx="385" cy="130" r="26" />
-        <path d="M340 340c-6-90 10-170 46-170s54 80 48 170z" />
-      </g>
-      <g fill="#3b3b3b">
-        <circle cx="560" cy="105" r="22" />
-        <path d="M528 360c-8-110 0-200 30-200s42 90 36 200z" />
-      </g>
-    </svg>
-  );
-}
 
 // "Por qué elegirnos": cabecera con palabras que suben, filas que entran de lado, dos paneles que se deslizan,
 // barras que crecen y un texto de chat que se escribe y se borra con el scroll.
@@ -152,7 +111,10 @@ export function Why() {
           <div className="wy-header">
             <div className="wy-title">
               <span className="lbl wy-lab">Por qué elegirnos</span>
-              <h2 className="hm-h1 wy-h1">Elevamos tu marca</h2>
+              <h2 className="hm-h1 wy-h1">
+                Elevamos
+                <br className="wy-br" /> tu marca
+              </h2>
             </div>
             <div className="wy-sub">
               <h3 className="hm-h6 wy-h6">Las marcas más ambiciosas confían en nosotros</h3>
@@ -220,35 +182,7 @@ export function Why() {
             </div>
 
             <div className="wy-b wy-b2">
-              <TeamPhoto />
-              <div className="wy-card wy-box2">
-                <span className="wy-cap1">Escribe o programa</span>
-                <div className="wy-icons">
-                  <div className="wy-ic">
-                    <span className="wy-i">
-                      <Plus size={11} aria-hidden="true" />
-                    </span>
-                    <span className="wy-i">
-                      <SlidersHorizontal size={11} aria-hidden="true" />
-                    </span>
-                    <i className="wy-sep" />
-                    <span className="wy-i">
-                      <PenLine size={11} aria-hidden="true" />
-                    </span>
-                    <span className="wy-i blue">
-                      <X size={11} aria-hidden="true" />
-                    </span>
-                  </div>
-                  <div className="wy-ic">
-                    <span className="wy-i">
-                      <Mic size={11} aria-hidden="true" />
-                    </span>
-                    <span className="wy-i gray">
-                      <Square size={9} fill="currentColor" aria-hidden="true" />
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <Image className="wy-photo-art" src="/brand/team.jpg" alt="Equipo de trabajo conversando alrededor de una mesa" fill sizes="(min-width: 992px) 50vw, 100vw" />
               <div className="wy-card wy-box3">
                 <div className="wy-q">
                   <div className="wy-q1">

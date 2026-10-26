@@ -5,16 +5,44 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Odo from "@/components/Odo";
+import CountDown, { type CountPart } from "./CountDown";
 import GridLines from "./GridLines";
 import TextScroll from "./TextScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const items = [
-  { v: "+70%", t: "Más velocidad de carga", d: "Sitios optimizados para cargar rápido en celulares, mejorar la experiencia y el posicionamiento." },
-  { v: "+45%", t: "Más solicitudes de clientes", d: "Estructura y llamados a la acción pensados para convertir visitas en cotizaciones y contactos." },
-  { v: "+120%", t: "Más visitas al sitio", d: "SEO técnico y contenidos enfocados en las búsquedas locales de tus clientes en Cali." },
+const items: { n: CountPart[]; label: string; title: string; d: string }[] = [
+  {
+    n: [
+      { kind: "down", d: [5, 3, 1, 7, 6, 8, 2, 4, 5] },
+      { kind: "up", d: [0, 9, 5, 2, 7, 8, 1, 2, 0] },
+      { kind: "text", t: "+" },
+    ],
+    label: "50+",
+    title: "Páginas y apps\nlanzadas",
+    d: "Sitios, tiendas y aplicaciones en producción para empresas de Cali y de toda Colombia.",
+  },
+  {
+    n: [
+      { kind: "text", t: "+" },
+      { kind: "down", d: [4, 3, 1, 7, 6, 8, 2, 9, 4] },
+      { kind: "up", d: [5, 9, 3, 2, 7, 8, 1, 2, 5] },
+      { kind: "text", t: "%" },
+    ],
+    label: "+45%",
+    title: "Más solicitudes\nde clientes",
+    d: "Estructura y llamados a la acción pensados para convertir visitas en cotizaciones y contactos.",
+  },
+  {
+    n: [
+      { kind: "down", d: [9, 3, 5, 7, 6, 8, 1, 5, 9] },
+      { kind: "up", d: [8, 9, 5, 2, 7, 8, 0, 2, 8] },
+      { kind: "text", t: "%" },
+    ],
+    label: "98%",
+    title: "Clientes que\nvuelven",
+    d: "Mantenemos una relación cercana y seguimos mejorando cada proyecto mucho después del lanzamiento.",
+  },
 ];
 
 // "Números que hablan": las tarjetas salen en abanico (escala y desplazamiento) mientras se hace scroll.
@@ -26,7 +54,7 @@ export default function Numbers() {
     if (!el) return;
     const mm = gsap.matchMedia();
     mm.add("(min-width: 992px) and (prefers-reduced-motion: no-preference)", () => {
-      const cards = el.querySelectorAll<HTMLElement>(".nm-i");
+      const cards = el.querySelectorAll<HTMLElement>(".nm-it");
       const tl = gsap.timeline({
         scrollTrigger: { trigger: el, start: "top bottom", end: "-20% top", scrub: 0.8 },
       });
@@ -43,69 +71,71 @@ export default function Numbers() {
     <section className="sec l nm clip" id="numeros">
       <GridLines />
       <div className="wrap">
-        <div ref={wrap}>
-          <header className="nm-head" data-a="block">
-            <h3 className="hm-h6" data-a="words">
+        <div className="nm-wrap" ref={wrap}>
+          <div className="nm-hg">
+            <h3 className="nm-h6" data-a="words">
               Números
               <br />
               que hablan
             </h3>
-            <div className="r">
+            <div className="nm-tf">
               <span className="lbl" data-a="label">
                 Indicadores
               </span>
               <TextScroll
                 tone="light"
-                className="hm-h6 m"
+                className="nm-text"
                 trigger=".nm"
                 text="Nuestro impacto se nota en sectores muy distintos, donde ayudamos a marcas ambiciosas a superar su techo de crecimiento."
               />
             </div>
-          </header>
-          <div className="nm-body">
-            <div className="nm-l">
-              <div>
-                <div className="t">
-                  <span>MÁS DE </span>4 PROYECTOS
+          </div>
+          <div className="nm-ic">
+            <div className="nm-left">
+              <div className="nm-member">
+                <div className="nm-mt">
+                  <span>MÁS DE</span> 23K+ CLIENTES
                 </div>
-                <div className="avs" data-a="stagger" aria-hidden="true">
+                <div className="avs" aria-hidden="true">
                   <span className="av">EO</span>
                   <span className="av a2">EX</span>
                   <span className="av a3">TF</span>
-                  <span className="av n">04</span>
+                  <span className="av n">23K</span>
                 </div>
               </div>
               <div>
-                <p className="hm-h6 m" style={{ textTransform: "none" }}>
+                <p className="nm-cta">
                   ¿Listo para ser
                   <br />
                   nuestro próximo
                   <br />
                   caso de éxito?
                 </p>
-                <Link href="/contacto" className="cta link-u">
-                  Trabaja con nosotros <Plus size={13} aria-hidden="true" />
+                <Link href="/contacto" className="nm-work">
+                  Trabaja con nosotros <Plus size={8} aria-hidden="true" />
                 </Link>
               </div>
             </div>
             {items.map((it, i) => (
-              <div className="nm-i" key={it.v} style={{ gridColumn: i + 2 }}>
+              <div className="nm-it" key={it.label} style={{ gridColumn: i + 2, zIndex: 3 - i }}>
                 <div className="nm-top">
-                  <span className="odo-w">
-                    <Odo text={it.v} />
-                  </span>
-                  <span style={{ color: "#a3a3a3" }}>/0{i + 1}</span>
+                  <CountDown label={it.label} parts={it.n} />
+                  <span className="nm-idx">/0{i + 1}</span>
                 </div>
                 <div className="nm-bot">
-                  <h4>{it.t}</h4>
+                  <h4>
+                    {it.title.split("\n").map((l, k) => (
+                      <span key={k}>
+                        {l}
+                        {k === 0 && <br />}
+                      </span>
+                    ))}
+                  </h4>
                   <p>{it.d}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p className="hm-b5 g6" style={{ marginTop: 32 }}>
-            Resultados del caso Electriobras. Los resultados varían según el mercado y la competencia.
-          </p>
         </div>
       </div>
     </section>

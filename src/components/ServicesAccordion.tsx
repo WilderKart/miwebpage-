@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { services } from "@/data/site";
-import Art from "./Art";
+import Image from "next/image";
 
 export default function ServicesAccordion() {
   const [open, setOpen] = useState(0);
@@ -36,8 +36,11 @@ export default function ServicesAccordion() {
                 <div className="in">
                   <div className="col">
                     <div className="svc-tiles">
-                      <Art tone={s.tone} variant={i} />
-                      <Art tone={s.tone === "e" ? "a" : "e"} variant={i + 2} />
+                      {s.images.map((src, k) => (
+                        <div className="tile" key={src}>
+                          <Image src={src} alt={`${s.title}: imagen ${k + 1}`} fill sizes="(min-width: 992px) 270px, 45vw" />
+                        </div>
+                      ))}
                     </div>
                     <p>{s.short}</p>
                     <div className="chips">

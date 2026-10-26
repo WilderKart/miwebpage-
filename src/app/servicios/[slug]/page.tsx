@@ -1,12 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { services, projects, site, absoluteUrl, wa, faqs } from "@/data/site";
 import { pageMeta } from "@/lib/meta";
 import Reveal from "@/components/Reveal";
-import Art from "@/components/Art";
 import Btn from "@/components/Btn";
 import JsonLd from "@/components/JsonLd";
+import GridLines from "@/components/home/GridLines";
+import ServiceProcess from "@/components/home/ServiceProcess";
 import { CtaBand, FaqSection, ProjectGrid } from "@/components/Sections";
 
 export function generateStaticParams() {
@@ -42,50 +44,62 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
 
   return (
     <>
-      <section className="detail-hero">
+      {/* Cabecera del servicio: imagen cuadrada + categorías + título a la izquierda y la imagen grande a la derecha */}
+      <section className="sec l sd clip">
+        <GridLines />
         <div className="wrap">
-          <nav className="crumbs" style={{ marginBottom: 40, fontSize: 14, color: "#525252" }} aria-label="Ruta de navegación">
-            <Link href="/">Inicio</Link> / <Link href="/servicios">Servicios</Link> / {s.title}
-          </nav>
-          <div className="grid4">
-            <h1>{s.h1}</h1>
-            <p className="lead">{s.intro}</p>
-            <div className="chips">
-              {s.categories.map((c) => (
-                <span className="chip" key={c}>
-                  {c}
-                </span>
-              ))}
+          <div className="sd-wrap">
+            <div className="sd-left">
+              <div className="sd-small" data-a="fade">
+                <Image
+                  src={s.images[0]}
+                  alt={`${s.title}: imagen del servicio`}
+                  fill
+                  sizes="(min-width: 992px) 324px, 100vw"
+                  style={{ objectPosition: `${s.focus[0]}% 50%` }}
+                  priority
+                />
+              </div>
+              <div className="sd-cats">
+                <span className="sd-cap">Categorías</span>
+                <div className="sd-chips">
+                  {s.categories.map((c) => (
+                    <span className="sd-chip" key={c}>
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <p className="sd-info">{s.short}</p>
+              <h1 className="sd-h1" data-a="words">
+                {s.title}
+                <span className="sr-only"> — {s.h1}</span>
+              </h1>
+            </div>
+            <div className="sd-big" data-a="fade">
+              <Image
+                src={s.images[1]}
+                alt={`${s.title}: imagen principal del servicio`}
+                fill
+                sizes="(min-width: 992px) 660px, 100vw"
+                style={{ objectPosition: `${s.focus[1]}% 50%` }}
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section light" style={{ paddingTop: 80 }}>
-        <div className="wrap">
-          <Art tone={s.tone} variant={i} className="detail-visual" />
-          <span className="label">Qué incluye</span>
-          <div style={{ marginTop: 40 }}>
-            {s.deliverables.map((d, k) => (
-              <Reveal key={d.title}>
-                <div className="deliv">
-                  <span className="n">{String(k + 1).padStart(2, "0")}.</span>
-                  <h3>{d.title}</h3>
-                  <p>{d.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 60 }}>
-            <Btn href={wa(`Hola TechnoUltra, quiero información sobre ${s.title.toLowerCase()}.`)} tone="dark" external>
-              Cotizar {s.title.toLowerCase()}
-            </Btn>
-            <Btn href="/contacto" tone="ghost">
-              Contacto
-            </Btn>
-          </div>
+      <ServiceProcess intro={s.intro} items={s.deliverables}>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 60 }}>
+          <Btn href={wa(`Hola TechnoUltra, quiero información sobre ${s.title.toLowerCase()}.`)} tone="dark" external>
+            Cotizar {s.title.toLowerCase()}
+          </Btn>
+          <Btn href="/contacto" tone="ghost">
+            Contacto
+          </Btn>
         </div>
-      </section>
+      </ServiceProcess>
 
       {isTech && (
         <section className="section gray">
@@ -113,7 +127,7 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
       )}
 
       {!isTech && (
-        <section className="section light" style={{ paddingTop: 0 }}>
+        <section className="section light" style={{ paddingTop: 80 }}>
           <div className="wrap">
             <span className="label">Proyectos relacionados</span>
             <div style={{ marginTop: 40 }}>
