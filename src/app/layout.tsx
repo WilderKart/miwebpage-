@@ -13,7 +13,7 @@ import "./home.css";
 
 const head = Inter_Tight({ variable: "--font-head", subsets: ["latin"], weight: ["500", "600", "700"] });
 const body = Inter({ variable: "--font-body", subsets: ["latin"] });
-const ghostFont = Geist({ variable: "--font-ghost", subsets: ["latin"], weight: ["700"] });
+const ghostFont = Geist({ variable: "--font-ghost", subsets: ["latin"], weight: ["600", "700"] });
 
 export const viewport: Viewport = {
   themeColor: "#0e0e0e",

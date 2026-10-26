@@ -1,78 +1,124 @@
-import Link from "next/link";
-import { site, nav, services, wa } from "@/data/site";
-import Btn from "./Btn";
+"use client";
 
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { site } from "@/data/site";
+import GridLines from "@/components/home/GridLines";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const links = [
+  { href: "/nosotros", label: "Nosotros" },
+  { href: "/servicios", label: "Servicios" },
+  { href: "/proyectos", label: "Proyectos" },
+  { href: "/blog", label: "Blog" },
+  { href: "/planes", label: "Planes" },
+  { href: "/privacidad", label: "Privacidad" },
+  { href: "/terminos", label: "Términos" },
+];
+
+const socials = [
+  { href: site.instagram, label: "Instagram" },
+  { href: site.facebook, label: "Facebook" },
+  { href: site.linkedin, label: "LinkedIn" },
+];
+
+// Pie de página: contacto grande a la izquierda, formulario y enlaces a la derecha y la marca gigante
+// (Techno / Ultra) al fondo, que baja y aparece con el scroll.
 export default function Footer() {
+  const root = useRef<HTMLElement>(null);
+  const [sent, setSent] = useState(false);
+
+  useEffect(() => {
+    const el = root.current;
+    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".ft-logo span",
+        { opacity: 0, yPercent: -100 },
+        {
+          opacity: 1,
+          yPercent: 0,
+          ease: "none",
+          stagger: 0.05,
+          scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: 0.8 },
+        },
+      );
+    }, el);
+    return () => ctx.revert();
+  }, []);
+
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const f = new FormData(e.currentTarget);
+    const name = String(f.get("name") ?? "");
+    const email = String(f.get("email") ?? "");
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}&body=${encodeURIComponent(`Hola, soy ${name}. Mi correo es ${email}.`)}`;
+    setSent(true);
+  }
+
   return (
-    <footer className="footer">
+    <footer className="ft" ref={root}>
+      <GridLines tone="dark" />
       <div className="wrap">
-        <div className="footer-top">
-          <div className="talk">
-            <h2 className="h-md">Hablemos de tu próximo proyecto</h2>
-            <Btn href={wa("Hola TechnoUltra, quiero agendar un diagnóstico gratis.")} tone="accent" external>
-              Agendar diagnóstico gratis
-            </Btn>
-          </div>
-          <div>
-            <h4>Contacto</h4>
-            <div className="footer-contact">
-              <a href={site.phoneHref}>{site.phone}</a>
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <p>
+        <div className="ft-content">
+          <div className="ft-left">
+            <div className="ft-info">
+              <div className="ft-k">HABLEMOS</div>
+              <div className="ft-big">
+                <a href={site.phoneHref}>{site.phone}</a>
+                <a href={`mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}`}>{site.email}</a>
+              </div>
+              <div className="ft-addr">
+                Con sede en <br />
                 {site.city}, {site.country}
-              </p>
+              </div>
             </div>
           </div>
-          <div>
-            <h4>Navegación</h4>
-            <ul>
-              {nav.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/contacto">Contacto</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4>Servicios</h4>
-            <ul>
-              {services.map((s) => (
-                <li key={s.slug}>
-                  <Link href={`/servicios/${s.slug}`}>{s.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4>Redes</h4>
-            <ul>
-              <li>
-                <a href={site.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-              </li>
-              <li>
-                <a href={site.facebook} target="_blank" rel="noopener noreferrer">Facebook</a>
-              </li>
-              <li>
-                <a href={site.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              </li>
-            </ul>
+          <div className="ft-right">
+            <div className="ft-news">
+              <div className="ft-nt">Escríbenos</div>
+              {sent ? (
+                <p className="ft-done">¡Gracias! Abrimos tu correo para enviar el mensaje.</p>
+              ) : (
+                <form onSubmit={onSubmit}>
+                  <input name="name" type="text" maxLength={256} placeholder="Tu nombre *" aria-label="Tu nombre" required />
+                  <input name="email" type="email" maxLength={256} placeholder="Correo *" aria-label="Correo electrónico" required />
+                  <button type="submit" className="ft-btn">
+                    Contáctanos
+                  </button>
+                </form>
+              )}
+              <p className="ft-sub">Cuéntanos tu proyecto y te respondemos con un diagnóstico gratis para tu sitio web.</p>
+            </div>
+            <div className="ft-links">
+              <div className="ft-col">
+                <div className="ft-lt">NAVEGACIÓN</div>
+                {links.map((l) => (
+                  <Link key={l.href} href={l.href} className="ft-link">
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="ft-col ft-soc">
+                <div className="ft-lt">REDES</div>
+                {socials.map((s) => (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" className="ft-link ft-sl">
+                    {s.label}
+                    <ArrowUpRight size={12} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div className="wordmark" aria-hidden="true">
-          <span>{site.nameTop}</span>
-          <span>{site.nameBottom}</span>
-        </div>
-        <div className="footer-bar">
-          <span>
-            © 2026 {site.name} — Agencia digital en {site.city}, {site.country}.
-          </span>
-          <span>
-            <Link href="/privacidad">Política de privacidad</Link> · <Link href="/terminos">Términos de servicio</Link>
-          </span>
-        </div>
+      </div>
+      <div className="ft-logo" aria-hidden="true">
+        <span>{site.nameTop}</span>
+        <span>{site.nameBottom}®</span>
       </div>
     </footer>
   );

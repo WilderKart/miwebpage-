@@ -1,11 +1,10 @@
+import FaqBlock from "@/components/home/FaqBlock";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
 import { projects, posts, process, faqs, wa, type Post } from "@/data/site";
 import Reveal from "./Reveal";
 import Btn from "./Btn";
 import Art, { type Tone } from "./Art";
-import Faq from "./Faq";
 import JsonLd from "./JsonLd";
 
 export function CtaBand({ title = "¿Listo para tu próximo proyecto?" }: { title?: string }) {
@@ -110,23 +109,10 @@ export function FaqSection({ items = faqs }: { items?: { q: string; a: string }[
     })),
   };
   return (
-    <section className="section light" style={{ paddingTop: 40 }}>
-      <div className="wrap faq-wrap">
-        <div className="faq-title">
-          <span className="label">Preguntas</span>
-          <h2>FAQs</h2>
-        </div>
-        <div className="faq-list">
-          <Faq items={items} />
-          <div style={{ marginTop: 40, display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
-            <span className="muted">¿Tienes otra pregunta?</span>
-            <Link href="/contacto" className="link-u" style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-              Escríbenos <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
-          </div>
-        </div>
-      </div>
+    <>
+      <FaqBlock items={items} />
       <JsonLd data={ld} />
-    </section>
+    </>
   );
 }
+

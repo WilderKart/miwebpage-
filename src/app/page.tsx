@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { Wrench, Truck, Home as HomeIcon, Check } from "lucide-react";
-import { site, projects, coverage, wa } from "@/data/site";
+import { wa } from "@/data/site";
 import Hero from "@/components/Hero";
 import { About } from "@/components/home/AboutWhy";
 import { Why } from "@/components/home/Why";
@@ -9,9 +8,17 @@ import Numbers from "@/components/home/Numbers";
 import Reveal from "@/components/Reveal";
 import ServicesAccordion from "@/components/ServicesAccordion";
 import ShowReel from "@/components/home/ShowReel";
-import Testimonials from "@/components/Testimonials";
+import Works from "@/components/home/Works";
+import FeaturedProjects from "@/components/home/FeaturedProjects";
+import Partners from "@/components/home/Partners";
+import Coverage from "@/components/home/Coverage";
+import TestimonialSlider from "@/components/home/TestimonialSlider";
+import ProcessTeam from "@/components/home/ProcessTeam";
+import Pricing from "@/components/home/Pricing";
+import Newsletter from "@/components/home/Newsletter";
+import BlogList from "@/components/home/BlogList";
 import Btn from "@/components/Btn";
-import { CtaBand, FaqSection, PostGrid, ProcessGrid, ProjectGrid } from "@/components/Sections";
+import { FaqSection } from "@/components/Sections";
 
 export default function Home() {
   return (
@@ -83,131 +90,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Proyectos */}
       <ShowReel />
-      <section className="section light" style={{ paddingTop: 20 }}>
-        <div className="wrap">
-          <div className="works-head">
-            <div className="row">
-              <span>
-                Proyectos
-                <br />
-                destacados
-              </span>
-              <span style={{ textAlign: "right" }}>
-                ({projects.length} en producción)
-                <br />
-                2026
-              </span>
-            </div>
-            <div className="ast" aria-hidden="true">
-              ✱
-            </div>
-            <h2>Proyectos</h2>
-          </div>
-          <p className="lead muted" style={{ maxWidth: "36ch", margin: "0 0 70px 50%" }}>
-            Una selección de sitios, tiendas y aplicaciones que hemos construido para empresas reales en Colombia.
-          </p>
-          <ProjectGrid />
-          <div className="view-all">
-            <Btn href="/proyectos" tone="dark">
-              Ver todos los proyectos
-            </Btn>
-          </div>
-        </div>
-      </section>
+      <Works />
+      <FeaturedProjects />
 
-      {/* Confían en nosotros */}
-      <section className="section tight light partners" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="grid4">
-            <span className="label">Empresas que confían en nosotros</span>
-            <div className="marquee" aria-hidden="true">
-              <div className="marquee-in">
-                {[0, 1].map((k) => (
-                  <span key={k}>
-                    {["Electriobras", "Excelenter", "Tufink", "El Viajero", "Level23"].map((n) => (
-                      <b key={n} style={{ fontWeight: 600 }}>
-                        {n}
-                      </b>
-                    ))}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="partners-text">
-              <p>Trabajamos con empresas de ingeniería, comercio de tecnología, turismo y servicios que buscan crecer en internet.</p>
-              <p>Nuestra misión es ser tu aliado estratégico, usando tecnología moderna y diseño sofisticado para que tu negocio destaque.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Partners />
+      <Coverage />
 
-      {/* Cobertura */}
-      <section className="section dark">
-        <div className="wrap">
-          <div className="cov-head">
-            <Reveal>
-              <span className="label">Cobertura</span>
-            </Reveal>
-            <Reveal className="h-md">
-              <h2 className="h-md">Donde estamos y a dónde llegamos</h2>
-            </Reveal>
-          </div>
-          {coverage.map((c) => (
-            <Reveal className="cov-row" key={c.city}>
-              <span>{c.city}</span>
-              <span>{c.detail}</span>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <TestimonialSlider />
 
-      {/* Testimonios */}
-      <section className="section light">
-        <div className="wrap">
-          <div className="grid4" style={{ marginBottom: 20 }}>
-            <span className="label">Testimonios</span>
-          </div>
-          <Testimonials />
-        </div>
-      </section>
+      <ProcessTeam />
 
-      {/* Proceso */}
-      <section className="section gray">
-        <div className="wrap">
-          <div className="proc-head">
-            <Reveal className="h-md">
-              <span className="label">Cómo lo hacemos</span>
-              <h2 className="h-md" style={{ marginTop: 24 }}>
-                Una arquitectura de crecimiento: diagnóstico, diseño, desarrollo y mejora continua
-              </h2>
-            </Reveal>
-          </div>
-          <ProcessGrid />
-        </div>
-      </section>
+      <Pricing />
 
-      {/* Blog */}
-      <section className="section light">
-        <div className="wrap">
-          <div className="blog-head">
-            <Reveal>
-              <span className="label">El blog</span>
-              <h2 className="h-md" style={{ marginTop: 20 }}>
-                Noticias y guías de {site.name}
-              </h2>
-            </Reveal>
-            <Link href="/blog" className="link-u">
-              Ver todos los artículos
-            </Link>
-          </div>
-          <PostGrid limit={3} />
-        </div>
-      </section>
+      <Newsletter />
+      <BlogList />
 
       <FaqSection />
-      <CtaBand />
     </div>
   );
 }
