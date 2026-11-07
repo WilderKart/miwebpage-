@@ -54,9 +54,12 @@ export default function Footer() {
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
-    const name = String(f.get("name") ?? "");
-    const email = String(f.get("email") ?? "");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}&body=${encodeURIComponent(`Hola, soy ${name}. Mi correo es ${email}.`)}`;
+    const body = `Hola TechnoUltra, soy ${f.get("name")}.
+
+${f.get("message")}
+
+Mi correo: ${f.get("email")}`;
+    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}&body=${encodeURIComponent(body)}`;
     setSent(true);
   }
 
@@ -67,32 +70,41 @@ export default function Footer() {
         <div className="ft-content">
           <div className="ft-left">
             <div className="ft-info">
-              <div className="ft-k">HABLEMOS</div>
-              <div className="ft-big">
-                <a href={site.phoneHref}>{site.phone}</a>
-                <a href={`mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}`}>{site.email}</a>
-              </div>
-              <div className="ft-addr">
-                Con sede en <br />
-                {site.city}, {site.country}
-              </div>
+              <div className="ft-k">HABLEMOS DE TU PROYECTO</div>
+              <p className="ft-lead">
+                Cuéntanos qué tienes en mente. Ya sea una web corporativa, una aplicación a medida o escalar tu e-commerce, nuestro equipo está listo para asesorarte.
+              </p>
             </div>
+            <address className="ft-contact">
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Contacto desde la web")}`}>{site.email}</a>
+              <span>
+                <em>Teléfono</em> <a href={site.phoneHref}>{site.phone}</a>
+              </span>
+              <span>
+                <em>Con sede en</em> {site.city}, {site.country}
+              </span>
+            </address>
           </div>
           <div className="ft-right">
             <div className="ft-news">
-              <div className="ft-nt">Escríbenos</div>
               {sent ? (
                 <p className="ft-done">¡Gracias! Abrimos tu correo para enviar el mensaje.</p>
               ) : (
                 <form onSubmit={onSubmit}>
-                  <input name="name" type="text" maxLength={256} placeholder="Tu nombre *" aria-label="Tu nombre" required />
-                  <input name="email" type="email" maxLength={256} placeholder="Correo *" aria-label="Correo electrónico" required />
+                  <input name="name" type="text" maxLength={256} placeholder="Nombre completo" aria-label="Nombre completo" autoComplete="name" required />
+                  <input name="email" type="email" maxLength={256} placeholder="Correo electrónico" aria-label="Correo electrónico" autoComplete="email" required />
+                  <textarea name="message" rows={3} maxLength={2000} placeholder="Háblanos de tu proyecto (servicios, presupuesto o plazos)..." aria-label="Mensaje" required />
+                  <label className="ft-consent">
+                    <input type="checkbox" name="consent" required />
+                    <span>
+                      Al enviar, autorizas el tratamiento de tus datos personales de acuerdo con nuestra <Link href="/privacidad">Política de Privacidad</Link> y <Link href="/terminos">Términos de Servicio</Link>.
+                    </span>
+                  </label>
                   <button type="submit" className="ft-btn">
-                    Contáctanos
+                    Enviar mensaje <span aria-hidden="true">→</span>
                   </button>
                 </form>
               )}
-              <p className="ft-sub">Cuéntanos tu proyecto y te respondemos con un diagnóstico gratis para tu sitio web.</p>
             </div>
             <div className="ft-links">
               <div className="ft-col">

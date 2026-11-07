@@ -220,21 +220,6 @@ export const faqs = [
   },
 ];
 
-// Preguntas del servicio técnico (solo para /servicios/servicio-tecnico).
-export const techFaqs = [
-  {
-    q: "¿Reparan computadores, portátiles e impresoras?",
-    a: "Sí. Tenemos laboratorio técnico en Cali y ofrecemos recogida y entrega, servicio a domicilio o en sitio, y soporte remoto. Atendemos Cali, Palmira, Jamundí y Yumbo.",
-  },
-  {
-    q: "¿El servicio técnico tiene garantía?",
-    a: "Sí. Cada reparación incluye diagnóstico claro, repuestos de calidad y garantía por escrito del trabajo realizado.",
-  },
-  {
-    q: "¿Ofrecen mantenimiento preventivo para mis equipos?",
-    a: "Sí. Hacemos limpieza interna, cambio de pasta térmica, revisión de disco y memoria, actualizaciones y copia de seguridad para alargar la vida de tu computador o portátil.",
-  },
-];
 
 
 export type Plan = {
