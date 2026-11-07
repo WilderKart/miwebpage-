@@ -6,16 +6,12 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { posts, services } from "@/data/site";
+import { homePosts } from "@/data/site";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const heights = [272, 361, 400, 161];
-const imgOf = (slug: string, k: 0 | 1) => services.find((s) => s.slug === slug)!.images[k];
-// Imagen de cada artículo (de relleno hasta tener las reales).
-const imgs = [imgOf("desarrollo-web", 0), imgOf("estrategia-digital", 0), imgOf("servicio-tecnico", 1), imgOf("identidad-de-marca", 1)];
-
 const fmt = (iso: string) => new Intl.DateTimeFormat("es-CO", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(iso));
 
 // Blog: cuatro columnas con alturas de imagen distintas; las imágenes se revelan (altura 0 → 100 %, escala 1.5 → 1),
@@ -69,7 +65,7 @@ export default function BlogList() {
           <h2 className="bl-h1">Noticias y guías</h2>
         </div>
         <div className="bl-list">
-          {posts.slice(0, 4).map((p, i) => (
+          {homePosts.map((p, i) => (
             <Link href={`/blog/${p.slug}`} className="bl-link" key={p.slug}>
               <div className="bl-author">
                 <div className="bl-aw">
@@ -84,7 +80,7 @@ export default function BlogList() {
                 </time>
               </div>
               <div className="bl-img" style={{ height: heights[i % heights.length] }}>
-                <Image className="bl-ghost" src={imgs[i % imgs.length]} alt="" fill sizes="(min-width: 992px) 315px, 50vw" />
+                <Image className="bl-ghost" src={p.image} alt={p.imageAlt} fill sizes="(min-width: 992px) 315px, 50vw" />
               </div>
               <div className="bl-t">{p.title}</div>
             </Link>
