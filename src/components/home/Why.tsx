@@ -46,7 +46,7 @@ export function Why() {
         const h1 = SplitText.create(".wy-h1", { type: "words" });
         const h6 = SplitText.create(".wy-h6", { type: "lines" });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".wy-header", start: "top 85%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".wy-header", start: "top 85%" } })
           .from(h1.words, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.1, ease: "power4.out" }, 0)
           .from(h6.lines, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.05, ease: "power4.out" }, 0.33)
           .fromTo(
@@ -63,11 +63,11 @@ export function Why() {
           duration: 1,
           delay: 0.25,
           ease: "power4.out",
-          scrollTrigger: { trigger: ".wy-lab", start: "top bottom", once: true },
+          scrollTrigger: { trigger: ".wy-lab", start: "top bottom" },
         });
 
         // Paneles: el contenedor entra desde la izquierda; el panel 1 desde la izquierda y el 2 desde la derecha (retraso .35 s)
-        const st = { trigger: ".wy-panels", start: "top bottom", once: true } as const;
+        const st = { trigger: ".wy-panels", start: "top bottom" } as const;
         gsap.from(".wy-panels", { opacity: 0, x: -100, duration: 1, ease: "power4.out", scrollTrigger: st });
         gsap.from(".wy-b1", { opacity: 0, x: -100, duration: 1, delay: 0.35, ease: "power4.out", scrollTrigger: st });
         gsap.from(".wy-b2", { opacity: 0, x: 100, duration: 1, delay: 0.35, ease: "power4.out", scrollTrigger: st });
@@ -81,7 +81,7 @@ export function Why() {
             duration: 0.5,
             stagger: 0.1,
             ease: "sine.inOut",
-            scrollTrigger: { trigger: ".wy-cols", start: "top bottom", once: true },
+            scrollTrigger: { trigger: ".wy-cols", start: "top bottom" },
           },
         );
 

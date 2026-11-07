@@ -25,7 +25,7 @@ export default function Newsletter() {
       ctx = gsap.context(() => {
         const h = SplitText.create(".nl-t", { type: "words", mask: "words" });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".nl-wrap", start: "top 80%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".nl-wrap", start: "top 80%" } })
           .from(h.words, { yPercent: 100, opacity: 0, duration: 1, stagger: 0.1, ease: "power4.out" }, 0)
           .from(".nl-form", { opacity: 0, yPercent: 50, duration: 1, ease: "power4.out" }, 0.3);
       }, el);

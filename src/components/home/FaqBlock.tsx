@@ -25,7 +25,7 @@ export default function FaqBlock({ items }: { items: { q: string; a: string }[] 
       ctx = gsap.context(() => {
         const h = SplitText.create(".fq-h1", { type: "words" });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".fq", start: "top 85%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".fq", start: "top 85%" } })
           .from(h.words, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.1, ease: "power4.out" }, 0)
           .from(".fq-item", { opacity: 0, yPercent: 100, duration: 0.5, stagger: 0.2, ease: "power1.in" }, 0.3)
           .from(".fq-contact", { opacity: 0, duration: 0.5, ease: "sine.out" }, 1.6);

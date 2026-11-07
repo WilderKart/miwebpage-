@@ -51,7 +51,7 @@ export default function Header() {
 
   const cls = [
     "header",
-    open ? "open" : scrolled ? "scrolled" : pathname !== "/" ? "on-light" : "",
+    open ? "open" : scrolled ? "scrolled" : pathname !== "/" && !/^\/proyectos\/[^/]+/.test(pathname) ? "on-light" : "",
     open && scrolled ? "scrolled" : "",
     hidden && !open ? "hide" : "",
   ].join(" ");

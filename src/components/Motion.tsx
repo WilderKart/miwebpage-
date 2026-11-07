@@ -52,13 +52,13 @@ export default function Motion() {
                     ease: "power4.out",
                     stagger: 0.08,
                     delay,
-                    scrollTrigger: { trigger: el, start: "top 90%", once: true },
+                    scrollTrigger: { trigger: el, start: "top 90%" },
                   }),
               });
             });
 
           // Animaciones de la home (mismos tiempos y easings que la referencia)
-          const st = (el: Element, start = "top 85%") => ({ trigger: el, start, once: true });
+          const st = (el: Element, start = "top 85%") => ({ trigger: el, start });
           gsap.utils.toArray<HTMLElement>("[data-a='h'], [data-a='words']").forEach((el) => {
             const sp = SplitText.create(el, { type: "words" });
             gsap.from(sp.words, { opacity: 0, yPercent: 50, duration: 1, ease: "power4.out", stagger: 0.1, delay, scrollTrigger: st(el) });

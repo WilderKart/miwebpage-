@@ -34,7 +34,7 @@ export default function TestimonialSlider() {
         const h = SplitText.create(".ts-h", { type: "lines" });
         const d = SplitText.create(".ts-d", { type: "lines" });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".ts-wrap", start: "top 85%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".ts-wrap", start: "top 85%" } })
           .from(h.lines, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.1, ease: "power4.out" }, 0)
           .from(d.lines, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.05, ease: "power4.out" }, 0.5);
       }, el);

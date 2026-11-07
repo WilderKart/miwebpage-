@@ -53,12 +53,12 @@ export default function Coverage() {
           duration: 1,
           stagger: 0.1,
           ease: "power4.out",
-          scrollTrigger: { trigger: ".cv-head", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".cv-head", start: "top 85%" },
         });
         gsap.utils.toArray<HTMLElement>(".cv-item").forEach((item) => {
           const names = item.querySelectorAll<HTMLElement>(".cv-name");
           const dates = item.querySelectorAll<HTMLElement>(".cv-date");
-          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top bottom", once: true } });
+          const tl = gsap.timeline({ scrollTrigger: { trigger: item, start: "top bottom" } });
           names.forEach((n) => {
             const sp = SplitText.create(n, { type: "chars", mask: "chars" });
             tl.from(sp.chars, { opacity: 0, duration: 0.3, stagger: 0.03, ease: "none" }, 0.2);

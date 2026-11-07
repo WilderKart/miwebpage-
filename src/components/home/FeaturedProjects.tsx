@@ -35,7 +35,7 @@ export default function FeaturedProjects() {
               duration: 1,
               ease: "power4.inOut",
               delay: (i % 2) * 0.2,
-              scrollTrigger: { trigger: item, start: "top 70%", once: true },
+              scrollTrigger: { trigger: item, start: "top 70%" },
             },
           );
         });

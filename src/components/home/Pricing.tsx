@@ -52,7 +52,7 @@ export default function Pricing() {
           duration: 1,
           stagger: 0.1,
           ease: "power4.out",
-          scrollTrigger: { trigger: ".pr-head", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".pr-head", start: "top 85%" },
         });
       }, el);
     }, 700);

@@ -39,7 +39,7 @@ export default function ProcessTeam() {
         if (!reduce) {
           const h = SplitText.create(".pt-h1", { type: "words" });
           gsap
-            .timeline({ scrollTrigger: { trigger: ".pt-wrap", start: "top 85%", once: true } })
+            .timeline({ scrollTrigger: { trigger: ".pt-wrap", start: "top 85%" } })
             .from(h.words, { opacity: 0, yPercent: 50, duration: 1, stagger: 0.1, ease: "power4.out" }, 0)
             .from(".pt-sub, .pt-mt, .pt-st, .pt-sd", { opacity: 0, yPercent: 50, duration: 1, stagger: 0.05, ease: "power4.out" }, 0.3)
             .fromTo(".pt-job", { opacity: 0, xPercent: -20 }, { opacity: 1, xPercent: 0, duration: 0.3, stagger: 0.05, ease: "power1.inOut" }, 0.41)

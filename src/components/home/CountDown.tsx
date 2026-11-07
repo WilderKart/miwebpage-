@@ -29,7 +29,7 @@ export default function CountDown({ label = "120%", parts = num120 }: { label?: 
     const ctx = gsap.context(() => {
       // El CSS ya deja las columnas en su posición inicial; GSAP la lee como px, así que se limpia para no sumarla dos veces.
       gsap.set(".cd-a", { y: 0 });
-      const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top bottom", once: true } });
+      const tl = gsap.timeline({ scrollTrigger: { trigger: el, start: "top bottom" } });
       tl.fromTo(".cd-a", { yPercent: -90 }, { yPercent: 0, duration: 3, ease }, 0).fromTo(
         ".cd-b",
         { yPercent: 0 },

@@ -38,10 +38,10 @@ export default function BlogList() {
           duration: 1,
           stagger: 0.1,
           ease: "power4.out",
-          scrollTrigger: { trigger: ".bl-head", start: "top 85%", once: true },
+          scrollTrigger: { trigger: ".bl-head", start: "top 85%" },
         });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".bl-list", start: "top 90%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".bl-list", start: "top 90%" } })
           .fromTo(".bl-ghost", { height: 0, scale: 1.5 }, { height: "100%", scale: 1, duration: 1, stagger: 0.2, ease: "power4.inOut" }, 0)
           .from(".bl-author", { opacity: 0, yPercent: -100, duration: 1, stagger: 0.02, ease: "power4.out" }, 0);
         gsap.utils.toArray<HTMLElement>(".bl-link").forEach((a) => {

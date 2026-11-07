@@ -26,8 +26,8 @@ export default function PortfolioList() {
         const frame = c.querySelector(".pf-media");
         const phone = c.querySelector(".pf-phone");
         const txt = c.querySelectorAll(".pf-reveal");
-        gsap.from(frame, { clipPath: "inset(0 0 100% 0)", scale: 1.06, duration: 1.1, ease: "power4.inOut", scrollTrigger: { trigger: c, start: "top 75%", once: true } });
-        gsap.from(txt, { opacity: 0, yPercent: 30, duration: 0.9, stagger: 0.07, ease: "power4.out", scrollTrigger: { trigger: c, start: "top 75%", once: true } });
+        gsap.from(frame, { clipPath: "inset(0 0 100% 0)", scale: 1.06, duration: 1.1, ease: "power4.inOut", scrollTrigger: { trigger: c, start: "top 75%" } });
+        gsap.from(txt, { opacity: 0, yPercent: 30, duration: 0.9, stagger: 0.07, ease: "power4.out", scrollTrigger: { trigger: c, start: "top 75%" } });
         if (phone) gsap.fromTo(phone, { yPercent: 8 }, { yPercent: -10, ease: "none", scrollTrigger: { trigger: c, start: "top bottom", end: "bottom top", scrub: 0.8 } });
       });
     }, el);

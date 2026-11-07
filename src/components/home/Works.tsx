@@ -41,7 +41,7 @@ export default function Works() {
         const title = SplitText.create(".wk-title", { type: "lines" });
         const h6 = SplitText.create(".wk-h6", { type: "words", mask: "words" });
         gsap
-          .timeline({ scrollTrigger: { trigger: ".wk-wrap", start: "top 70%", once: true } })
+          .timeline({ scrollTrigger: { trigger: ".wk-wrap", start: "top 70%" } })
           .from(".wk-a1", { rotation: 45, scale: 0, duration: 1.5, ease: "power4.out" }, 0)
           .from(".wk-img", { opacity: 0 }, 0.4)
           .from(title.lines, { yPercent: 60, opacity: 0, duration: 1, stagger: 0.1, ease: "power4.out" }, 0.4)
@@ -86,11 +86,7 @@ export default function Works() {
             <h2 className="wk-title">
               EN “TN
               <br />
-              NO SEGUIMOS
-              <br />
-              LO ESTABLECIDO.
-              <br />
-              <span className="wk-red">CONSTRUIMOS</span>
+              <span className="wk-red">CREAMOS</span>
               <br />
               LO QUE SIGUE.
             </h2>

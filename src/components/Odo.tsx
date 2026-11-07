@@ -26,7 +26,7 @@ export default function Odo({ text }: { text: string }) {
           duration: 1.8,
           delay: i * 0.1,
           ease: "power3.out",
-          scrollTrigger: { trigger: el, start: "top 90%", once: true },
+          scrollTrigger: { trigger: el, start: "top 90%" },
         });
       });
     }, el);
