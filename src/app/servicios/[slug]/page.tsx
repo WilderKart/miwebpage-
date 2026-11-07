@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { services, projects, site, absoluteUrl, wa, faqs } from "@/data/site";
+import { services, projects, site, absoluteUrl, wa, faqs, techFaqs } from "@/data/site";
 import { pageMeta } from "@/lib/meta";
 import Reveal from "@/components/Reveal";
 import Btn from "@/components/Btn";
@@ -29,7 +29,7 @@ export default async function ServicioPage({ params }: PageProps<"/servicios/[sl
   const s = services[i];
   const next = services[(i + 1) % services.length];
   const isTech = s.slug === "servicio-tecnico";
-  const faq = isTech ? faqs.filter((f) => /repar|garant|soporte/i.test(f.q)) : faqs.slice(0, 4);
+  const faq = isTech ? techFaqs : faqs.slice(0, 4);
 
   const ld = {
     "@context": "https://schema.org",

@@ -195,17 +195,33 @@ export const coverage = [
 
 export const faqs = [
   {
-    q: "¿Cuánto tarda el desarrollo de una página web?",
-    a: "Una página corporativa suele estar lista entre 3 y 6 semanas; una tienda online o una aplicación a medida puede tomar de 6 a 12 semanas según el alcance. Te damos un cronograma claro desde el diagnóstico.",
+    q: "¿Cuánto tarda el desarrollo de una página web a medida?",
+    a: "Una página web corporativa o landing page optimizada suele estar lista entre 3 y 6 semanas. Para proyectos más complejos como tiendas online (e-commerce) o desarrollo de Web Apps en Next.js, el tiempo estimado es de 6 a 12 semanas. Desde el diagnóstico inicial, te entregamos un cronograma exacto basado en el diseño UI/UX y la arquitectura de software.",
   },
   {
-    q: "¿Mi página web aparecerá en Google?",
-    a: "Entregamos cada sitio con SEO técnico y contenidos pensados para búsquedas locales como “desarrollo web en Cali”. El posicionamiento crece con el tiempo y lo reforzamos con contenido, perfil de negocio en Google y campañas.",
+    q: "¿Mi página web aparecerá en los primeros resultados de Google?",
+    a: "Desarrollamos todas nuestras plataformas con tecnologías modernas como Next.js, lo que garantiza una velocidad de carga ultrarrápida (Core Web Vitals) y un código semántico que Google prioriza. Implementamos SEO técnico avanzado desde la base. Aunque el posicionamiento es un proceso continuo, te entregamos el ecosistema digital perfecto para competir al más alto nivel.",
   },
   {
-    q: "¿Pueden manejar mis redes sociales?",
-    a: "Sí. Planeamos el calendario editorial, diseñamos las piezas y publicamos con la voz de tu marca. También medimos resultados para ajustar la estrategia cada mes.",
+    q: "Al finalizar, ¿quién es el dueño del dominio, hosting y código?",
+    a: "Tú eres el único dueño al 100%. A diferencia de otras agencias, en TechnoUltra registramos el dominio y la infraestructura cloud a tu nombre o el de tu empresa. Entregamos plataformas con código fuente moderno y portable (React / Next.js) para que tengas el control absoluto de tus activos digitales, sin contratos de permanencia forzada.",
   },
+  {
+    q: "¿Desarrollan tiendas online (e-commerce) y aplicaciones web?",
+    a: "Sí. Nos especializamos en el desarrollo de e-commerce de alta conversión y plataformas a medida (SaaS). No usamos plantillas limitadas; construimos interfaces de usuario (UX) pensadas para vender e integramos pasarelas de pago seguras (MercadoPago, Stripe) para que tu negocio sea escalable.",
+  },
+  {
+    q: "¿Ofrecen branding y gestión de campañas publicitarias?",
+    a: "Sí, funcionamos como tu partner de crecimiento. Además de la ingeniería web, creamos identidades de marca sólidas (logos y manuales de marca) y diseñamos estrategias de pauta digital en Google Ads y Meta Ads enfocadas en Retorno de Inversión (ROI) para llevar clientes cualificados a tu nueva plataforma.",
+  },
+  {
+    q: "¿Ofrecen soporte y mantenimiento web después del lanzamiento?",
+    a: "Por supuesto, el lanzamiento es solo el principio. Contamos con planes de suscripción mensual que incluyen copias de seguridad, monitoreo de seguridad 24/7, optimización continua de conversión (CRO) y horas de desarrollo para que tu sitio o aplicación web evolucione constantemente al ritmo de tu empresa.",
+  },
+];
+
+// Preguntas del servicio técnico (solo para /servicios/servicio-tecnico).
+export const techFaqs = [
   {
     q: "¿Reparan computadores, portátiles e impresoras?",
     a: "Sí. Tenemos laboratorio técnico en Cali y ofrecemos recogida y entrega, servicio a domicilio o en sitio, y soporte remoto. Atendemos Cali, Palmira, Jamundí y Yumbo.",
@@ -215,10 +231,11 @@ export const faqs = [
     a: "Sí. Cada reparación incluye diagnóstico claro, repuestos de calidad y garantía por escrito del trabajo realizado.",
   },
   {
-    q: "¿Ofrecen soporte después de entregar el proyecto?",
-    a: "Sí, ofrecemos planes de mantenimiento con actualizaciones, copias de seguridad, monitoreo de velocidad y mejoras continuas para tu sitio o aplicación.",
+    q: "¿Ofrecen mantenimiento preventivo para mis equipos?",
+    a: "Sí. Hacemos limpieza interna, cambio de pasta térmica, revisión de disco y memoria, actualizaciones y copia de seguridad para alargar la vida de tu computador o portátil.",
   },
 ];
+
 
 export type Plan = {
   n: string;
