@@ -48,7 +48,7 @@ body:has(.home-root) .lines { display: none; }
 
 /* Avatares */
 .avs { display: flex; align-items: center; }
-.av { width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-family: var(--head); font-weight: 600; font-size: 15px; color: #fff; margin-right: -14px; border: 2px solid var(--bgc, #fff); background: linear-gradient(135deg, #ff9a1f, #ff4a00); }
+.av { position: relative; overflow: hidden; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; font-family: var(--head); font-weight: 600; font-size: 15px; color: #fff; margin-right: -14px; border: 2px solid var(--bgc, #fff); background: linear-gradient(135deg, #ff9a1f, #ff4a00); }
 .av.a2 { background: linear-gradient(135deg, #2a0e00, #ff6a00); }
 .av.a3 { background: linear-gradient(135deg, #ffc13a, #ff5a00); }
 .av.n { background: var(--n200); color: #000; margin-right: 0; font-weight: 500; }
@@ -220,7 +220,7 @@ body:has(.home-root) .lines { display: none; }
   .wy-b { width: 100%; }
   .wy-card { margin: 40px 0; }
   .wy-b2 .wy-card { margin: 0; }
-  .nm-left, .nm-it { grid-column: 1; grid-row: auto; }
+  .nm-left, .nm-it { grid-column: 1 !important; grid-row: auto; }
   .nm-text { text-indent: 0; }
 }
 
@@ -626,3 +626,15 @@ body:has(.home-root) .lines { display: none; }
 .ft-contact span:last-child, .ft-contact span:last-child a { color: rgba(255, 255, 255, 0.5); }
 .ft-news .ft-consent input[type="checkbox"] { width: 16px; height: 16px; padding: 0; border: 0; border-radius: 3px; flex: none; accent-color: #ff6a00; }
 .ft-news .ft-btn { text-transform: none; margin-top: 8px; }
+
+.av img { object-fit: cover; }
+
+/* Precios: que nunca desborden en tablet y móvil */
+@media (max-width: 1199px) { .pr-num { font-size: 52px; line-height: 52px; } .pr-price { flex-wrap: wrap; } }
+@media (max-width: 991px) { .pr-num { font-size: 40px; line-height: 44px; } .pr-btn { max-width: 140px; } }
+@media (max-width: 767px) { .pr-num { font-size: 52px; line-height: 56px; } .pr-btn { max-width: 168px; } }
+@media (max-width: 479px) { .pr-num { font-size: 40px; line-height: 44px; } .pr-top, .pr-bot { padding: 28px 20px; } .pr-tt h3 { overflow-wrap: anywhere; } }
+@media (max-width: 991px) { .pr-h1 { font-size: 80px; line-height: 88px; } }
+@media (max-width: 991px) { .pt-subwrap { gap: 32px; } }
+@media (max-width: 991px) { .fq-h1, .pr-h1, .bl-h1, .cv-h1, .cv-n { font-size: min(80px, 19vw); } }
+@media (max-width: 991px) { .pt-big { font-size: min(120px, 30vw); line-height: 1; } }

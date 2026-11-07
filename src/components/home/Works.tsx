@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { projects } from "@/data/site";
+import PhotoAv from "./PhotoAv";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -105,9 +106,9 @@ export default function Works() {
                 SELECCIONADO
               </div>
               <div className="avs" aria-hidden="true">
-                <span className="av">EO</span>
-                <span className="av a2">EX</span>
-                <span className="av a3">TF</span>
+                <PhotoAv src="/team/laura-valencia.jpg" />
+                <PhotoAv src="/team/andres-mejia.jpg" className="av a2" />
+                <PhotoAv src="/team/natalia-cardenas.jpg" className="av a3" />
                 <span className="av n">{String(projects.length).padStart(2, "0")}</span>
               </div>
             </div>

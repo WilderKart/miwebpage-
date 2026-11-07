@@ -246,7 +246,7 @@ export const plans: Plan[] = [
     ],
     priceLabel: "Inversión desde",
     price: "$1.200 USD",
-    note: "(o el equivalente en tu moneda local • 3 cuotas sin interés)",
+    note: "(o el equivalente en tu moneda local)",
   },
   {
     n: "02",

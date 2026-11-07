@@ -6,6 +6,7 @@ import { Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CountDown, { type CountPart } from "./CountDown";
+import PhotoAv from "./PhotoAv";
 import GridLines from "./GridLines";
 import TextScroll from "./TextScroll";
 
@@ -97,9 +98,9 @@ export default function Numbers() {
                   <span>MÁS DE</span> 23K+ CLIENTES
                 </div>
                 <div className="avs" aria-hidden="true">
-                  <span className="av">EO</span>
-                  <span className="av a2">EX</span>
-                  <span className="av a3">TF</span>
+                  <PhotoAv src="/team/laura-valencia.jpg" />
+                  <PhotoAv src="/team/andres-mejia.jpg" className="av a2" />
+                  <PhotoAv src="/team/natalia-cardenas.jpg" className="av a3" />
                   <span className="av n">23K</span>
                 </div>
               </div>

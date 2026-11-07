@@ -2,6 +2,7 @@ export type PostSection = { heading: string; paragraphs: string[]; list?: string
 
 export type Post = {
   slug: string;
+  author: string; // slug de autor (data/team.ts)
   title: string; // H1 (con la palabra clave principal)
   metaTitle: string; // <title> para Google (≤ 60 caracteres)
   description: string; // meta description (≤ 160 caracteres)
@@ -22,7 +23,7 @@ export type Post = {
 export const blogCategories = [
   { slug: "paginas-web", label: "Páginas web" },
   { slug: "seo-y-google", label: "SEO y Google" },
-  { slug: "servicio-tecnico", label: "Servicio técnico" },
+  { slug: "diseno-y-agencia", label: "Diseño y agencia" },
   { slug: "branding", label: "Branding" },
 ];
 
@@ -30,6 +31,7 @@ export const blogCategories = [
 export const posts: Post[] = [
   {
     slug: "cuanto-cuesta-una-pagina-web-en-colombia",
+    author: "andres-mejia",
     title: "¿Cuánto cuesta una página web en Colombia? Guía de precios 2026 para empresas",
     metaTitle: "¿Cuánto cuesta una página web en Colombia? Precios 2026",
     description:
@@ -88,6 +90,7 @@ export const posts: Post[] = [
   },
   {
     slug: "pagina-web-o-tienda-online-cual-necesita-tu-negocio",
+    author: "andres-mejia",
     title: "Página web o tienda online: cuál necesita tu negocio en Colombia",
     metaTitle: "Página web o tienda online: cuál elegir para tu negocio",
     description:
@@ -143,6 +146,7 @@ export const posts: Post[] = [
   },
   {
     slug: "seo-local-en-cali-como-aparecer-en-google",
+    author: "laura-valencia",
     title: "SEO local en Cali: cómo aparecer en Google cuando te buscan cerca",
     metaTitle: "SEO local en Cali: cómo aparecer en Google en 2026",
     description:
@@ -151,9 +155,9 @@ export const posts: Post[] = [
     date: "2026-09-22",
     updated: "2026-11-05",
     readMinutes: 7,
-    excerpt: "Pasos concretos para aparecer en búsquedas como “servicio técnico en Cali” o “ingeniería eléctrica en Cali”.",
+    excerpt: "Pasos concretos para aparecer en búsquedas como “diseño web en Cali” o “ingeniería eléctrica en Cali”.",
     intro:
-      "Cuando alguien busca “servicio técnico en Cali” o “ingeniería eléctrica en Cali”, quiere resolver algo cerca y ahora. Quien aparece primero en Google recibe la llamada, el mensaje o la visita. El SEO local es el conjunto de acciones que te ponen ahí, y no requiere un presupuesto enorme: requiere orden y constancia.",
+      "Cuando alguien busca “diseño web en Cali” o “ingeniería eléctrica en Cali”, quiere resolver algo cerca y ahora. Quien aparece primero en Google recibe la llamada, el mensaje o la visita. El SEO local es el conjunto de acciones que te ponen ahí, y no requiere un presupuesto enorme: requiere orden y constancia.",
     keywords: ["SEO local en Cali", "posicionamiento web en Cali", "aparecer en Google Cali", "SEO para negocios locales", "agencia SEO Cali"],
     image: "/blog/seo-local-en-cali-como-aparecer-en-google.jpg",
     imageAlt: "Mapa de Cali en una pantalla con pines de ubicación y una lupa sobre los resultados de Google",
@@ -200,6 +204,7 @@ export const posts: Post[] = [
   },
   {
     slug: "perfil-de-negocio-en-google-como-aparecer-en-google-maps",
+    author: "laura-valencia",
     title: "Perfil de negocio en Google: cómo aparecer en Google Maps paso a paso",
     metaTitle: "Perfil de negocio en Google: aparecer en Maps paso a paso",
     description:
@@ -225,7 +230,7 @@ export const posts: Post[] = [
       {
         heading: "Paso 2: elige bien la categoría y los servicios",
         paragraphs: [
-          "La categoría principal es uno de los factores que más influye. Elige la que mejor describa tu actividad (por ejemplo, “servicio de reparación de computadores”) y añade categorías secundarias. Después lista cada servicio con una descripción corta que incluya la ciudad cuando sea natural.",
+          "La categoría principal es uno de los factores que más influye. Elige la que mejor describa tu actividad (por ejemplo, “agencia de diseño web”) y añade categorías secundarias. Después lista cada servicio con una descripción corta que incluya la ciudad cuando sea natural.",
         ],
       },
       {
@@ -258,128 +263,142 @@ export const posts: Post[] = [
     ],
   },
   {
-    slug: "mantenimiento-de-computadores-cada-cuanto-hacerlo",
-    title: "Mantenimiento de computadores: cada cuánto hacerlo y señales de que necesita reparación",
-    metaTitle: "Mantenimiento de computadores: cada cuánto hacerlo",
+    slug: "como-elegir-una-agencia-de-diseno-web-en-cali",
+    author: "camilo-restrepo",
+    title: "Cómo elegir una agencia de diseño web en Cali: 7 criterios para no equivocarte",
+    metaTitle: "Cómo elegir una agencia de diseño web en Cali: 7 criterios",
     description:
-      "Cada cuánto hacer mantenimiento preventivo a tu computador o portátil, qué incluye y las señales de que necesita reparación. Servicio técnico en Cali.",
-    category: "Servicio técnico",
+      "Qué revisar antes de contratar una agencia de diseño y desarrollo web en Cali: portafolio, tecnología, SEO, propiedad del sitio, soporte y una propuesta clara por escrito.",
+    category: "Diseño y agencia",
     date: "2026-10-01",
-    updated: "2026-11-05",
+    updated: "2026-11-07",
     readMinutes: 6,
-    excerpt: "Cuándo limpiar y revisar tu equipo, y qué síntomas indican que es hora de llevarlo al técnico.",
+    excerpt: "Siete preguntas que te ayudan a distinguir una agencia seria de una que solo promete.",
     intro:
-      "Un computador que se calienta, hace ruido o se pone lento casi nunca “se dañó de repente”: venía avisando. El mantenimiento preventivo alarga la vida del equipo, evita perder información y sale mucho más barato que una reparación mayor. Aquí te explicamos cada cuánto hacerlo, qué incluye y cuándo no esperar más.",
-    keywords: ["mantenimiento de computadores", "mantenimiento preventivo de portátiles", "servicio técnico de computadores en Cali", "limpieza de computador", "cambio de pasta térmica"],
-    image: "/blog/mantenimiento-de-computadores-cada-cuanto-hacerlo.jpg",
-    imageAlt: "Técnico abriendo un portátil para limpiar el ventilador y cambiar la pasta térmica en un laboratorio",
-    service: { slug: "servicio-tecnico", label: "Servicio técnico" },
+      "Elegir una agencia de diseño web en Cali no debería depender del precio más bajo ni del portafolio más vistoso. Un sitio web es una inversión que trabaja para tu negocio todos los días, y la agencia que lo construya define su velocidad, su posicionamiento en Google y lo fácil que será hacerlo crecer. Estos son los siete criterios que conviene revisar antes de firmar.",
+    keywords: ["agencia de diseño web en Cali", "cómo elegir una agencia web", "desarrollo web en Cali", "agencia digital en Cali", "contratar diseñador web"],
+    image: "/blog/como-elegir-una-agencia-de-diseno-web-en-cali.jpg",
+    imageAlt: "Reunión de trabajo entre un equipo de agencia digital y un cliente revisando el diseño de un sitio web en un portátil",
+    service: { slug: "desarrollo-web", label: "Desarrollo web" },
     sections: [
       {
-        heading: "Cada cuánto hacer el mantenimiento preventivo",
+        heading: "1. Revisa su portafolio con proyectos reales y en línea",
         paragraphs: [
-          "Lo recomendable es una limpieza interna y el cambio de pasta térmica al menos una vez al año. Si el equipo trabaja muchas horas, está en un ambiente con polvo (talleres, cocinas, oficinas con alfombra) o es un portátil gamer, hazlo cada seis meses.",
+          "Pide ver sitios publicados y funcionando, no solo imágenes. Entra desde tu celular, mide qué tan rápido cargan y comprueba que se vean bien en todos los tamaños. Si puedes, habla con el cliente. En nuestro [portafolio](/proyectos) todos los proyectos están en línea para que los visites.",
         ],
       },
       {
-        heading: "Qué incluye un buen mantenimiento",
-        paragraphs: ["Un servicio completo no se limita a soplar polvo. Debería incluir:"],
+        heading: "2. Pregunta por la tecnología y la velocidad",
+        paragraphs: [
+          "Una agencia profesional trabaja con tecnologías modernas (por ejemplo, Next.js o React) y puede explicarte por qué. La velocidad de carga influye en tus ventas y en tu posicionamiento: pide que midan el sitio con Core Web Vitals antes de entregarlo.",
+        ],
+      },
+      {
+        heading: "3. Exige SEO desde el diseño, no como un extra",
+        paragraphs: [
+          "El posicionamiento se construye desde la estructura: títulos, URL, velocidad, datos estructurados y una página por servicio. Si la agencia “agrega el SEO al final”, ya perdiste tiempo. Lee nuestra guía de [SEO local en Cali](/blog/seo-local-en-cali-como-aparecer-en-google) para saber qué pedir.",
+        ],
+      },
+      {
+        heading: "4. Confirma quién será el dueño del dominio, el hosting y el código",
+        paragraphs: [
+          "Tu dominio y tu infraestructura deben quedar a tu nombre o al de tu empresa, con acceso a tu código fuente. Así nadie puede retener tu sitio y puedes cambiar de proveedor cuando quieras.",
+        ],
+      },
+      {
+        heading: "5. Mira cómo trabajan: diagnóstico, cronograma y entregables",
+        paragraphs: ["Una agencia ordenada te entrega por escrito:"],
         list: [
-          "Limpieza interna de ventiladores, disipadores y rejillas.",
-          "Cambio de pasta térmica en procesador y, si aplica, en la tarjeta gráfica.",
-          "Revisión del estado del disco y de la memoria.",
-          "Actualización del sistema, controladores y antivirus.",
-          "Copia de seguridad de tus archivos importantes.",
+          "Un diagnóstico inicial de tu negocio y tus objetivos.",
+          "Un cronograma con fechas y número de revisiones.",
+          "El alcance exacto: secciones, funciones e integraciones.",
+          "Qué incluye el SEO, el diseño adaptable a celular y la capacitación.",
         ],
       },
       {
-        heading: "Señales de alerta: cuándo no esperar",
+        heading: "6. Pregunta qué pasa después del lanzamiento",
         paragraphs: [
-          "Ruidos fuertes del ventilador, calentamiento excesivo, apagados repentinos, lentitud extrema, pantalla azul o avisos de fallas en el disco son señales claras. Si tu portátil no carga o tu impresora deja de imprimir, también conviene revisar a tiempo. Actuar rápido evita perder información y reduce el costo de la reparación.",
+          "Un sitio necesita mantenimiento: actualizaciones de seguridad, copias de respaldo y mejoras. Pregunta si hay planes de soporte y qué incluyen, y si puedes contratar solo lo que necesitas, sin permanencia forzada.",
         ],
       },
       {
-        heading: "Recogida, laboratorio o domicilio",
+        heading: "7. Compara por alcance, no solo por precio",
         paragraphs: [
-          "En TechnoUltra puedes elegir cómo atenderte: recogemos tu equipo y te lo devolvemos reparado, lo traes a nuestro laboratorio o enviamos un técnico a tu casa u oficina en Cali, Palmira, Jamundí y Yumbo. Conoce nuestro [servicio técnico de computadores e impresoras](/servicios/servicio-tecnico).",
+          "Dos cotizaciones con el mismo valor pueden incluir cosas muy distintas. Antes de decidir, revisa nuestra guía de [cuánto cuesta una página web en Colombia](/blog/cuanto-cuesta-una-pagina-web-en-colombia) y compara las propuestas punto por punto. Si quieres una cotización clara, [conoce nuestro servicio de desarrollo web](/servicios/desarrollo-web).",
         ],
       },
     ],
     faqs: [
-      { q: "¿Cada cuánto debo hacerle mantenimiento a mi portátil?", a: "Al menos una vez al año. Si trabaja muchas horas, está en un ambiente con polvo o se calienta con facilidad, cada seis meses." },
-      { q: "¿Qué pasa si no le hago mantenimiento al computador?", a: "El polvo y la pasta térmica reseca elevan la temperatura, lo que reduce el rendimiento, provoca apagados y acorta la vida de los componentes." },
-      { q: "¿Hacen mantenimiento a domicilio en Cali?", a: "Sí. Atendemos a domicilio en Cali, Palmira, Jamundí y Yumbo, y también ofrecemos recogida y entrega del equipo." },
+      { q: "¿Cuánto debería durar el desarrollo de una página web?", a: "Una página corporativa suele tomar entre tres y seis semanas. Tiendas online y aplicaciones requieren más tiempo, según el alcance." },
+      { q: "¿Es mejor una agencia o un diseñador freelance?", a: "Depende del proyecto. Una agencia reúne diseño, desarrollo, SEO y soporte en un solo equipo, lo que reduce riesgos en proyectos que necesitan varias especialidades." },
+      { q: "¿Qué debo pedir en una propuesta de diseño web?", a: "Alcance detallado, cronograma, entregables, número de revisiones, qué incluye el SEO, quién es dueño del dominio y el código, y las condiciones de soporte posterior." },
     ],
   },
   {
-    slug: "computador-lento-causas-y-soluciones",
-    title: "Computador lento: 7 causas y cómo solucionarlo",
-    metaTitle: "Computador lento: 7 causas y cómo solucionarlo",
+    slug: "diseno-ui-ux-que-es-y-como-aumenta-las-ventas-de-tu-pagina-web",
+    author: "camilo-restrepo",
+    title: "Diseño UI/UX: qué es y cómo aumenta las ventas de tu página web",
+    metaTitle: "Diseño UI/UX: qué es y cómo aumenta las ventas web",
     description:
-      "Por qué tu computador o portátil está lento y cómo arreglarlo: disco, memoria RAM, virus, programas de inicio, temperatura y cuándo llevarlo a un técnico.",
-    category: "Servicio técnico",
+      "Qué es el diseño UI/UX, en qué se diferencian UI y UX y qué prácticas (jerarquía, velocidad, móvil, llamados a la acción) convierten visitas en clientes en tu sitio web.",
+    category: "Diseño y agencia",
     date: "2026-11-03",
-    updated: "2026-11-05",
+    updated: "2026-11-07",
     readMinutes: 6,
-    excerpt: "Las causas más comunes de un equipo lento y soluciones que puedes probar antes de llamar al técnico.",
+    excerpt: "La diferencia entre un sitio bonito y uno que vende está en cómo se diseña la experiencia.",
     intro:
-      "Un computador lento hace que cada tarea tome el doble de tiempo y termina desesperando a cualquiera. La buena noticia es que casi siempre tiene solución y, en muchos casos, no requiere comprar un equipo nuevo. Estas son las siete causas más frecuentes y qué hacer en cada una.",
-    keywords: ["computador lento", "por qué mi computador está lento", "cómo acelerar un portátil", "reparación de computadores en Cali", "cambiar disco a SSD"],
-    image: "/blog/computador-lento-causas-y-soluciones.jpg",
-    imageAlt: "Portátil con la pantalla congelada y un indicador de carga junto a un disco SSD nuevo sobre el escritorio",
-    service: { slug: "servicio-tecnico", label: "Servicio técnico" },
+      "Un sitio web puede verse espectacular y aun así no vender. La razón casi siempre está en la experiencia: si el visitante no encuentra rápido lo que busca, no entiende qué hacer o se frustra en el celular, se va. El diseño UI/UX se ocupa justamente de eso: que tu sitio se vea bien, sea fácil de usar y guíe a cada persona hasta contactarte o comprar.",
+    keywords: ["diseño UI/UX", "qué es UI UX", "diseño web que vende", "experiencia de usuario", "conversión web"],
+    image: "/blog/diseno-ui-ux-que-es-y-como-aumenta-las-ventas-de-tu-pagina-web.jpg",
+    imageAlt: "Diseñadora UI/UX trabajando con wireframes y prototipos de una aplicación en una pantalla y en papel",
+    service: { slug: "diseno-ui-ux", label: "Diseño UI/UX" },
     sections: [
       {
-        heading: "1. Disco duro mecánico o lleno",
+        heading: "Qué es UI y qué es UX",
         paragraphs: [
-          "Es la causa número uno. Un disco mecánico es mucho más lento que un SSD, y si además está casi lleno, el sistema tarda más en todo. Cambiar a un SSD es la mejora que más se nota: el equipo enciende y abre programas en segundos.",
+          "UI (interfaz de usuario) es lo que se ve: colores, tipografías, botones, imágenes y la jerarquía de la página. UX (experiencia de usuario) es lo que se siente al usarla: qué tan fácil es encontrar información, completar un formulario o comprar.",
+          "Una buena interfaz sin buena experiencia es solo decoración; una buena experiencia sin interfaz cuidada pierde confianza. Las dos van juntas.",
         ],
       },
       {
-        heading: "2. Poca memoria RAM",
-        paragraphs: [
-          "Con 4 GB hoy se queda corto hasta para navegar con varias pestañas. Para uso de oficina lo mínimo recomendable son 8 GB, y 16 GB si editas, diseñas o trabajas con muchas aplicaciones a la vez.",
+        heading: "Cinco prácticas que más impactan las ventas",
+        paragraphs: ["Estas decisiones de diseño tienen efecto directo en cuántos visitantes se convierten en clientes:"],
+        list: [
+          "Jerarquía clara: un mensaje principal, un llamado a la acción visible y menos distracciones.",
+          "Navegación simple: que cualquiera llegue a cualquier servicio en dos clics.",
+          "Prueba social: reseñas, casos de éxito y logos de clientes cerca de los llamados a la acción.",
+          "Formularios cortos: pide solo lo necesario para empezar la conversación.",
+          "Botón de WhatsApp visible: en Colombia es el canal que más contactos genera.",
         ],
       },
       {
-        heading: "3. Demasiados programas al iniciar",
+        heading: "Velocidad y diseño pensado primero para celular",
         paragraphs: [
-          "Muchas aplicaciones se abren solas al encender el equipo y consumen recursos todo el día. Desactiva en el Administrador de tareas, pestaña “Inicio”, las que no necesites.",
+          "Más de la mitad de las visitas llegan desde el celular. Un sitio lento o que se desborda en pantallas pequeñas pierde clientes antes de mostrar una sola imagen. Por eso diseñamos primero la versión móvil y la optimizamos con [desarrollo web moderno](/servicios/desarrollo-web) para que cargue rápido.",
         ],
       },
       {
-        heading: "4. Virus y programas no deseados",
+        heading: "Cómo medir si el diseño funciona",
         paragraphs: [
-          "El malware, las barras del navegador y los programas “gratis” instalados sin querer ralentizan el sistema. Ejecuta un análisis completo con un antivirus de confianza y desinstala lo que no reconozcas.",
+          "Revisa en Google Analytics la tasa de rebote y de conversión, usa mapas de calor para ver dónde hacen clic las personas y prueba variantes de títulos y botones. El diseño se mejora con datos, no con opiniones. Si además trabajas tu posicionamiento, combínalo con [SEO local](/blog/seo-local-en-cali-como-aparecer-en-google).",
         ],
       },
       {
-        heading: "5. Sobrecalentamiento",
+        heading: "Cuándo conviene rediseñar tu sitio",
         paragraphs: [
-          "Cuando el equipo se calienta, el procesador baja su velocidad para protegerse. Si el ventilador suena fuerte o el portátil quema, necesitas una limpieza y cambio de pasta térmica. Lee nuestra guía de [mantenimiento de computadores](/blog/mantenimiento-de-computadores-cada-cuanto-hacerlo).",
-        ],
-      },
-      {
-        heading: "6. Sistema desactualizado o dañado",
-        paragraphs: [
-          "Las actualizaciones pendientes, los controladores viejos o archivos del sistema corruptos también afectan el rendimiento. A veces la solución es una reinstalación limpia, siempre después de respaldar tus archivos.",
-        ],
-      },
-      {
-        heading: "7. Equipo demasiado antiguo para tu uso",
-        paragraphs: [
-          "Si el procesador tiene más de ocho o diez años, puede que ya no alcance para las exigencias actuales. Un técnico puede decirte si conviene mejorarlo o si es más rentable cambiarlo. En TechnoUltra hacemos el diagnóstico y te damos una recomendación honesta con nuestro [servicio técnico](/servicios/servicio-tecnico).",
+          "Si tu web tiene más de tres años, no se ve bien en celular, tarda más de tres segundos en cargar o recibe visitas pero pocos contactos, es momento de un rediseño. En TechnoUltra partimos de un diagnóstico, definimos la estructura y diseñamos prototipos en Figma antes de programar. Conoce nuestro [servicio de diseño UI/UX](/servicios/diseno-ui-ux).",
         ],
       },
     ],
     faqs: [
-      { q: "¿Cambiar a un SSD sirve en un computador viejo?", a: "Sí. Es la mejora más efectiva en equipos que aún tienen disco mecánico, siempre que el resto del hardware lo permita." },
-      { q: "¿Formatear el computador lo deja más rápido?", a: "Puede ayudar si el problema es software, pero antes conviene descartar fallas de disco, memoria o temperatura. Siempre haz copia de seguridad antes." },
-      { q: "¿Cuánto cuesta arreglar un computador lento?", a: "Depende de la causa: una limpieza o configuración cuesta menos que cambiar disco o memoria. En TechnoUltra hacemos un diagnóstico y te damos el valor antes de intervenir." },
+      { q: "¿Cuál es la diferencia entre UI y UX?", a: "UI es el aspecto visual de la interfaz (colores, botones, tipografías). UX es la experiencia completa al usarla: facilidad, claridad y satisfacción." },
+      { q: "¿El diseño UI/UX realmente aumenta las ventas?", a: "Sí, porque reduce fricción: un sitio claro, rápido y fácil de usar convierte más visitas en contactos y compras que uno confuso." },
+      { q: "¿Qué es un prototipo en Figma?", a: "Es una maqueta interactiva de tu sitio que permite validar la estructura y el recorrido del usuario antes de programarlo, lo que evita cambios costosos." },
     ],
   },
   {
     slug: "branding-para-pymes-elementos-de-identidad",
+    author: "natalia-cardenas",
     title: "Branding para pymes: 5 elementos de identidad que tu marca necesita",
     metaTitle: "Branding para pymes: 5 elementos de identidad de marca",
     description:
@@ -434,6 +453,7 @@ export const posts: Post[] = [
   },
   {
     slug: "logo-o-identidad-de-marca-que-incluye-un-manual-de-marca",
+    author: "natalia-cardenas",
     title: "Logo o identidad de marca: qué incluye un manual de marca y cuándo lo necesitas",
     metaTitle: "Manual de marca: qué incluye y cuándo lo necesitas",
     description:
@@ -494,7 +514,7 @@ export const posts: Post[] = [
 export const homePosts = [
   "cuanto-cuesta-una-pagina-web-en-colombia",
   "seo-local-en-cali-como-aparecer-en-google",
-  "mantenimiento-de-computadores-cada-cuanto-hacerlo",
+  "como-elegir-una-agencia-de-diseno-web-en-cali",
   "branding-para-pymes-elementos-de-identidad",
 ]
   .map((slug) => posts.find((p) => p.slug === slug)!)

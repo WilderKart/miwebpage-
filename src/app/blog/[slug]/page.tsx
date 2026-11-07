@@ -10,6 +10,7 @@ import JsonLd from "@/components/JsonLd";
 import { CtaBand } from "@/components/Sections";
 import BlogCard from "@/components/blog/BlogCard";
 import Rich from "@/components/blog/Rich";
+import { authorOf } from "@/data/team";
 
 export function generateStaticParams() {
   return posts.map((p) => ({ slug: p.slug }));
@@ -46,6 +47,7 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
   const p = posts.find((x) => x.slug === slug);
   if (!p) notFound();
 
+  const a = authorOf(p.author);
   const url = absoluteUrl(`/blog/${p.slug}`);
   const date = new Intl.DateTimeFormat("es-CO", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(p.date));
   const cat = blogCategories.find((c) => c.label === p.category);
@@ -105,10 +107,12 @@ export default async function PostPage({ params }: PageProps<"/blog/[slug]">) {
             </nav>
             <div className="bp-hero">
               <div className="bp-author">
-                <span className="av">TU</span>
+                <span className="av">
+                  <Image src={a.photo} alt={a.name} fill sizes="36px" />
+                </span>
                 <div>
-                  <div className="bc-an">TechnoUltra</div>
-                  <div className="bc-ap">Editor</div>
+                  <div className="bc-an">{a.name}</div>
+                  <div className="bc-ap">{a.role}</div>
                 </div>
               </div>
               <h1 className="bp-h1" data-a="words">

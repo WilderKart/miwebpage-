@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { process as steps, services } from "@/data/site";
+import PhotoAv from "./PhotoAv";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -84,9 +85,9 @@ export default function ProcessTeam() {
               </h2>
               <div className="pt-member">
                 <div className="avs" aria-hidden="true">
-                  <span className="av">DI</span>
-                  <span className="av a2">DE</span>
-                  <span className="av a3">SO</span>
+                  <PhotoAv src="/team/laura-valencia.jpg" />
+                  <PhotoAv src="/team/andres-mejia.jpg" className="av a2" />
+                  <PhotoAv src="/team/natalia-cardenas.jpg" className="av a3" />
                   <span className="av n">+5</span>
                 </div>
                 <div className="pt-mt">PERSONAS MUY CAPACES</div>
@@ -132,9 +133,9 @@ export default function ProcessTeam() {
               ))}
               <div className="pt-card pt-more">
                 <div className="avs" aria-hidden="true">
-                  <span className="av">DI</span>
-                  <span className="av a2">DE</span>
-                  <span className="av a3">SO</span>
+                  <PhotoAv src="/team/laura-valencia.jpg" />
+                  <PhotoAv src="/team/andres-mejia.jpg" className="av a2" />
+                  <PhotoAv src="/team/natalia-cardenas.jpg" className="av a3" />
                   <span className="av n">+5</span>
                 </div>
                 <div className="pt-more-t">

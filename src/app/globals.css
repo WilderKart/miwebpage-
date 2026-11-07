@@ -596,3 +596,6 @@ html[data-intro="go"] .lines i { transform-origin: top; animation: lineIn 1.4s v
 html[data-hero="in"] .lines i { border-left-color: rgba(255, 255, 255, 0.09); }
 
 @media (min-width: 1440px) { :root { --gutter: 72px; } }
+
+/* El título de las páginas internas no debe crear columnas implícitas en móvil */
+@media (max-width: 991px) { .page-hero .row h1.sub { grid-column: 1 !important; } }

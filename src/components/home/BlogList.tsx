@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { homePosts } from "@/data/site";
+import { authorOf } from "@/data/team";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -69,10 +70,12 @@ export default function BlogList() {
             <Link href={`/blog/${p.slug}`} className="bl-link" key={p.slug}>
               <div className="bl-author">
                 <div className="bl-aw">
-                  <span className="av">TU</span>
+                  <span className="av">
+                    <Image src={authorOf(p.author).photo} alt={authorOf(p.author).name} fill sizes="36px" />
+                  </span>
                   <div>
-                    <div className="bl-an">TechnoUltra</div>
-                    <div className="bl-ap">Editor</div>
+                    <div className="bl-an">{authorOf(p.author).name}</div>
+                    <div className="bl-ap">{authorOf(p.author).role}</div>
                   </div>
                 </div>
                 <time className="bl-date" dateTime={p.date}>
