@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { services } from "@/data/site";
+import { services as allServices } from "@/data/site";
+
+// El servicio técnico no se muestra en la home (sigue disponible en /servicios/servicio-tecnico).
+const services = allServices.filter((s) => s.slug !== "servicio-tecnico");
 import Image from "next/image";
 
 export default function ServicesAccordion() {

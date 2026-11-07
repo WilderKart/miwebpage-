@@ -11,7 +11,7 @@ import ShowReel from "@/components/home/ShowReel";
 import Works from "@/components/home/Works";
 import FeaturedProjects from "@/components/home/FeaturedProjects";
 import Partners from "@/components/home/Partners";
-import Coverage from "@/components/home/Coverage";
+import Stack from "@/components/home/Stack";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import ProcessTeam from "@/components/home/ProcessTeam";
 import Pricing from "@/components/home/Pricing";
@@ -37,7 +37,7 @@ export default function Home() {
         <div className="wrap">
           <div className="svc-head">
             <span className="label">Qué hacemos</span>
-            <span style={{ color: "#a0a0a0" }}>Servicios (05)</span>
+            <span style={{ color: "#a0a0a0" }}>Servicios (04)</span>
           </div>
           <ServicesAccordion />
         </div>
@@ -99,7 +99,7 @@ export default function Home() {
       <FeaturedProjects />
 
       <Partners />
-      <Coverage />
+      <Stack />
 
       <TestimonialSlider />
 

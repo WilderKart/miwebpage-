@@ -108,38 +108,81 @@ export default function Motion() {
     };
   }, [pathname]);
 
-  // Cursor circular al pasar sobre proyectos
+  // Cursor circular al pasar sobre proyectos. El estado se recalcula con la posición real del puntero
+  // (al mover, al hacer scroll, al cambiar de página o al salir de la ventana), para que nunca quede "pegado".
   useEffect(() => {
     const el = cursor.current;
     if (!el || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
     const qx = gsap.quickTo(el, "x", { duration: 0.45, ease: "power3" });
     const qy = gsap.quickTo(el, "y", { duration: 0.45, ease: "power3" });
     const label = el.querySelector("span")!;
+    let shown = false;
+    let current: HTMLElement | null = null;
+    let x = -1;
+    let y = -1;
+    let raf = 0;
+
+    const hide = () => {
+      current = null;
+      if (!shown) return;
+      shown = false;
+      gsap.to(el, { scale: 0, opacity: 0, duration: 0.3, ease: "power3.in", overwrite: "auto" });
+    };
+    const sync = () => {
+      raf = 0;
+      if (x < 0) return hide();
+      const t = document.elementFromPoint(x, y)?.closest<HTMLElement>("[data-cursor]") ?? null;
+      if (!t) return hide();
+      if (t !== current) {
+        current = t;
+        label.textContent = t.dataset.cursor ?? "";
+        el.style.backgroundImage = t.dataset.img ? `url(${t.dataset.img})` : "none";
+      }
+      if (!shown) {
+        shown = true;
+        gsap.to(el, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out", overwrite: "auto" });
+      }
+    };
+    const queue = () => {
+      if (!raf) raf = requestAnimationFrame(sync);
+    };
     const move = (e: PointerEvent) => {
-      qx(e.clientX);
-      qy(e.clientY);
+      if (e.pointerType !== "mouse") return;
+      x = e.clientX;
+      y = e.clientY;
+      qx(x);
+      qy(y);
+      queue();
     };
-    const over = (e: PointerEvent) => {
-      const t = (e.target as Element).closest<HTMLElement>("[data-cursor]");
-      if (!t) return;
-      label.textContent = t.dataset.cursor ?? "";
-      el.style.backgroundImage = t.dataset.img ? `url(${t.dataset.img})` : "none";
-      gsap.to(el, { scale: 1, opacity: 1, duration: 0.45, ease: "power3.out" });
+    const leave = () => {
+      x = -1;
+      hide();
     };
-    const out = (e: PointerEvent) => {
-      const t = (e.target as Element).closest("[data-cursor]");
-      const to = (e.relatedTarget as Element | null)?.closest?.("[data-cursor]");
-      if (t && !to) gsap.to(el, { scale: 0, opacity: 0, duration: 0.35, ease: "power3.in" });
-    };
-    window.addEventListener("pointermove", move);
-    document.addEventListener("pointerover", over);
-    document.addEventListener("pointerout", out);
+    const onHide = () => hide();
+
+    window.addEventListener("pointermove", move, { passive: true });
+    window.addEventListener("scroll", queue, { passive: true, capture: true });
+    window.addEventListener("wheel", queue, { passive: true });
+    window.addEventListener("pointerdown", onHide);
+    window.addEventListener("blur", leave);
+    document.addEventListener("pointerleave", leave);
+    document.documentElement.addEventListener("mouseleave", leave);
+    document.addEventListener("visibilitychange", leave);
+    window.addEventListener("pagehide", leave);
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("pointermove", move);
-      document.removeEventListener("pointerover", over);
-      document.removeEventListener("pointerout", out);
+      window.removeEventListener("scroll", queue, { capture: true });
+      window.removeEventListener("wheel", queue);
+      window.removeEventListener("pointerdown", onHide);
+      window.removeEventListener("blur", leave);
+      document.removeEventListener("pointerleave", leave);
+      document.documentElement.removeEventListener("mouseleave", leave);
+      document.removeEventListener("visibilitychange", leave);
+      window.removeEventListener("pagehide", leave);
+      gsap.set(el, { scale: 0, opacity: 0 });
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div className="wcursor" ref={cursor} aria-hidden="true">
