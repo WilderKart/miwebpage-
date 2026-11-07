@@ -12,7 +12,6 @@ import GridLines from "./GridLines";
 gsap.registerPlugin(ScrollTrigger);
 
 // Proporciones (ancho / alto) distintas por tarjeta, como en la referencia (una alta, otra más baja...).
-const ratios = [0.955, 1.333, 0.724, 1.333];
 
 // "Proyectos destacados": rejilla de 2 columnas; cada imagen se revela al entrar (altura 0 → 100 % y
 // escala 1.5 → 1) y un círculo translúcido sigue al cursor sobre cada tarjeta.
@@ -76,9 +75,9 @@ export default function FeaturedProjects() {
               </a>
             </div>
             <div className="fp-list">
-              {projects.map((p, i) => (
+              {projects.map((p) => (
                 <article className="fp-item" key={p.slug}>
-                  <div className="fp-box" style={{ aspectRatio: String(ratios[i % ratios.length]) }}>
+                  <div className="fp-box" style={{ aspectRatio: String(p.ratio) }}>
                     <Image
                       className="fp-img"
                       src={p.image}

@@ -5,7 +5,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { projects, services } from "@/data/site";
+import { projects } from "@/data/site";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -22,7 +22,7 @@ function Asterisk({ className }: { className: string }) {
   );
 }
 
-const imgs = [services[2].images[1], services[3].images[1], services[0].images[0]];
+const imgs = ["/works/w1.jpg", "/works/w2.jpg", "/works/w3.jpg"];
 
 // Encabezado de "Proyectos": asterisco que gira al entrar, título gigante por líneas con tres imágenes
 // que suben a distinta velocidad (parallax) y fila final con avatares y descripción.
@@ -38,15 +38,13 @@ export default function Works() {
     const t = window.setTimeout(() => {
       if (cancelled) return;
       ctx = gsap.context(() => {
-        const title = SplitText.create(".wk-title", { type: "lines", mask: "lines" });
+        const title = SplitText.create(".wk-title", { type: "lines" });
         const h6 = SplitText.create(".wk-h6", { type: "words", mask: "words" });
-        const num = SplitText.create(".wk-num", { type: "chars" });
         gsap
           .timeline({ scrollTrigger: { trigger: ".wk-wrap", start: "top 70%", once: true } })
           .from(".wk-a1", { rotation: 45, scale: 0, duration: 1.5, ease: "power4.out" }, 0)
           .from(".wk-img", { opacity: 0 }, 0.4)
-          .from(title.lines, { yPercent: 100, duration: 1, stagger: 0.1, ease: "power4.out" }, 0.4)
-          .from(num.chars, { opacity: 0, duration: 0.46, stagger: 0.1, ease: "back.out" }, 1.1)
+          .from(title.lines, { yPercent: 60, opacity: 0, duration: 1, stagger: 0.1, ease: "power4.out" }, 0.4)
           .from(".wk-a2", { rotation: 45, scale: 0, duration: 1.5, ease: "power4.out" }, 1.4)
           .from(h6.words, { yPercent: 100, duration: 1, stagger: 0.1, ease: "power4.out" }, 1.8);
 
@@ -86,17 +84,15 @@ export default function Works() {
           <div className="wk-hero">
             <Asterisk className="wk-a1" />
             <h2 className="wk-title">
-              EN “25
+              EN “TN
               <br />
-              NUESTRO
+              NO SEGUIMOS
               <br />
-              EQUIPO
+              LO ESTABLECIDO.
               <br />
-              <span className="wk-red">CONSTRUYE</span>
+              <span className="wk-red">CONSTRUIMOS</span>
               <br />
-              VARIOS
-              <br />
-              PROYECTOS<span className="wk-num">({String(projects.length).padStart(2, "0")})</span>
+              LO QUE SIGUE.
             </h2>
             <Asterisk className="wk-a2" />
             <div className="wk-assets" aria-hidden="true">
@@ -116,7 +112,7 @@ export default function Works() {
                 <span className="av">EO</span>
                 <span className="av a2">EX</span>
                 <span className="av a3">TF</span>
-                <span className="av n">04</span>
+                <span className="av n">{String(projects.length).padStart(2, "0")}</span>
               </div>
             </div>
             <p className="wk-desc">

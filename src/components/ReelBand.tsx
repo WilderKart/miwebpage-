@@ -38,7 +38,7 @@ export default function ReelBand() {
       <div className="reel-track" ref={track}>
         {cards.map((p, i) => (
           <div className="reel-card" key={`${p.slug}-${i}`} style={{ "--r": `${rot[i % rot.length]}deg` } as React.CSSProperties}>
-            <Image src={p.image} alt={`Captura del proyecto ${p.name}`} fill sizes="520px" />
+            <Image src={p.image} alt={`Captura del proyecto ${p.name}`} fill sizes="520px" style={{ objectFit: "contain" }} />
           </div>
         ))}
       </div>

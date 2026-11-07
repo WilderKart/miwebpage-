@@ -7,7 +7,7 @@ import { FaqSection } from "@/components/Sections";
 export const metadata = pageMeta({
   title: "Contacto | Cotiza tu proyecto web o servicio técnico en Cali",
   description:
-    "Contacta a TechnoUltra en Cali: cotiza tu página web, aplicación, branding o servicio técnico de computadores e impresoras. WhatsApp +57 300 729 6067.",
+    "Contacta a TechnoUltra en Cali: cotiza tu página web, aplicación, branding o servicio técnico de computadores e impresoras. WhatsApp +57 318 394 3465.",
   path: "/contacto",
 });
 

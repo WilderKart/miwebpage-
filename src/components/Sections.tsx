@@ -35,7 +35,7 @@ export function ProjectGrid({ limit }: { limit?: number }) {
         <Reveal key={p.slug} delay={(i % 2) * 0.1}>
           <Link href={`/proyectos/${p.slug}`} className="proj" data-cursor="Ver proyecto" data-img={p.image}>
             <div className="thumb">
-              <Image src={p.image} alt={`Proyecto ${p.name}: ${p.category}`} fill sizes="(min-width: 760px) 50vw, 100vw" style={{ objectFit: "cover", objectPosition: "top" }} />
+              <Image src={p.image} alt={`Proyecto ${p.name}: ${p.category}`} fill sizes="(min-width: 760px) 50vw, 100vw" style={{ objectFit: "contain" }} />
             </div>
             <div className="meta">
               <span>{p.name}</span>

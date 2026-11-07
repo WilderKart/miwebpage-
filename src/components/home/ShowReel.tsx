@@ -11,10 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 const COUNT = 11;
 const STEP = 360 / COUNT; // 32.72°
 
-const proj = (i: number) => ({ src: projects[i % projects.length].image, alt: `Proyecto ${projects[i % projects.length].name}`, top: true });
-const svc = (slug: string, k: 0 | 1, alt: string) => ({ src: services.find((s) => s.slug === slug)!.images[k], alt, top: false });
+const proj = (i: number) => ({ src: projects[i % projects.length].image, alt: `Proyecto ${projects[i % projects.length].name}`, top: false, fit: true });
+const svc = (slug: string, k: 0 | 1, alt: string) => ({ src: services.find((s) => s.slug === slug)!.images[k], alt, top: false, fit: false });
 
-// 11 tarjetas cuadradas: proyectos reales y fotos de los servicios.
+// 11 tarjetas cuadradas: los proyectos reales (completos, sin recortar) alternados con fotos de los servicios.
 const cards = [
   proj(0),
   svc("diseno-ui-ux", 1, "Boceto de un sitio web"),
@@ -24,9 +24,9 @@ const cards = [
   svc("desarrollo-web", 1, "Desarrollador trabajando con su portátil"),
   proj(3),
   svc("estrategia-digital", 0, "Tablero de estrategia con formas geométricas"),
+  proj(4),
   svc("servicio-tecnico", 0, "Placa base de un computador"),
-  svc("identidad-de-marca", 0, "Papelería de marca"),
-  svc("diseno-ui-ux", 0, "Manos sobre un trackpad"),
+  proj(5),
 ];
 
 // Galería circular (Show reel): dos paneles fijos apilados; las palabras se abren hacia los lados,
@@ -84,7 +84,7 @@ export default function ShowReel() {
             {cards.map((c, i) => (
               <div className="sr-pivot" key={i} style={{ transform: `rotate(${(i * STEP).toFixed(2)}deg)` }}>
                 <div className="sr-card">
-                  <Image src={c.src} alt={c.alt} fill sizes="680px" style={{ objectPosition: c.top ? "50% 0%" : "50% 50%" }} />
+                  <Image src={c.src} alt={c.alt} fill sizes="680px" style={{ objectFit: c.fit ? "contain" : "cover", objectPosition: c.top ? "50% 0%" : "50% 50%" }} />
                 </div>
               </div>
             ))}

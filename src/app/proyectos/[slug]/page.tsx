@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import type { Metadata } from "next";
-import { projects } from "@/data/site";
+import { ArrowUpRight } from "lucide-react";
+import { projects, absoluteUrl, wa } from "@/data/site";
 import { pageMeta } from "@/lib/meta";
-import Reveal from "@/components/Reveal";
-import Btn from "@/components/Btn";
+import GridLines from "@/components/home/GridLines";
+import JsonLd from "@/components/JsonLd";
+import { BrowserFrame, PhoneFrame } from "@/components/portfolio/Frames";
 import { CtaBand } from "@/components/Sections";
 
 export function generateStaticParams() {
@@ -30,90 +31,150 @@ export default async function ProyectoPage({ params }: PageProps<"/proyectos/[sl
   const p = projects[i];
   const next = projects[(i + 1) % projects.length];
 
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${p.name}: ${p.category}`,
+    description: p.summary,
+    url: absoluteUrl(`/proyectos/${p.slug}`),
+    creator: { "@id": absoluteUrl("/#organization") },
+    about: p.industry,
+    dateCreated: p.year,
+    sameAs: [p.url],
+  };
+
   return (
     <>
-      <section className="detail-hero" style={{ paddingBottom: 60 }}>
+      <section className="sec l pd clip">
+        <GridLines />
         <div className="wrap">
-          <nav className="crumbs" style={{ marginBottom: 40, fontSize: 14, color: "#525252" }} aria-label="Ruta de navegación">
-            <Link href="/">Inicio</Link> / <Link href="/proyectos">Proyectos</Link> / {p.name}
+          <nav className="pd-crumbs" aria-label="Ruta de navegación">
+            <Link href="/">Inicio</Link> / <Link href="/proyectos">Portafolio</Link> / {p.name}
           </nav>
-          <div className="grid4">
-            <h1>
-              {p.name}: {p.category.toLowerCase()}
+          <div className="pd-head">
+            <span className="lbl" data-a="label">
+              {p.category}
+            </span>
+            <h1 className="pd-h1" data-a="words">
+              {p.name}
             </h1>
-            <p className="lead">{p.summary}</p>
           </div>
-        </div>
-      </section>
-
-      <section className="section light" style={{ paddingTop: 60 }}>
-        <div className="wrap">
-          <div className="facts">
+          <p className="pd-tag" data-a="lines">
+            {p.tagline}
+          </p>
+          <dl className="pd-facts">
             <div>
-              <small>Cliente</small>
-              <b>{p.client}</b>
+              <dt>Cliente</dt>
+              <dd>{p.client}</dd>
             </div>
             <div>
-              <small>Fecha</small>
-              <b>
+              <dt>Sector</dt>
+              <dd>{p.industry}</dd>
+            </div>
+            <div>
+              <dt>Año</dt>
+              <dd>
                 {p.month} {p.year}
-              </b>
+              </dd>
             </div>
             <div>
-              <small>Industria</small>
-              <b>{p.industry}</b>
+              <dt>Servicios</dt>
+              <dd>{p.services.join(", ")}</dd>
             </div>
-            <div>
-              <small>Servicios</small>
-              <b>{p.services.join(", ")}</b>
-            </div>
-          </div>
-          <div className="shot">
-            <Image src={p.image} alt={`Captura del proyecto ${p.name}`} fill sizes="(min-width: 1440px) 1296px, 100vw" priority />
-          </div>
-
-          <div className="case">
-            <h2>El reto</h2>
-            <p>{p.challenge}</p>
-          </div>
-          <div className="case" style={{ borderTop: "1px solid rgba(0,0,0,.1)" }}>
-            <h2>La solución</h2>
-            <p>{p.solution}</p>
+          </dl>
+          <div className="pd-cta">
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="pf-btn dark">
+              Visitar sitio <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+            <Link href={wa(`Hola TechnoUltra, vi el caso ${p.name} y quiero algo parecido para mi negocio.`)} className="pf-btn" target="_blank" rel="noopener noreferrer">
+              Quiero algo así
+            </Link>
           </div>
 
-          <Reveal className="res" delay={0.05}>
-            {p.results.map((r) => (
-              <div key={r.label}>
-                <b>{r.value}</b>
-                <span>{r.label}</span>
-              </div>
-            ))}
-          </Reveal>
-
-          <div className="chips" style={{ marginTop: 40 }}>
-            {p.stack.map((t) => (
-              <span className="chip" key={t}>
-                {t}
-              </span>
-            ))}
-          </div>
-          <div style={{ marginTop: 40 }}>
-            <Btn href={p.url} tone="dark" external>
-              Visitar {p.name}
-            </Btn>
+          <div className="pd-hero-media" data-a="fade">
+            <BrowserFrame src={p.shots[0]} url={p.url} alt={`Captura de ${p.name}`} priority ratio={p.ratio} sizes="(min-width: 1440px) 1296px, 100vw" />
+            {p.mobile && <PhoneFrame src={p.mobile} alt={`Versión móvil de ${p.name}`} />}
           </div>
         </div>
       </section>
 
-      <section className="light">
+      <section className="sec g pd-story">
+        <GridLines />
         <div className="wrap">
-          <Link href={`/proyectos/${next.slug}`} className="next-link">
-            <small>Siguiente proyecto</small>
-            <h3>{next.name}</h3>
+          <div className="pd-row">
+            <span className="lbl">El reto</span>
+            <p className="pd-big" data-a="lines">
+              {p.challenge}
+            </p>
+          </div>
+          <div className="pd-row">
+            <span className="lbl">Lo que hicimos</span>
+            <p className="pd-big" data-a="lines">
+              {p.solution}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="sec l pd-feat">
+        <GridLines />
+        <div className="wrap">
+          <div className="pd-row">
+            <span className="lbl">Detalles del proyecto</span>
+            <ol className="pd-list">
+              {p.highlights.map((h, k) => (
+                <li key={h} data-a="slide">
+                  <span>{String(k + 1).padStart(2, "0")}</span>
+                  <p>{h}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          {p.shots.length > 1 && (
+            <div className="pd-gallery">
+              {p.shots.slice(1).map((s, k) => (
+                <div key={s} data-a="fade">
+                  <BrowserFrame src={s} url={p.url} alt={`${p.name}: sección ${k + 2}`} top={false} sizes="(min-width: 992px) 640px, 100vw" />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="sec k pd-res">
+        <div className="wrap">
+          <div className="pd-row">
+            <span className="lbl">En cifras</span>
+            <div className="pd-nums">
+              {p.results.map((r) => (
+                <div key={r.label} data-a="up">
+                  <b>{r.value}</b>
+                  <span>{r.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="pd-stack">
+            {p.stack.map((s) => (
+              <span key={s}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="sec l pd-next">
+        <GridLines />
+        <div className="wrap">
+          <Link href={`/proyectos/${next.slug}`} className="pd-nl">
+            <span className="lbl">Siguiente proyecto</span>
+            <span className="pd-nn">{next.name}</span>
+            <span className="pd-nt">{next.category}</span>
           </Link>
         </div>
       </section>
-      <CtaBand />
+      <CtaBand title="¿Tu negocio será el próximo caso?" />
+      <JsonLd data={ld} />
     </>
   );
 }

@@ -10,6 +10,7 @@ import Transition from "@/components/Transition";
 import Motion from "@/components/Motion";
 import "./globals.css";
 import "./home.css";
+import "./portfolio.css";
 
 const head = Inter_Tight({ variable: "--font-head", subsets: ["latin"], weight: ["500", "600", "700"] });
 const body = Inter({ variable: "--font-body", subsets: ["latin"] });

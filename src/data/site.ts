@@ -7,9 +7,9 @@ export const site = {
   city: "Cali",
   region: "Valle del Cauca",
   country: "Colombia",
-  phone: "+57 300 729 6067",
-  phoneHref: "tel:+573007296067",
-  whatsapp: "https://wa.me/573007296067",
+  phone: "+57 318 394 3465",
+  phoneHref: "tel:+573183943465",
+  whatsapp: "https://wa.me/573183943465",
   email: "studio@technoultra.com",
   instagram: "https://www.instagram.com/technoultra",
   facebook: "https://www.facebook.com/technoultra",
@@ -158,122 +158,9 @@ export const services: Service[] = [
   },
 ];
 
-export type Project = {
-  slug: string;
-  name: string;
-  client: string;
-  category: string;
-  industry: string;
-  year: string;
-  month: string;
-  summary: string;
-  challenge: string;
-  solution: string;
-  services: string[];
-  stack: string[];
-  results: { value: string; label: string }[];
-  url: string;
-  image: string;
-};
-
-export const projects: Project[] = [
-  {
-    slug: "electriobras",
-    name: "Electriobras",
-    client: "Electriobras S.A.S.",
-    category: "Sitio web corporativo",
-    industry: "Ingeniería eléctrica y obras civiles",
-    year: "2026",
-    month: "Mar",
-    summary:
-      "Presencia digital para una empresa de ingeniería eléctrica y obras civiles en Cali, con video de portada, sectores atendidos, servicios y solicitud de cotización.",
-    challenge:
-      "Electriobras necesitaba mostrarse como una empresa seria y confiable ante clientes industriales, y que la página fuera una herramienta real para recibir cotizaciones, no solo una tarjeta de presentación.",
-    solution:
-      "Diseñamos un sitio rápido con estructura pensada para posicionar servicios locales en Google (mantenimiento eléctrico, obras civiles y metalmecánica en Cali), llamados a la acción visibles y secciones por sector.",
-    services: ["Desarrollo web", "SEO local", "Diseño UI/UX"],
-    stack: ["Next.js", "React", "SEO técnico"],
-    results: [
-      { value: "+70%", label: "Velocidad de carga" },
-      { value: "+45%", label: "Leads" },
-      { value: "+120%", label: "Visitas" },
-    ],
-    url: "https://www.electriobras.com/",
-    image: "/projects/electriobras.png",
-  },
-  {
-    slug: "excelenter",
-    name: "Excelenter",
-    client: "Excelenter Cali",
-    category: "Tienda online",
-    industry: "Tecnología y computadores",
-    year: "2026",
-    month: "Jun",
-    summary:
-      "Tienda tecnológica con catálogo de computadores, componentes y tarjetas de video, soporte técnico y contacto directo por WhatsApp.",
-    challenge:
-      "Una tienda con más de 17 años de trayectoria en Cali necesitaba un catálogo ordenado, fácil de recorrer en el celular y capaz de competir por búsquedas de computadores, PC gamer y reparación.",
-    solution:
-      "Creamos una tienda con categorías claras, buscador, carrito, secciones de soporte técnico y preguntas frecuentes, con velocidad optimizada y datos estructurados para productos.",
-    services: ["Tienda online", "Desarrollo web", "SEO"],
-    stack: ["E-commerce", "Catálogo", "WhatsApp"],
-    results: [
-      { value: "17+", label: "Años de trayectoria del cliente" },
-      { value: "4", label: "Categorías destacadas" },
-      { value: "24/7", label: "Catálogo disponible" },
-    ],
-    url: "https://excelenter.com/",
-    image: "/projects/excelenter.png",
-  },
-  {
-    slug: "tufink",
-    name: "Tufink",
-    client: "Tufink",
-    category: "Sitio de reservas",
-    industry: "Turismo y alquiler de fincas",
-    year: "2026",
-    month: "Ago",
-    summary:
-      "Sitio para una finca de alquiler en el Lago Calima con galería, tarifas, disponibilidad, cómo llegar y reservas.",
-    challenge:
-      "El propietario necesitaba que los huéspedes encontraran tarifas, capacidad, ubicación y disponibilidad sin depender de mensajes sueltos, y diferenciarse de otras fincas de la zona.",
-    solution:
-      "Construimos un sitio ligero y visual, con galería, información de habitaciones y servicios, mapa, transporte y un flujo directo de reserva y consulta de disponibilidad.",
-    services: ["Desarrollo web", "Diseño UI/UX", "SEO local"],
-    stack: ["Landing", "Reservas", "Cloudflare Workers"],
-    results: [
-      { value: "25", label: "Personas de capacidad" },
-      { value: "1", label: "Clic a reservar" },
-      { value: "100%", label: "Optimizado para móvil" },
-    ],
-    url: "https://tufink.ghocho88.workers.dev/",
-    image: "/projects/tufink.png",
-  },
-  {
-    slug: "technoultra-app",
-    name: "TechnoUltra App",
-    client: "TechnoUltra",
-    category: "Aplicación web",
-    industry: "Servicios y soporte técnico",
-    year: "2026",
-    month: "Sep",
-    summary:
-      "Plataforma con acceso para clientes y personal para gestionar servicios, equipos, pedidos y garantías.",
-    challenge:
-      "Centralizar solicitudes de servicio técnico, seguimiento de equipos y garantías en un solo lugar, con acceso diferenciado para clientes y equipo interno.",
-    solution:
-      "Desarrollamos una aplicación con inicio de sesión con Google y correo, panel para clientes y acceso de personal, y seguimiento del estado de cada servicio.",
-    services: ["Aplicación a medida", "Diseño UI/UX", "Desarrollo web"],
-    stack: ["Next.js", "Autenticación", "Panel de gestión"],
-    results: [
-      { value: "2", label: "Perfiles: cliente y personal" },
-      { value: "1", label: "Panel unificado" },
-      { value: "24/7", label: "Acceso a tus servicios" },
-    ],
-    url: "https://app.technoultra.com/login",
-    image: "/projects/technoultra.png",
-  },
-];
+import { projects } from "./projects";
+export { projects };
+export type { Project } from "./projects";
 
 export const testimonials = [
   {
