@@ -48,8 +48,8 @@ export default function Planes() {
                   </div>
                   <div className="foot">
                     <div className="price">
-                      <small>Inversión</small>
-                      A tu medida
+                      <small>{p.priceLabel}</small>
+                      {p.price}
                     </div>
                     <Btn href={wa(`Hola TechnoUltra, quiero cotizar el plan ${p.name}.`)} tone="dark" external>
                       Cotizar

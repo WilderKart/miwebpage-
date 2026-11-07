@@ -6,31 +6,27 @@ import { Plus } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { plans, wa } from "@/data/site";
+import { plans, monthlyPlans, wa } from "@/data/site";
 import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-// Planes mensuales de relleno (sustituir por los reales cuando estén definidos).
-const monthly = [
-  {
-    n: "01",
-    name: "Soporte continuo",
-    text: "Para sitios y aplicaciones que ya están publicados y necesitan mantenimiento, copias de seguridad y mejoras cada mes.",
-    items: ["Mantenimiento y actualizaciones de seguridad", "Copias de seguridad y monitoreo de disponibilidad", "Cambios de contenido y pequeñas mejoras", "Soporte técnico por WhatsApp"],
-  },
-  {
-    n: "02",
-    name: "Marketing y crecimiento",
-    text: "Para marcas que quieren atraer clientes todos los meses con contenido, redes sociales y campañas medidas.",
-    items: ["Calendario editorial y gestión de redes sociales", "Campañas en Google Ads y Meta Ads", "Informe mensual de resultados", "SEO local y contenidos para el blog"],
-  },
-];
-
 const tabs = [
   { id: "proyecto", label: "Por proyecto", list: plans },
-  { id: "mensual", label: "Mensual", list: monthly },
+  { id: "mensual", label: "Mensual", list: monthlyPlans },
 ] as const;
+
+// Texto de un ítem; el paréntesis final (herramientas) se muestra más pequeño.
+function Item({ text }: { text: string }) {
+  const m = text.match(/^(.*?)(\s\((?:Figma|Slack)[^)]*\))$/);
+  if (!m) return <>{text}</>;
+  return (
+    <>
+      {m[1]}
+      <small>{m[2]}</small>
+    </>
+  );
+}
 
 // Planes: pestañas "Por proyecto / Mensual" y dos tarjetas grises con lista, precio y botón.
 export default function Pricing() {
@@ -69,9 +65,10 @@ export default function Pricing() {
       <div className="wrap">
         <div className="pr-head">
           <span className="lbl" data-a="label">
-            Planes
+            Inversión &amp; planes
           </span>
           <h2 className="pr-h1">Nuestros planes</h2>
+          <span className="pr-n" aria-hidden="true">(06)</span>
         </div>
         <div className="pr-tabs" role="tablist">
           {tabs.map((t, i) => (
@@ -97,15 +94,18 @@ export default function Pricing() {
                     {p.items.map((it) => (
                       <li key={it}>
                         <Plus size={14} aria-hidden="true" />
-                        <span>{it}</span>
+                        <span>
+                          <Item text={it} />
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div className="pr-price">
                   <div className="pr-pp">
-                    <span className="pr-pk">{tab === 0 ? "Diagnóstico inicial" : "Cotización"}</span>
-                    <span className="pr-num">{tab === 0 ? "Gratis" : "A medida"}</span>
+                    <span className="pr-pk">{p.priceLabel}</span>
+                    <span className="pr-num">{p.price}</span>
+                    <span className="pr-note">{p.note}</span>
                   </div>
                   <Link href={wa(`Hola TechnoUltra, quiero información sobre el plan ${p.name}.`)} className="pr-btn" target="_blank" rel="noopener noreferrer">
                     <span>Empezar</span>

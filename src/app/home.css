@@ -504,9 +504,12 @@ body:has(.home-root) .lines { display: none; }
 .pr-inc li { display: flex; align-items: center; gap: 8px; font-size: 18px; line-height: 27.9px; font-weight: 500; }
 .pr-inc li svg { flex: none; }
 .pr-price { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
-.pr-pp { display: flex; flex-direction: column; justify-content: space-between; height: 120px; gap: 16px; }
+.pr-pp { display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; }
 .pr-pk { font-size: 16px; line-height: 24px; font-weight: 600; }
-.pr-num { font-family: var(--head); font-weight: 600; font-size: 80px; line-height: 80px; letter-spacing: -0.03em; }
+.pr-num { white-space: nowrap; font-family: var(--head); font-weight: 600; font-size: 64px; line-height: 64px; letter-spacing: -0.03em; }
+.pr-n { grid-column: 4; grid-row: 1; justify-self: end; align-self: start; font-size: 16px; line-height: 24px; color: #fff; }
+.pr-note { font-size: 12px; line-height: 16px; color: #525252; font-weight: 400; }
+.pr-inc li small { font-size: 0.78em; font-weight: 400; }
 .pr-btn { width: 100%; max-width: 168px; height: 48px; border-radius: 100px; background: #0e0e0e; color: #fff; display: grid; place-items: center; font-size: 16px; font-weight: 500; transition: background-color 0.3s, color 0.3s, box-shadow 0.3s; }
 .pr-btn:hover { background: #fff; color: #000; box-shadow: inset 0 0 0 1px #0e0e0e; }
 @media (max-width: 991px) {

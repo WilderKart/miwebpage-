@@ -220,30 +220,82 @@ export const faqs = [
   },
 ];
 
-export const plans = [
+export type Plan = {
+  n: string;
+  name: string;
+  text: string;
+  items: string[];
+  priceLabel: string;
+  price: string;
+  note: string;
+};
+
+// Planes por proyecto (pago único).
+export const plans: Plan[] = [
   {
     n: "01",
-    name: "Presencia Digital",
-    text: "Para negocios que necesitan una página profesional, rápida y lista para aparecer en Google.",
+    name: "Launch & Startups",
+    text: "Ideal para validar mercados, lanzar nuevas marcas o escalar MVPs con tecnología de punta y diseño estratégico.",
     items: [
-      "Sitio web corporativo de hasta 6 secciones",
-      "Diseño a medida adaptado a celular y computador",
-      "SEO técnico y textos enfocados en búsquedas locales",
-      "Botón de WhatsApp y formulario de contacto",
+      "Landing pages de alto impacto y sitios corporativos",
+      "E-commerce rápido y tiendas virtuales optimizadas",
+      "MVP (Producto Mínimo Viable) y prototipo rápido",
+      "Diagnóstico inicial gratis y optimización SEO",
     ],
+    priceLabel: "Inversión desde",
+    price: "$1.200 USD",
+    note: "(o el equivalente en tu moneda local • 3 cuotas sin interés)",
   },
   {
     n: "02",
-    name: "Crecimiento",
-    text: "Para empresas que quieren vender más con tienda online, branding y contenido constante.",
+    name: "Escala & Enterprise",
+    text: "Para empresas consolidadas que necesitan optimizar, automatizar o expandir su infraestructura digital robusta.",
     items: [
-      "Tienda online o aplicación a medida",
-      "Identidad de marca y manual de uso",
-      "Gestión de redes sociales y calendario editorial",
-      "Campañas en Google Ads y Meta Ads con analítica",
+      "Web Apps y plataformas SaaS a medida (Next.js / React)",
+      "Integraciones complejas (APIs, CRM, pasarelas)",
+      "Rediseño y migración de ecosistemas digitales",
+      "Seguridad avanzada e infraestructura cloud dedicada",
     ],
+    priceLabel: "Inversión",
+    price: "A medida",
+    note: "(Proyectos complejos o requerimientos específicos)",
   },
 ];
+
+// Planes mensuales (soporte y crecimiento continuo).
+export const monthlyPlans: Plan[] = [
+  {
+    n: "01",
+    name: "Soporte & Crecimiento",
+    text: "Ideal para mantener, optimizar y hacer crecer tu presencia digital sin los costos de un equipo de tiempo completo.",
+    items: [
+      "Mantenimiento, monitoreo y soporte continuo (24/7)",
+      "Horas de diseño y desarrollo mensual para actualizaciones y mejoras",
+      "SEO continuo, analítica web y optimización de conversión (CRO)",
+      "Gestión de campañas digitales y pauta (Google/Meta Ads)",
+      "Copias de seguridad diarias, actualizaciones y parches de seguridad",
+    ],
+    priceLabel: "Inversión mensual desde",
+    price: "$450 USD",
+    note: "(o el equivalente en tu moneda local • sin contratos a largo plazo)",
+  },
+  {
+    n: "02",
+    name: "Squad & Evolución",
+    text: "Para empresas que requieren desarrollo, diseño y optimización continua de software, Web Apps o plataformas SaaS.",
+    items: [
+      "Equipo de diseño UI/UX y desarrolladores Senior bajo demanda (Figma + Next.js)",
+      "Evolución constante de Web Apps, plataformas SaaS e integraciones",
+      "Soporte prioritario y comunicación directa (Slack / Meet diarios o semanales)",
+      "Optimización continua de código, seguridad avanzada y nube",
+      "Consultoría estratégica, análisis de conversión y escalado tecnológico",
+    ],
+    priceLabel: "Inversión mensual desde",
+    price: "$1.800 USD",
+    note: "(Equipo de diseño y desarrollo dedicado a tu medida)",
+  },
+];
+
 
 export { posts, blogCategories, homePosts } from "./blog";
 export type { Post, PostSection } from "./blog";
