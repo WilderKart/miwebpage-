@@ -17,6 +17,8 @@ export type Project = {
   url: string;
   image: string; // portada
   ratio: number; // ancho/alto de la portada, para mostrarla completa sin recortes
+  card: string; // imagen de la tarjeta de la home (captura vertical u horizontal, como la referencia)
+  cardRatio: number; // ancho/alto de la tarjeta de la home
   shots: string[]; // capturas de escritorio (portada incluida)
   mobile?: string; // captura móvil
   accent: string; // color de marca del cliente
@@ -58,6 +60,8 @@ export const projects: Project[] = [
     url: "https://www.electriobras.com/",
     image: "/projects/electriobras-1.jpg",
     ratio: 1.6,
+    card: "/projects/electriobras-card.jpg",
+    cardRatio: 1440 / 1508,
     shots: ["/projects/electriobras-1.jpg", "/projects/electriobras-2.jpg", "/projects/electriobras-3.jpg"],
     mobile: "/projects/electriobras-m.jpg",
     accent: "#ff6a00",
@@ -94,6 +98,8 @@ export const projects: Project[] = [
     url: "https://excelenter.com/",
     image: "/projects/excelenter-1.jpg",
     ratio: 1.6,
+    card: "/projects/excelenter-card.jpg",
+    cardRatio: 1440 / 1080,
     shots: ["/projects/excelenter-1.jpg", "/projects/excelenter-2.jpg", "/projects/excelenter-3.jpg"],
     mobile: "/projects/excelenter-m.jpg",
     accent: "#e8602c",
@@ -131,6 +137,8 @@ export const projects: Project[] = [
     url: "https://tufink.ghocho88.workers.dev/",
     image: "/projects/tufink-full.png",
     ratio: 1897 / 987,
+    card: "/projects/tufink-card.jpg",
+    cardRatio: 1440 / 1990,
     shots: ["/projects/tufink-full.png", "/projects/tufink-2.jpg"],
     mobile: "/projects/tufink-m.jpg",
     accent: "#ff5a2c",
@@ -167,6 +175,8 @@ export const projects: Project[] = [
     url: "https://www.electriobrasferreteria.com/",
     image: "/projects/ferreteria-1.jpg",
     ratio: 1.6,
+    card: "/projects/ferreteria-card.jpg",
+    cardRatio: 1440 / 998,
     shots: ["/projects/ferreteria-1.jpg", "/projects/ferreteria-2.jpg", "/projects/ferreteria-3.jpg"],
     mobile: "/projects/ferreteria-m.jpg",
     accent: "#f39c12",
@@ -202,6 +212,8 @@ export const projects: Project[] = [
     url: "https://app.technoultra.com/login",
     image: "/projects/technoultra-app.png",
     ratio: 1917 / 987,
+    card: "/projects/technoultra-app-card.jpg",
+    cardRatio: 1440 / 1508,
     shots: ["/projects/technoultra-app.png"],
     accent: "#ff6a00",
     note: "Producto propio",
@@ -238,6 +250,8 @@ export const projects: Project[] = [
     url: "https://www.stylernow.com/",
     image: "/projects/stylernow.png",
     ratio: 1897 / 975,
+    card: "/projects/stylernow-card.jpg",
+    cardRatio: 1440 / 1080,
     shots: ["/projects/stylernow.png"],
     accent: "#ff8a00",
   },

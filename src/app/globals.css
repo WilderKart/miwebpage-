@@ -276,6 +276,16 @@ h1, h2, h3, h4 { font-family: var(--head); font-weight: 600; letter-spacing: -0.
 .gray .chip, .detail-hero .chip { background: var(--white); }
 .svc-body .more { margin-top: 26px; display: inline-flex; }
 
+/* Modo scroll del acordeón de servicios (escritorio): sección alta con el listado fijo en pantalla. */
+.svc-scroll.is-scrub { height: 500vh; }
+.svc-scroll.is-scrub .svc-sticky { position: sticky; top: 0; }
+.svc-scroll.is-scrub .svc-btn { padding: 28px 0; }
+.svc-scroll.is-scrub .svc-body .in { padding-bottom: 36px; }
+.svc-scroll.is-scrub .svc-body { display: block; height: 0; transition: none; overflow: hidden; }
+.svc-scroll.is-scrub .svc-item .svc-btn .n { color: rgba(255, 255, 255, calc(0.14 + 0.86 * var(--o, 0))); transition: none; }
+.svc-scroll.is-scrub .svc-item .pm::before, .svc-scroll.is-scrub .svc-item .pm::after { transition: none; }
+.svc-scroll.is-scrub .svc-item .pm::after { transform: rotate(calc((1 - var(--o, 0)) * 90deg)); }
+
 /* Tile (abstract art) */
 .tile { position: relative; overflow: hidden; background: var(--bg, #ff6a00); }
 .tile svg { position: absolute; inset: 0; width: 100%; height: 100%; }

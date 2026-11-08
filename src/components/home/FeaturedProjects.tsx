@@ -11,7 +11,8 @@ import GridLines from "./GridLines";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Proporciones (ancho / alto) distintas por tarjeta, como en la referencia (una alta, otra más baja...).
+// Cada tarjeta usa su propia proporción (cardRatio): unas verticales y otras horizontales, como en la referencia.
+// Las imágenes salen en sepia y recuperan su color original al pasar el mouse (ver .fp-img en home.css).
 
 // "Proyectos destacados": rejilla de 2 columnas; cada imagen se revela al entrar (altura 0 → 100 % y
 // escala 1.5 → 1) y un círculo translúcido sigue al cursor sobre cada tarjeta.
@@ -77,10 +78,10 @@ export default function FeaturedProjects() {
             <div className="fp-list">
               {projects.map((p) => (
                 <article className="fp-item" key={p.slug}>
-                  <div className="fp-box" style={{ aspectRatio: String(p.ratio) }}>
+                  <div className="fp-box" style={{ aspectRatio: String(p.cardRatio) }}>
                     <Image
                       className="fp-img"
-                      src={p.image}
+                      src={p.card}
                       alt={`Captura del proyecto ${p.name}`}
                       fill
                       sizes="(min-width: 768px) 642px, 100vw"

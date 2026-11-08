@@ -63,7 +63,7 @@ export default function BlogList() {
           <span className="lbl" data-a="label">
             El blog
           </span>
-          <h2 className="bl-h1">Noticias y guías</h2>
+          <h2 className="bl-h1">News</h2>
         </div>
         <div className="bl-list">
           {homePosts.map((p, i) => (
